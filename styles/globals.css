@@ -2,26 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  direction: rtl;
+  background-color: rgb(17 24 39 / 1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-dark-100 {
+  background-color: rgb(17 24 39 / 1);
+}
+
+.bg_drop_down_nav {
+  background-color: rgb(36 42 56 / 1);
+}
+
+.bg-dark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(36 42 56 / var(--tw-bg-opacity));
+}
+
+.input_navBar {
+  background-color: unset;
+  border: none;
+  outline: none;
+}
+
+.bg_button_navbar {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 165 233 / var(--tw-bg-opacity));
+}
+.active_Sidebar {
+  right: 0;
+  transition: right 0.2s ease-in;
+}
+.NONactive_Sidebar {
+  right: -240px;
+  transition: right 0.2s ease-in;
 }
