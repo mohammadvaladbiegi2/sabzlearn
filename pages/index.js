@@ -4,6 +4,8 @@ import Image from "next/image";
 import { IoPlayOutline } from "react-icons/io5";
 import TitleCourseIntroduction from "@/components/TitleCourseIntroduction";
 
+import CourseCard from "@/components/CourseCard";
+import Waybox from "@/components/Waybox";
 export default function Home() {
   return (
     <>
@@ -14,7 +16,7 @@ export default function Home() {
               <span className="text-white font-medium text-[35px] md:text-[50px]">
                 آکادمی آموزش
               </span>
-              <span className="text-white font-medium text-[35px] md:text-[50px]">
+              <span className="text-white font-medium text-[35px] md:text-[50px] text-center">
                 برنامه نویسی سبزلرن
               </span>
             </div>
@@ -52,6 +54,29 @@ export default function Home() {
           linktitle="مشاهده همه دوره ها"
           link="#"
         />
+        <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+        </div>{" "}
+      </section>
+      <section>
+        <TitleCourseIntroduction
+          title="نقشه راه ها"
+          desc="نقشه های راه برای شروع اصولی یادگیری"
+          showlink={false}
+        />
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 px-16 gap-6 sm:gap-7">
+          <Waybox gradientfrom="FFB535" gradientto="F2295B" />
+          <Waybox gradientfrom="30c5e4" gradientto="28e55d" />
+          <Waybox gradientfrom="2e9eff" gradientto="9c33f7" />
+          <Waybox gradientfrom="ff3571" gradientto="880175" />
+        </div>
       </section>
     </>
   );
