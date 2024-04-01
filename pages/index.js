@@ -6,6 +6,7 @@ import TitleCourseIntroduction from "@/components/TitleCourseIntroduction";
 
 import CourseCard from "@/components/CourseCard";
 import Waybox from "@/components/Waybox";
+import HelpBox from "@/components/HelpBox";
 export default function Home() {
   return (
     <>
@@ -76,6 +77,36 @@ export default function Home() {
           <Waybox gradientfrom="30c5e4" gradientto="28e55d" />
           <Waybox gradientfrom="2e9eff" gradientto="9c33f7" />
           <Waybox gradientfrom="ff3571" gradientto="880175" />
+        </div>
+      </section>
+
+      <section>
+        <TitleCourseIntroduction
+          title="ما چه کمکی میتونیم بهت بکنیم"
+          desc="از شروع مسیر کنارتیم نمیذاریم آب تو دلت تکون بخوره"
+          showlink={false}
+        />
+        <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
+          <HelpBox
+            img="help1-removebg-preview.png"
+            title="تضمین کاملترین محتوا"
+            desc="بزار خیالت راحت کنم توی دوره هامون به ریز ترین موارد پرداختیم بعداز دیدن این دوره نیاز به هیچ آموزش دیگه ای نداری."
+          />
+          <HelpBox
+            img="help2-removebg-preview.png"
+            title="پشتیبانی دائمی"
+            desc="هرجا سوالی داشتی به مشکل خوردی بچه های تیم آمادن که مشکلت رو حل کنن تلاشمون اینه بدون نگرانی دوره رو کامل کنی."
+          />
+          <HelpBox
+            img="help3-removebg-preview.png"
+            title="پروژه محور در راستای بازار کار"
+            desc="کل تمرکز ما رو این هستش بعداز تموم شدن دوره شخص بتونه با اعتماد به نفس کامل پروژه بزنه واقدام کنه برای کسب درآمد."
+          />
+          <HelpBox
+            img="help4-removebg-preview.png"
+            title="سراغ حرفه ای ها رفتیم"
+            desc="به جرعت میتونم بگم سخت گیرترین شرایط جذب مدرس داریم چون برامون مهمه محتوا خیلی ساده و روان بیان بشه که توی یادگیری به مشکل نخورید."
+          />
         </div>
       </section>
     </>
