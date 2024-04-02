@@ -4,9 +4,14 @@ import React from "react";
 import { FaStar } from "react-icons/fa6";
 import { LuUsers } from "react-icons/lu";
 
-export default function CourseCard() {
+export default function CourseCard({ temp, active, mainCard }) {
   return (
-    <div className="bg-dark m-2 w-[320px] h-[420px] rounded-2xl">
+    <div
+      className="bg-dark m-2 w-[320px] h-[420px] rounded-2xl transition-all duration-500"
+      style={{
+        transform: `translateX(${temp}px)`,
+      }}
+    >
       <Link href="#">
         <Image
           src="/image/badusb-1-768x432.webp"

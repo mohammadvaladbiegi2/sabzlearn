@@ -39,3 +39,8 @@ body {
   right: -240px;
   transition: right 0.2s ease-in;
 }
+
+.swiper-slide {
+  display: flex !important;
+  justify-content: center !important;
+}
