@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
 import { IoPlayOutline } from "react-icons/io5";
@@ -8,6 +8,27 @@ import CourseCard from "@/components/CourseCard";
 import Waybox from "@/components/Waybox";
 import HelpBox from "@/components/HelpBox";
 export default function Home() {
+  let [temp, setTemp] = useState(0);
+  let [activeCours, setactiveCours] = useState(0);
+  function leftClick() {
+    if (activeCours <= -2) {
+      setTemp(-760);
+      setactiveCours(2);
+    } else {
+      setTemp(temp + 380);
+      setactiveCours((prev) => prev - 1);
+    }
+  }
+  function rightClick() {
+    if (activeCours >= 2) {
+      setTemp(760);
+      setactiveCours(-2);
+    } else {
+      setTemp(temp - 380);
+      setactiveCours((prev) => prev + 1);
+    }
+  }
+
   return (
     <>
       <header>
@@ -48,12 +69,14 @@ export default function Home() {
           </div>
         </section>
       </header>
+      {/* last cours */}
       <section>
         <TitleCourseIntroduction
           title="آخرین دوره ها"
           desc="سکوی پرتاپ شما به سمت موفقیت"
           linktitle="مشاهده همه دوره ها"
           link="#"
+          pointcolor="bg-amber-400"
         />
         <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
           <CourseCard />
@@ -66,11 +89,13 @@ export default function Home() {
           <CourseCard />
         </div>{" "}
       </section>
+      {/* way sections */}
       <section>
         <TitleCourseIntroduction
           title="نقشه راه ها"
           desc="نقشه های راه برای شروع اصولی یادگیری"
           showlink={false}
+          pointcolor="bg-red-500"
         />
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 px-16 gap-6 sm:gap-7">
           <Waybox gradientfrom="FFB535" gradientto="F2295B" />
@@ -79,12 +104,13 @@ export default function Home() {
           <Waybox gradientfrom="ff3571" gradientto="880175" />
         </div>
       </section>
-
+      {/* help sections */}
       <section>
         <TitleCourseIntroduction
           title="ما چه کمکی میتونیم بهت بکنیم"
           desc="از شروع مسیر کنارتیم نمیذاریم آب تو دلت تکون بخوره"
           showlink={false}
+          pointcolor="bg-sky-500"
         />
         <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
           <HelpBox
@@ -107,6 +133,27 @@ export default function Home() {
             title="سراغ حرفه ای ها رفتیم"
             desc="به جرعت میتونم بگم سخت گیرترین شرایط جذب مدرس داریم چون برامون مهمه محتوا خیلی ساده و روان بیان بشه که توی یادگیری به مشکل نخورید."
           />
+        </div>
+      </section>
+      {/* last cours slider */}
+      <section>
+        <TitleCourseIntroduction
+          title="جدیدترین دوره ها"
+          desc="یادگیری و رشد توسعه فردی"
+          showlink={false}
+          showbutton={true}
+          pointcolor="bg-green-500"
+          leftClick={leftClick}
+          rightClick={rightClick}
+        />
+        <div className="flex justify-center  overflow-x-hidden px-11">
+          <div className="flex items-start justify-center gap-[44px] ">
+            {Array(7)
+              .fill(0)
+              .map((card, index) => (
+                <CourseCard key={index} temp={temp} />
+              ))}
+          </div>
         </div>
       </section>
     </>
