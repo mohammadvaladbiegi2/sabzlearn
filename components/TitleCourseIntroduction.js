@@ -30,11 +30,14 @@ export default function TitleCourseIntroduction({
         </p>
       </div>
       {showlink && (
-        <div className="flex items-center gap-4">
-          <Link className="text-green-500 text-[16px] font-medium" href={link}>
+        <div className="flex group hover:bg-green-500 items-center gap-4 transition p-4 rounded-full justify-center">
+          <Link
+            className="text-green-500 group-hover:text-white text-[16px] font-medium"
+            href={link}
+          >
             {linktitle}
           </Link>
-          <FaAngleLeft className="text-green-500" />
+          <FaAngleLeft className="text-green-500 group-hover:text-white" />
         </div>
       )}
       {showbutton && (

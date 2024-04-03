@@ -7,6 +7,7 @@ import TitleCourseIntroduction from "@/components/TitleCourseIntroduction";
 import CourseCard from "@/components/CourseCard";
 import Waybox from "@/components/Waybox";
 import HelpBox from "@/components/HelpBox";
+import ArticlsCard from "@/components/ArticlsCard";
 export default function Home() {
   let [temp, setTemp] = useState(0);
   let [activeCours, setactiveCours] = useState(0);
@@ -79,14 +80,11 @@ export default function Home() {
           pointcolor="bg-amber-400"
         />
         <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
+          {Array(8)
+            .fill(0)
+            .map((course, index) => (
+              <CourseCard key={index} />
+            ))}
         </div>{" "}
       </section>
       {/* way sections */}
@@ -155,6 +153,40 @@ export default function Home() {
               ))}
           </div>
         </div>
+      </section>
+      {/* last articls */}
+      <section>
+        <TitleCourseIntroduction
+          title="آخرین مقالات"
+          desc="مقالات بروز برنامه نویسی"
+          link="#"
+          linktitle="مشاهده همه مقالات"
+          pointcolor="bg-amber-400 "
+        />
+        <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
+          {Array(4)
+            .fill(0)
+            .map((articls, index) => (
+              <ArticlsCard key={index} />
+            ))}
+        </div>
+      </section>
+      {/* popelar course */}
+      <section>
+        <TitleCourseIntroduction
+          title="محبوب ترین دوره ها"
+          desc="پرمخاطب ترین و بهترین دوره های سبزلرن"
+          link="#"
+          linktitle="مشاهده همه دوره‌ها"
+          pointcolor="bg-blue-400 "
+        />
+        <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
+          {Array(8)
+            .fill(0)
+            .map((course, index) => (
+              <CourseCard key={index} />
+            ))}
+        </div>{" "}
       </section>
     </>
   );
