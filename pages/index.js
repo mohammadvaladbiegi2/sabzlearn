@@ -146,7 +146,7 @@ export default function Home() {
           leftClick={leftClick}
           rightClick={rightClick}
         />
-        <div className="flex justify-center  overflow-x-hidden px-11">
+        <div className="flex justify-center  overflow-x-hidden px-11 w-[90%] overflow-hidden m-auto">
           <div className="flex items-start justify-center gap-[44px] ">
             {Array(7)
               .fill(0)
