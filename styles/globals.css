@@ -44,3 +44,10 @@ body {
   display: flex !important;
   justify-content: center !important;
 }
+
+.codeFormInput {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 60 76 / var(--tw-bg-opacity));
+  outline: none;
+  border: unset;
+}

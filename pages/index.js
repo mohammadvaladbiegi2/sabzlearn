@@ -8,6 +8,8 @@ import CourseCard from "@/components/CourseCard";
 import Waybox from "@/components/Waybox";
 import HelpBox from "@/components/HelpBox";
 import ArticlsCard from "@/components/ArticlsCard";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 export default function Home() {
   let [temp, setTemp] = useState(0);
   let [activeCours, setactiveCours] = useState(0);
@@ -32,6 +34,7 @@ export default function Home() {
 
   return (
     <>
+      <Navbar />
       <header>
         <section className="flex flex-col-reverse xl:flex-row gap-8 xl:gap-0   justify-between items-center px-8 mt-7">
           <div className="md:w-[600px] flex flex-col xl:ms-[30px] gap-14">
@@ -188,6 +191,7 @@ export default function Home() {
             ))}
         </div>{" "}
       </section>
+      <Footer />
     </>
   );
 }
