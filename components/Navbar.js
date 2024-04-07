@@ -7,6 +7,7 @@ import { FaRegUser } from "react-icons/fa6";
 import { HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Sidebar from "./Sidebar";
+import Link from "next/link";
 
 export default function navbar() {
   const [showsidebar, setshowsidebar] = useState(false);
@@ -417,11 +418,13 @@ export default function navbar() {
             <IoSunnyOutline className="text-white w-6 h-6 text-xl cursor-pointer hover:text-yellow-400 transition-all" />
           </div>
 
-          <button className="text-white font-bold flex items-center justify-center py-4 px-7 gap-2 rounded-full bg_button_navbar hover:opacity-90 cursor-pointer">
-            {" "}
-            <FaRegUser className="text-white font-medium text-[23px] mt-1" />
-            ورود | عضویت
-          </button>
+          <Link href="/login">
+            <button className="text-white font-bold flex items-center justify-center py-4 px-7 gap-2 rounded-full bg_button_navbar hover:opacity-90 cursor-pointer">
+              {" "}
+              <FaRegUser className="text-white font-medium text-[23px] mt-1" />
+              ورود | عضویت
+            </button>
+          </Link>
         </div>
       </div>
       {/* phone size */}
