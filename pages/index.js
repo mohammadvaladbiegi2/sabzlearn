@@ -61,6 +61,8 @@ export default function Home() {
                 دوره‌های رایگان
               </span>
             </div>
+            <div class="hidden lg:block absolute top-23 right-0 w-[250px] h-[250px] bg-green-500 opacity-25 blur-[120px] -z-10 rounded-full"></div>
+            <div class="hidden lg:block absolute -bottom-12 right-96 w-[250px] h-[250px] bg-sky-500 opacity-25 blur-[120px] -z-10 rounded-full"></div>
           </div>
           <div>
             <Image

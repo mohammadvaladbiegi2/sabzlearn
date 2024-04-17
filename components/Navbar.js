@@ -32,7 +32,7 @@ export default function navbar() {
               >
                 فرانت‌اند
               </a>
-              <IoIosArrowDown className="text-white mt-2  group-hover:text-green-500 transition-colors " />
+              <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
                   <a
@@ -123,7 +123,7 @@ export default function navbar() {
               >
                 امنیت
               </a>
-              <IoIosArrowDown className="text-white mt-2  group-hover:text-green-500 transition-colors " />
+              <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
                   <a
@@ -184,7 +184,7 @@ export default function navbar() {
               >
                 پایتون
               </a>
-              <IoIosArrowDown className="text-white mt-2  group-hover:text-green-500 transition-colors " />
+              <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
                   <a
@@ -227,7 +227,7 @@ export default function navbar() {
               >
                 پی‌اچ‌پی
               </a>
-              <IoIosArrowDown className="text-white mt-2  group-hover:text-green-500 transition-colors " />
+              <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
                   <a
@@ -252,7 +252,7 @@ export default function navbar() {
               >
                 ارتقا مهارت
               </a>
-              <IoIosArrowDown className="text-white mt-2  group-hover:text-green-500 transition-colors " />
+              <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
                   <a
@@ -337,7 +337,7 @@ export default function navbar() {
               >
                 مقالات
               </a>
-              <IoIosArrowDown className="text-white mt-2  group-hover:text-green-500 transition-colors " />
+              <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
                   <a
