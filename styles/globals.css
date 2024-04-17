@@ -2,10 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: dana_600;
+  font-style: normal;
+  font-weight: 600;
+  src: local("dana"),
+    url("https://fonts.cdnfonts.com/s/87601/dana demibold.woff") format("woff");
+}
+
 body {
   direction: rtl;
   background-color: rgb(17 24 39 / 1);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: dana_600;
 }
 
 .bg-dark-100 {
