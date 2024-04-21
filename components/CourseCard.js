@@ -4,7 +4,7 @@ import React from "react";
 import { FaStar } from "react-icons/fa6";
 import { LuUsers } from "react-icons/lu";
 
-export default function CourseCard({ temp, active, mainCard }) {
+export default function CourseCard({ temp }) {
   return (
     <div
       className="bg-dark m-2 w-[320px] h-[420px] rounded-2xl transition-all duration-500"
