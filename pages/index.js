@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 import { IoPlayOutline } from "react-icons/io5";
@@ -13,6 +13,8 @@ import Navbar from "@/components/Navbar";
 export default function Home() {
   let [temp, setTemp] = useState(0);
   let [activeCours, setactiveCours] = useState(0);
+  let [islogin, setislogin] = useState(false);
+
   function leftClick() {
     if (activeCours <= -2) {
       setTemp(-760);
@@ -32,9 +34,13 @@ export default function Home() {
     }
   }
 
+  useEffect(() => {
+    setislogin(localStorage.getItem("login"));
+  }, []);
+
   return (
     <>
-      <Navbar />
+      <Navbar islogin={islogin} />
       <header>
         <section className="flex flex-col-reverse xl:flex-row gap-8 xl:gap-0   justify-between items-center px-8 mt-7">
           <div className="md:w-[600px] flex flex-col xl:ms-[30px] gap-14">
