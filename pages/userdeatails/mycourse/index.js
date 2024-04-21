@@ -34,7 +34,7 @@ export default function Mycourse() {
             </div>
           </div>
         </header>
-        <div className="flex flex-wrap gap-x-3 gap-y-4 md:gap-x-10 mb-10">
+        <div className="flex flex-wrap gap-x-3 gap-y-4 md:gap-x-10 mb-9">
           <Userdeatailsheaderbox
             title="دوره‌های ثبت نام شده"
             desc="24 دوره"
