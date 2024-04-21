@@ -16,6 +16,10 @@ body {
   font-family: dana_600;
 }
 
+.bg_black_100 {
+  background-color: rgb(17 24 39 / 1);
+}
+
 .bg-dark-100 {
   background-color: rgb(17 24 39 / 1);
 }

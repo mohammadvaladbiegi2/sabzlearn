@@ -1,5 +1,6 @@
 import Sidebaruserdeatails from "@/components/Sidebaruserdeatails";
 import Userdeatailsheaderbox from "@/components/Userdeatailsheaderbox";
+import Mycoursecard from "@/components/mycoursecard";
 import Image from "next/image";
 import React from "react";
 import { AiOutlineDollar } from "react-icons/ai";
@@ -52,6 +53,14 @@ export default function Mycourse() {
             icon={<SlRocket />}
             bg="bg-green-400"
           />
+        </div>
+        <div className="w-full flex items-center justify-around flex-wrap">
+          <Mycoursecard />
+          <Mycoursecard />
+          <Mycoursecard />
+          <Mycoursecard />
+          <Mycoursecard />
+          <Mycoursecard />
         </div>
       </section>
     </div>
