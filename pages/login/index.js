@@ -31,6 +31,7 @@ export default function Login() {
         theme: "dark",
         autoClose: 2000,
       });
+      localStorage.setItem("login", true);
 
       setTimeout(() => {
         rout.push("/");
