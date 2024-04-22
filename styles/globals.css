@@ -28,6 +28,11 @@ body {
   background-color: rgb(36 42 56 / 1);
 }
 
+.bg-secondry {
+  --tw-bg-opacity: 1;
+  background-color: rgb(78 129 251 / var(--tw-bg-opacity));
+}
+
 .bg-dark {
   --tw-bg-opacity: 1;
   background-color: rgb(36 42 56 / var(--tw-bg-opacity));
