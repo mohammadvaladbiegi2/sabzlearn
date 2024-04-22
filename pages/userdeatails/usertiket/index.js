@@ -9,6 +9,7 @@ import { BsTicketPerforated } from "react-icons/bs";
 import { IoMailOpenOutline } from "react-icons/io5";
 import { HiOutlineChatAlt2 } from "react-icons/hi";
 import { FiPlusCircle } from "react-icons/fi";
+import Link from "next/link";
 
 export default function UserTiket() {
   return (
@@ -59,6 +60,7 @@ export default function UserTiket() {
             desc="تیکت جدید"
             icon={<FiPlusCircle />}
             bg="bg-secondry"
+            href="/userdeatails/usertiket/newticket"
           />
         </div>
         <div className="bg_black_100 my-6  p-3.5 md:p-4.5 rounded-2xl">
@@ -66,12 +68,18 @@ export default function UserTiket() {
             <span class=" md:text-xl text-white">تیکت ها</span>
           </div>
           <div>
-            <div class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-700 rounded-xl transition-colors">
+            <Link
+              href="/userdeatails/usertiket/5256871"
+              class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-700 rounded-xl transition-colors"
+            >
               <div class="flex items-center">
                 <span class="block text-white w-20 text-right ">#10089</span>
-                <a href="#" class="text-white w-full  sm:max-w-md md:truncate">
+                <Link
+                  href="/userdeatails/usertiket/5256871"
+                  class="text-white w-full  sm:max-w-md md:truncate"
+                >
                   اضافه کردن دوره
-                </a>
+                </Link>
               </div>
               <div class="flex items-center gap-5">
                 <span class="text-xs text-slate-400 text-ltr">
@@ -84,13 +92,19 @@ export default function UserTiket() {
                   بسته شده
                 </span>
               </div>
-            </div>
-            <div class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-700 rounded-xl transition-colors">
+            </Link>
+            <Link
+              href="/userdeatails/usertiket/5256871"
+              class="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:bg-gray-700 rounded-xl transition-colors"
+            >
               <div class="flex items-center">
                 <span class="block text-white w-20 text-right ">#3021</span>
-                <a href="#" class="text-white w-full  sm:max-w-md md:truncate">
+                <Link
+                  href="/userdeatails/usertiket/5256871"
+                  class="text-white w-full  sm:max-w-md md:truncate"
+                >
                   کانال پشتیبانی دوره ری اکت
-                </a>
+                </Link>
               </div>
               <div class="flex items-center gap-5">
                 <span class="text-xs text-slate-400 text-ltr">
@@ -103,7 +117,7 @@ export default function UserTiket() {
                   بسته شده
                 </span>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

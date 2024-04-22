@@ -10,10 +10,10 @@ import Image from "next/image";
 
 export default function Sidebaruserdeatails() {
   let rout = useRouter();
-
+  console.log(rout);
   return (
     <aside class="sidebar fixed top-0 bottom-0 -right-64 z-30 lg:static flex flex-col w-64 lg:w-56 lg:mt-10 px-7 py-5 lg:px-0 lg:py-0 shrink-0 lg:min-h-[calc(100vh-68px)] transition-all lg:transition-none">
-      <div class="flex items-center justify-between pb-5 mb-7 border-b md:border-none border-b-gray-200 dark:border-b-slate">
+      <div class="flex items-center justify-between pb-5 mb-7 border-b md:border-none border-b-slate">
         <a
           href="https://sabzlearn.ir"
           class="flex items-center gap-x-1.5 md:gap-x-2.5"
@@ -27,11 +27,8 @@ export default function Sidebaruserdeatails() {
           />
           <svg class="w-[86px] md:w-32 h-10 md:h-[57px]"></svg>
         </a>
-        <svg class="sidebar__close-btn text-slate-500 dark:text-slate-400 w-5 h-5 md:hidden">
-          <use href="#x-mark"></use>
-        </svg>
       </div>
-      <div class="space-y-4 text-zinc-700 dark:text-white">
+      <div class="space-y-4 text-white">
         <Link
           href="/userdeatails"
           class={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
@@ -53,7 +50,13 @@ export default function Sidebaruserdeatails() {
         <Link
           href="/userdeatails/usertiket"
           class={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
-            rout.route === "/userdeatails/usertiket" && "bg-green-500"
+            rout.route === "/userdeatails/usertiket"
+              ? "bg-green-500"
+              : rout.route === "/userdeatails/usertiket/[idticket]"
+              ? "bg-green-500"
+              : rout.route === "/userdeatails/usertiket/newticket"
+              ? "bg-green-500"
+              : ""
           } text-white`}
         >
           <HiOutlineChatBubbleLeftRight className="text-white w-6 h-6 " />
