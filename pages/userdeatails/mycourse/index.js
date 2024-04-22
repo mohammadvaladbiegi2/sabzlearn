@@ -54,7 +54,7 @@ export default function Mycourse() {
             bg="bg-green-400"
           />
         </div>
-        <div className="w-full flex items-center justify-around flex-wrap">
+        <div className="grid grid-rows-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 3xl:grid-cols-4 gap-5">
           <Mycoursecard />
           <Mycoursecard />
           <Mycoursecard />

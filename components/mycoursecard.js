@@ -6,11 +6,11 @@ import { LuUsers } from "react-icons/lu";
 
 export default function CourseCard() {
   return (
-    <div className="bg_black_100 m-2 w-[310px] h-auto rounded-2xl transition-all duration-500">
+    <div className="bg_black_100 m-2   h-auto rounded-2xl transition-all duration-500">
       <Link href="#">
         <Image
           src="/image/badusb-1-768x432.webp"
-          className="rounded-t-2xl h-[190px]"
+          className="rounded-t-2xl h-[190px] w-full"
           width={310}
           height={170}
         />
