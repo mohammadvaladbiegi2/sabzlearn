@@ -30,8 +30,8 @@ export default function NewTickts() {
             <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
               <IoSunnyOutline className="text-white w-6 h-6 text-xl cursor-pointer hover:text-yellow-400 transition-all" />
             </div>
-            <div className="md:flex items-center hidden  bg-white p-3 rounded-full  justify-center">
-              <Image src="/image/userimage.png" width={30} height={30} />{" "}
+            <div className="md:flex items-center hidden    justify-center">
+              <Image src="/image/userimageaccont.png" width={50} height={50} />{" "}
             </div>
           </div>
         </header>
