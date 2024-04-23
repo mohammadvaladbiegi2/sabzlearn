@@ -83,3 +83,22 @@ body {
   font-size: 14px;
   line-height: 1.8rem;
 }
+
+.button-lg {
+  height: 3.5rem;
+  -moz-column-gap: 0.5rem;
+  column-gap: 0.5rem;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: white;
+  border-radius: 18px;
+}
+
+.bg-dark-inpute {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 51 77 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
