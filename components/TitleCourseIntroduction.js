@@ -20,7 +20,7 @@ export default function TitleCourseIntroduction({
       <div>
         <h3 className="text-white text-center md:text-start text-2xl sm:text-2.5xl font-medium mb-5">
           <span
-            class={`hidden sm:inline-block w-4 h-4 ${pointcolor}  rounded-sm me-4`}
+            className={`hidden sm:inline-block w-4 h-4 ${pointcolor}  rounded-sm me-4`}
           ></span>
           {title}
         </h3>

@@ -13,7 +13,6 @@ import Navbar from "@/components/Navbar";
 export default function Home() {
   let [temp, setTemp] = useState(0);
   let [activeCours, setactiveCours] = useState(0);
-  let [islogin, setislogin] = useState(false);
 
   function leftClick() {
     if (activeCours <= -2) {
@@ -34,13 +33,9 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
-    setislogin(localStorage.getItem("login"));
-  }, []);
-
   return (
     <>
-      <Navbar islogin={islogin} />
+      <Navbar />
       <header>
         <section className="flex flex-col-reverse xl:flex-row gap-8 xl:gap-0   justify-between items-center px-8 mt-7">
           <div className="md:w-[600px] flex flex-col xl:ms-[30px] gap-14">
@@ -67,8 +62,8 @@ export default function Home() {
                 دوره‌های رایگان
               </span>
             </div>
-            <div class="hidden lg:block absolute top-23 right-0 w-[250px] h-[250px] bg-green-500 opacity-25 blur-[120px] -z-10 rounded-full"></div>
-            <div class="hidden lg:block absolute -bottom-12 right-96 w-[250px] h-[250px] bg-sky-500 opacity-25 blur-[120px] -z-10 rounded-full"></div>
+            <div className="hidden lg:block absolute top-23 right-0 w-[250px] h-[250px] bg-green-500 opacity-25 blur-[120px] -z-10 rounded-full"></div>
+            <div className="hidden lg:block absolute -bottom-12 right-96 w-[250px] h-[250px] bg-sky-500 opacity-25 blur-[120px] -z-10 rounded-full"></div>
           </div>
           <div>
             <Image

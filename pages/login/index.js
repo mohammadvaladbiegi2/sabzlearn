@@ -90,9 +90,9 @@ export default function Login() {
   };
   return (
     <>
-      <div class="hidden lg:block absolute top-0 left-0 w-[300px] h-[300px] bg-sky-500 opacity-20 blur-[120px] rounded-full"></div>
+      <div className="hidden lg:block absolute top-0 left-0 w-[300px] h-[300px] bg-sky-500 opacity-20 blur-[120px] rounded-full"></div>
       <section className="flex flex-col justify-center items-center h-[100vh]">
-        <Link href="/" class="flex items-center gap-x-3.5 mb-10">
+        <Link href="/" className="flex items-center gap-x-3.5 mb-10">
           <Image src="/image/logo.webp" width={110} height={50} alt="mamad" />
           <Image
             src="/image/Screenshot_2024-04-06_025727-removebg-preview.png"
@@ -168,9 +168,11 @@ export default function Login() {
               </button>
             </form>
           )}
-          <div class="flex items-center justify-between font-danaMedium text-sm text-slate-500 w-full mt-5">
+          <div className="flex items-center justify-between font-danaMedium text-sm text-slate-500 w-full mt-5">
             <span>ورود با ایمیل</span>
-            <span class="underline underline-offset-2">حریم خصوصی</span>{" "}
+            <span className="underline underline-offset-2">
+              حریم خصوصی
+            </span>{" "}
           </div>
         </div>
 
@@ -182,7 +184,7 @@ export default function Login() {
           را پذیرفته اید.
         </span>
       </section>
-      <div class="hidden lg:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-amber-400 opacity-20 blur-[120px] rounded-full"></div>
+      <div className="hidden lg:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-amber-400 opacity-20 blur-[120px] rounded-full"></div>
     </>
   );
 }

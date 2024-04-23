@@ -6,11 +6,11 @@ import { FaAngleLeft } from "react-icons/fa6";
 export default function Sidebar({ setshowsidebar, showsidebar }) {
   return (
     <div
-      class={`${
+      className={`${
         showsidebar ? "active_Sidebar" : "NONactive_Sidebar"
       } xl:hidden bg-dark w-60 overflow-y-auto fixed top-0 bottom-0 z-50 p-4 transition-all right-[-240px]`}
     >
-      <div class="flex items-center justify-between pb-6 relative border-b  border-b-white/10">
+      <div className="flex items-center justify-between pb-6 relative border-b  border-b-white/10">
         <Image
           src="/image/logo.webp"
           className="h-12 "
@@ -18,7 +18,7 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
           height={40}
           alt=""
         />
-        <div class="flex gap-x-3">
+        <div className="flex gap-x-3">
           <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
             <IoSunnyOutline className="text-white w-5 h-5 text-xl cursor-pointer hover:text-green-500 transition-all" />
           </div>
@@ -38,13 +38,13 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
         />
         <IoIosSearch className="text-white w-5 h-5 cursor-pointer" />
       </div>
-      <ul class="py-2 mt-2">
+      <ul className="py-2 mt-2">
         <li className="group my-6">
-          <span class="text-white text-[18px] group-hover:text-green-500 transition-colors cursor-pointer flex items-center justify-between">
+          <span className="text-white text-[18px] group-hover:text-green-500 transition-colors cursor-pointer flex items-center justify-between">
             فرانت اند{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </span>
-          {/* <ul class="py-2 px-4 mt-3 rounded-xl  active_sidebar_links w-[240px] bg-dark-100">
+          {/* <ul className="py-2 px-4 mt-3 rounded-xl  active_sidebar_links w-[240px] bg-dark-100">
             <li className="my-4">
               <a
                 className="text-[16px] text-white hover:text-green-500 transition-colors"
@@ -152,31 +152,31 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
           </ul> */}
         </li>
         <li className="group my-6">
-          <span class="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
             امنیت{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </span>
         </li>
         <li className="group my-6">
-          <span class="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
             پایتون{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </span>
         </li>
         <li className="group my-6">
-          <span class="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
             پی‌اچ‌پی{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </span>
         </li>
         <li className="group my-6">
-          <span class="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
             ارتقامهارت{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </span>
         </li>
         <li className="group my-6">
-          <span class="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
             مقالات{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </span>
