@@ -7,17 +7,19 @@ import { FaRightToBracket } from "react-icons/fa6";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Image from "next/image";
+import { IoMdClose } from "react-icons/io";
 
-export default function Sidebaruserdeatails() {
+export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
   let rout = useRouter();
-  console.log(rout);
+
   return (
-    <aside class="sidebar fixed top-0 bottom-0 -right-64 z-30 lg:static flex flex-col w-64 lg:w-56 lg:mt-10 px-7 py-5 lg:px-0 lg:py-0 shrink-0 lg:min-h-[calc(100vh-68px)] transition-all lg:transition-none">
-      <div class="flex items-center justify-between pb-5 mb-7 border-b md:border-none border-b-slate">
-        <a
-          href="https://sabzlearn.ir"
-          class="flex items-center gap-x-1.5 md:gap-x-2.5"
-        >
+    <aside
+      class={`${
+        showsidebar ? "active_Sidebar  " : "NONactive_Sidebar "
+      } fixed top-0 bottom-0 -right-64  bg-gray-700 md:bg-slate-700/0   z-30 lg:static flex flex-col w-64 lg:w-56 lg:mt-10 px-7 py-5 lg:px-0 lg:py-0 shrink-0 lg:min-h-[calc(100vh-68px)] transition-all lg:transition-none`}
+    >
+      <div className="flex items-center justify-between pb-5 mb-7 border-b md:border-none border-b-slate">
+        <Link href="/" className="flex items-center gap-x-1.5 md:gap-x-2.5">
           <Image
             src="/image/logo.webp"
             className="h-12 "
@@ -25,10 +27,15 @@ export default function Sidebaruserdeatails() {
             height={40}
             alt="سبز لرن ممد"
           />
-          <svg class="w-[86px] md:w-32 h-10 md:h-[57px]"></svg>
-        </a>
+        </Link>
+        <div className="flex items-center md:hidden bg-[#ffffff0D] p-4 rounded-full  justify-center">
+          <IoMdClose
+            onClick={() => setshowsidebar(false)}
+            className="text-white w-5 h-5 text-xl cursor-pointer hover:text-green-500 transition-all"
+          />
+        </div>
       </div>
-      <div class="space-y-4 text-white">
+      <div className="space-y-4 text-white">
         <Link
           href="/userdeatails"
           class={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
@@ -76,7 +83,7 @@ export default function Sidebaruserdeatails() {
             localStorage.clear();
             rout.push("/");
           }}
-          class="flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary 
+          className="flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary 
            text-white"
         >
           <FaRightToBracket className="text-white w-6 h-6 " />

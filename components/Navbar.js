@@ -1,17 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
-import { IoSunnyOutline } from "react-icons/io5";
+import { IoFolderOpenOutline, IoSunnyOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa6";
-import { HiOutlineArrowRightOnRectangle } from "react-icons/hi2";
+import {
+  HiOutlineArrowRightOnRectangle,
+  HiOutlineChatBubbleLeftRight,
+} from "react-icons/hi2";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Sidebar from "./Sidebar";
 import Link from "next/link";
+import { AiOutlineHome } from "react-icons/ai";
 
-export default function navbar({ islogin }) {
+export default function navbar() {
   const [showsidebar, setshowsidebar] = useState(false);
-
+  let [islogin, setislogin] = useState(false);
+  let [showbox, setshowbox] = useState(false);
+  useEffect(() => {
+    setislogin(localStorage.getItem("login"));
+  }, []);
   return (
     <nav className="px-8 py-6 bg-dark ">
       {/* xl size */}
@@ -419,11 +427,81 @@ export default function navbar({ islogin }) {
           </div>
 
           {islogin ? (
-            <Link href="/userdeatails">
-              <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
+            <>
+              <div
+                onClick={() => setshowbox((prev) => !prev)}
+                className={`flex  ${
+                  showbox && "z-50"
+                } items-center bg-[#ffffff0D] p-4 rounded-full  justify-center`}
+              >
                 <FaRegUser className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
               </div>
-            </Link>
+
+              <div
+                class={`absolute ${
+                  showbox ? "visible opacity-100" : "opacity-0 hidden"
+                }    left-8 top-[14%] pt-4 z-10 transition-all show`}
+              >
+                <div className="w-[278px] bg-dark border-0 p-5 pb-3.5 rounded-xl">
+                  <div className="flex items-center border-b border-b-white/5 pb-5 mb-2">
+                    <a href="#" className="shrink-0">
+                      <Image
+                        src="/image/userimageaccont.png"
+                        alt="mohammadvalad"
+                        className="object-cover w-14 h-14 rounded-full inline-block"
+                        loading="lazy"
+                        width={50}
+                        height={50}
+                      />
+                    </a>
+                    <div className="mr-3.5 flex flex-col gap-y-3 overflow-hidden">
+                      <span className="text-white inline-block truncate">
+                        mohammad valadbiegi
+                      </span>
+                      <span className="text-sm  text-green-500 inline-block">
+                        موجودی: 0 تومان
+                      </span>
+                    </div>
+                  </div>
+                  <Link
+                    href="/userdeatails"
+                    className="flex items-center justify-between px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors"
+                  >
+                    <span className="flex items-center gap-x-2">
+                      <AiOutlineHome className="text-white w-6 h-6 " />
+                      پیشخوان{" "}
+                    </span>
+                  </Link>
+                  <Link
+                    href="/userdeatails/mycourse"
+                    className="flex items-center justify-between px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors"
+                  >
+                    <span className="flex items-center gap-x-2">
+                      <IoFolderOpenOutline className="text-white w-6 h-6 " />
+                      دوره های من{" "}
+                    </span>
+                  </Link>
+                  <Link
+                    href="/userdeatails/usertiket"
+                    className="flex items-center justify-between px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors"
+                  >
+                    <span className="flex items-center gap-x-2">
+                      <HiOutlineChatBubbleLeftRight className="text-white w-6 h-6 " />
+                      تیکت ها{" "}
+                    </span>
+                  </Link>
+                  <Link
+                    href="/userdeatails/accontdeatails"
+                    className="flex items-center justify-between px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors"
+                  >
+                    <span className="flex items-center gap-x-2">
+                      <FaRegUser className="text-white w-6 h-6 " />
+                      جزئیات حساب{" "}
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </>
           ) : (
             <Link href="/login">
               <button className="text-white font-bold flex items-center justify-center py-3 px-5 gap-2 rounded-full bg_button_navbar hover:opacity-90 cursor-pointer">

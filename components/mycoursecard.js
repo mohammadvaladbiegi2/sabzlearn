@@ -27,8 +27,8 @@ export default function CourseCard() {
           <span className="text-white/70 ">میزان مشاهده</span>
           <div className="flex items-center gap-1 text-white/70">57%</div>
         </div>
-        <div class="bg-gray-100 dark:bg-gray-700 h-[5px] rounded-full">
-          <div class="bg-green-500 h-full rounded-full w-[57%]"></div>
+        <div className="bg-gray-100 dark:bg-gray-700 h-[5px] rounded-full">
+          <div className="bg-green-500 h-full rounded-full w-[57%]"></div>
         </div>
       </div>
     </div>
