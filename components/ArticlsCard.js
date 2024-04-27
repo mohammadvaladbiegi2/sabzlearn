@@ -3,6 +3,7 @@ import React from "react";
 import { LuUsers } from "react-icons/lu";
 import { MdOutlineDateRange } from "react-icons/md";
 import { FaCircleArrowLeft } from "react-icons/fa6";
+import Link from "next/link";
 
 export default function ArticlsCard() {
   return (
@@ -35,13 +36,13 @@ export default function ArticlsCard() {
           </div>
         </div>
         <div className="flex justify-center group mt-5 mb-2">
-          <a
-            href="#"
+          <Link
+            href="/articls/55"
             className="group-hover:text-green-500 flex items-center gap-1 text-lg text-white   transition-colors"
           >
             مطالعه مقاله
             <FaCircleArrowLeft className="h-5 w-5 mb-1 text-white/70 group-hover:text-green-500 transition-colors" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
