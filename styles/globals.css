@@ -27,7 +27,10 @@ body {
 .bg_drop_down_nav {
   background-color: rgb(36 42 56 / 1);
 }
-
+.bg-dark-light {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 60 76 / var(--tw-bg-opacity));
+}
 .bg-secondry {
   --tw-bg-opacity: 1;
   background-color: rgb(78 129 251 / var(--tw-bg-opacity));
@@ -90,7 +93,7 @@ body {
   column-gap: 0.5rem;
   padding-left: 1.75rem;
   padding-right: 1.75rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1.75rem;
   color: white;
   border-radius: 18px;
@@ -119,5 +122,14 @@ body {
 
 .bg-sky-500\/10 {
   background-color: rgb(14 165 233 / 0.1);
+}
+
+
+.hljs {
+  color: #383a42;
+  background: #fafafa;
+  padding: 20px;
+  border-radius: 18px;
+  margin: 25px 0px;
 }
 
