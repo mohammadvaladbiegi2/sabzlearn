@@ -103,6 +103,7 @@ body {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+
 .sort-btn--active{
   position: relative;
   color: #0EA5E9;
@@ -115,3 +116,8 @@ body {
   border-top: 2px solid #0EA5E9;
   border-bottom: 2px solid #0EA5E9;
 }
+
+.bg-sky-500\/10 {
+  background-color: rgb(14 165 233 / 0.1);
+}
+

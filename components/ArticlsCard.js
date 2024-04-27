@@ -18,26 +18,26 @@ export default function ArticlsCard() {
 
       <div className="p-3">
         <h3 className="line-clamp-1 text-white text-lg">BunJS چیست ؟</h3>
-        <p class="text_articls_card text-justify line-clamp-4 text-white/70 my-4">
+        <p className="text_articls_card text-justify line-clamp-4 text-white/70 my-4">
           Bun js چیست؟ Bun js چیست و آیا می‌توان به عنوان جایگزینی برای نود جی
           اس روی آن حساب ویژه‌ای باز کرد؟ بان جی اس در اصل ابزار جدیدی شبیه…
         </p>
-        <div class=" flex justify-between items-center text-white/70 text-sm p-4 border-b border-b-white/10">
-          <div class="flex items-center gap-x-0.5">
+        <div className=" flex justify-between items-center text-white/70 text-sm p-4 border-b border-b-white/10">
+          <div className="flex items-center gap-x-0.5">
             <LuUsers className="text-white opacity-70 text-xl" />
             <a href="#" className="mt-1">
               کامل بهرامی
             </a>
           </div>
-          <div class="flex items-center gap-x-0.5">
+          <div className="flex items-center gap-x-0.5">
             <MdOutlineDateRange className="text-white  opacity-70 text-xl" />
             <span className="mt-1">1403/01/15</span>
           </div>
         </div>
-        <div class="flex justify-center group mt-5 mb-2">
+        <div className="flex justify-center group mt-5 mb-2">
           <a
             href="#"
-            class="group-hover:text-green-500 flex items-center gap-1 text-lg text-white   transition-colors"
+            className="group-hover:text-green-500 flex items-center gap-1 text-lg text-white   transition-colors"
           >
             مطالعه مقاله
             <FaCircleArrowLeft className="h-5 w-5 mb-1 text-white/70 group-hover:text-green-500 transition-colors" />
