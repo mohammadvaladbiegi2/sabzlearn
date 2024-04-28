@@ -6,29 +6,37 @@ import { LuUsers } from "react-icons/lu";
 
 export default function CourseCard() {
   return (
-    <div className="bg_black_100 m-2   h-auto rounded-2xl transition-all duration-500">
-      <Link href="#">
-        <Image
-          src="/image/badusb-1-768x432.webp"
-          className="rounded-t-2xl h-[190px] w-full"
-          width={310}
-          height={170}
-        />
-      </Link>
-      <div className="p-4">
-        <Link
+    <div className=" flex flex-col overflow-hidden bg_black_100  border border-gray-700 rounded-2xl">
+      <div className="relative h-42">
+        <a
+          className="w-full h-full block"
           href="#"
-          className="text-white mb-3 line-clamp-2 text-[18px] font-medium"
+          title="آموزش جاوااسکریپت با گرایش امنیت | جاوااسکریپت سیاه"
         >
-          تست نفوذ با BadUSB
-        </Link>
-
-        <div className="flex items-center justify-between border-t pt-3 border-b-neutral-700/70 px-2 pb-3">
-          <span className="text-white/70 ">میزان مشاهده</span>
-          <div className="flex items-center gap-1 text-white/70">57%</div>
-        </div>
-        <div className="bg-gray-100 dark:bg-gray-700 h-[5px] rounded-full">
-          <div className="bg-green-500 h-full rounded-full w-[57%]"></div>
+          <Image
+            className="block w-full h-full  object-cover rounded-2xl"
+            src="/image/badusb-1-768x432.webp"
+            alt="آموزش جاوااسکریپت با گرایش امنیت | جاوااسکریپت سیاه"
+            width={100}
+            height={100}
+          />
+        </a>
+      </div>
+      <div className="px-5 pb-3.5 pt-2.5 flex-grow ">
+        <h4 className=" h-12 line-clamp-2 text-white mb-2.5">
+          <a href="">آموزش جاوااسکریپت با گرایش امنیت | جاوااسکریپت سیاه</a>
+        </h4>
+        <div className="pt-3 border-t border-t-gray-700">
+          <div className="flex items-center justify-between text-xs mb-1.5">
+            <span className="text-white">میزان مشاهده</span>
+            <span className="text-slate-500 dark:text-slate-400">57%</span>
+          </div>
+          <div className="bg-gray-700 h-[5px] rounded-full">
+            <div
+              className="bg-green-500 h-full rounded-full"
+              style={{ width: "57%" }}
+            ></div>
+          </div>
         </div>
       </div>
     </div>
