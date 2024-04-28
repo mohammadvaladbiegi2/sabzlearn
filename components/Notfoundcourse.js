@@ -2,9 +2,9 @@ import React from "react";
 
 export default function Notfoundcourse() {
   return (
-    <div class="archive_empty flex items-center justify-center flex-col px-7 py-8 md:py-20 rounded-2xl border border-slate-500 border-dashed ">
+    <div className="archive_empty flex items-center justify-center flex-col px-7 py-8 md:py-20 rounded-2xl border border-slate-500 border-dashed ">
       <svg
-        class="w-48 h-[216px] md:w-auto md:h-auto"
+        className="w-48 h-[216px] md:w-auto md:h-auto"
         width="232"
         height="244"
         viewBox="0 0 232 244"
@@ -217,7 +217,7 @@ export default function Notfoundcourse() {
           </filter>
         </defs>
       </svg>
-      <p class="text-lg md:text-xl text-center font-danaDemiBold text-slate-500 dark:text-white mt-8 md:mt-12">
+      <p className="text-lg md:text-xl text-center font-danaDemiBold text-slate-500 dark:text-white mt-8 md:mt-12">
         متاسفانه دوره ای مطابق با جستجوی شما پیدا نشد ):
       </p>
     </div>
