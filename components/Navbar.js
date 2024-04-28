@@ -25,21 +25,23 @@ export default function navbar() {
       {/* xl size */}
       <div className="hidden xl:flex items-center justify-between ">
         <div className="flex items-center gap-5">
-          <Image
-            src="/image/logo.webp"
-            className="h-12 "
-            width={70}
-            height={40}
-            alt=""
-          />
+          <Link href="/">
+            <Image
+              src="/image/logo.webp"
+              className="h-12 "
+              width={70}
+              height={40}
+              alt=""
+            />
+          </Link>
           <ul className="flex items-center justify-around gap-6">
             <li className="flex items-center relative group gap-2">
-              <a
-                href="#"
+              <Link
+                href="/searchcours/frontend"
                 className="text-white group-hover:text-green-500  transition-colors   text-lg"
               >
                 فرانت‌اند
-              </a>
+              </Link>
               <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
@@ -125,12 +127,12 @@ export default function navbar() {
               </div>
             </li>
             <li className="flex items-center relative group gap-2">
-              <a
-                href="#"
+              <Link
+                href="/searchcours/security"
                 className="text-white group-hover:text-green-500  transition-colors   text-lg"
               >
                 امنیت
-              </a>
+              </Link>
               <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
@@ -186,12 +188,12 @@ export default function navbar() {
               </div>
             </li>
             <li className="flex items-center relative group gap-2">
-              <a
-                href="#"
+              <Link
+                href="/searchcours/python"
                 className="text-white group-hover:text-green-500  transition-colors   text-lg"
               >
                 پایتون
-              </a>
+              </Link>
               <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
@@ -229,12 +231,12 @@ export default function navbar() {
               </div>
             </li>
             <li className="flex items-center relative group gap-2">
-              <a
-                href="#"
+              <Link
+                href="/searchcours/php"
                 className="text-white group-hover:text-green-500  transition-colors   text-lg"
               >
                 پی‌اچ‌پی
-              </a>
+              </Link>
               <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
@@ -254,12 +256,12 @@ export default function navbar() {
               </div>
             </li>
             <li className="flex items-center relative group gap-2">
-              <a
-                href="#"
+              <Link
+                href="/searchcours/SkillUpgrade"
                 className="text-white group-hover:text-green-500  transition-colors   text-lg"
               >
                 ارتقا مهارت
-              </a>
+              </Link>
               <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
                 <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
@@ -334,79 +336,6 @@ export default function navbar() {
                     className=" text-white hover:text-green-500 transition-colors"
                   >
                     آموزش کاربردی Vscode{" "}
-                  </a>
-                </div>
-              </div>
-            </li>
-            <li className="flex items-center relative group gap-2">
-              <a
-                href="#"
-                className="text-white group-hover:text-green-500  transition-colors   text-lg"
-              >
-                مقالات
-              </a>
-              <IoIosArrowDown className="text-white   group-hover:text-green-500 transition-colors " />
-              <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
-                <div className="bg_drop_down_nav flex flex-col gap-y-4 w-64  dark:bg-darker p-5 border-y-4  border-y-green-500 dark:border-y dark:border-x-0 dark:border-green-500 shadow-sm dark:shadow-none rounded-xl">
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    اچ تی ام ال{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    بوت استرپ{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    پروژه های برنامه نویسی{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    تست نفوذ و امنیت وب{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    جی کوئری{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    ری اکت جی اس{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    سی اس اس{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    شروع برنامه نویسی{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    طراحی سایت{" "}
-                  </a>
-                  <a
-                    href="#"
-                    className=" text-white hover:text-green-500 transition-colors"
-                  >
-                    ویو جی اس{" "}
                   </a>
                 </div>
               </div>

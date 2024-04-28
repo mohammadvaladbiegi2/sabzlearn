@@ -10,6 +10,7 @@ import HelpBox from "@/components/HelpBox";
 import ArticlsCard from "@/components/ArticlsCard";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import CourseCardSlider from "@/components/CourseCardSlider";
 export default function Home() {
   let [temp, setTemp] = useState(0);
   let [activeCours, setactiveCours] = useState(0);
@@ -82,10 +83,10 @@ export default function Home() {
           title="آخرین دوره ها"
           desc="سکوی پرتاپ شما به سمت موفقیت"
           linktitle="مشاهده همه دوره ها"
-          link="#"
+          link="/searchcours/All"
           pointcolor="bg-amber-400"
         />
-        <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
+        <div className="grid px-14 grid-rows-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
           {Array(8)
             .fill(0)
             .map((course, index) => (
@@ -155,7 +156,7 @@ export default function Home() {
             {Array(7)
               .fill(0)
               .map((card, index) => (
-                <CourseCard key={index} temp={temp} />
+                <CourseCardSlider key={index} temp={temp} />
               ))}
           </div>
         </div>
@@ -165,8 +166,7 @@ export default function Home() {
         <TitleCourseIntroduction
           title="آخرین مقالات"
           desc="مقالات بروز برنامه نویسی"
-          link="#"
-          linktitle="مشاهده همه مقالات"
+          showlink={false}
           pointcolor="bg-amber-400 "
         />
         <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
@@ -182,11 +182,11 @@ export default function Home() {
         <TitleCourseIntroduction
           title="محبوب ترین دوره ها"
           desc="پرمخاطب ترین و بهترین دوره های سبزلرن"
-          link="#"
+          link="/searchcours/All"
           linktitle="مشاهده همه دوره‌ها"
           pointcolor="bg-blue-400 "
         />
-        <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
+        <div className="grid grid-rows-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7 px-14">
           {Array(8)
             .fill(0)
             .map((course, index) => (
