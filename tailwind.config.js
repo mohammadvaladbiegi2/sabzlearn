@@ -12,6 +12,11 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        "COLOR1-HA": "#333C4C",
+        "COLOR2-HA": "#242A38",
+        "COLOR3-HA": "#0EA5E9",
+      },
     },
   },
   plugins: [],
