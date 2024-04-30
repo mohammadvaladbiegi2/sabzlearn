@@ -12,16 +12,18 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import Sidebar from "./Sidebar";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
+import { IoLanguage } from "react-icons/io5";
 
 export default function navbar() {
   const [showsidebar, setshowsidebar] = useState(false);
   let [islogin, setislogin] = useState(false);
   let [showbox, setshowbox] = useState(false);
+  let [showboxlanguage, setshowboxlanguage] = useState(false);
   useEffect(() => {
     setislogin(localStorage.getItem("login"));
   }, []);
   return (
-    <nav className="px-8 py-6 bg-dark ">
+    <nav className="px-3 md:px-8 py-6 bg-dark ">
       {/* xl size */}
       <div className="hidden xl:flex items-center justify-between ">
         <div className="flex items-center gap-5">
@@ -358,7 +360,10 @@ export default function navbar() {
           {islogin ? (
             <>
               <div
-                onClick={() => setshowbox((prev) => !prev)}
+                onClick={() => {
+                  setshowboxlanguage(false);
+                  setshowbox((prev) => !prev);
+                }}
                 className={`flex  ${
                   showbox && "z-50"
                 } items-center bg-[#ffffff0D] p-4 rounded-full  justify-center`}
@@ -440,25 +445,223 @@ export default function navbar() {
               </button>
             </Link>
           )}
+          <span
+            onClick={() => {
+              setshowboxlanguage((prev) => !prev);
+              setshowbox(false);
+            }}
+            className="flex items-center gap-3 cursor-pointer bg-[#ffffff0D] p-4 rounded-full  justify-center"
+          >
+            <Image
+              src="/image/Iran-512.webp"
+              width={20}
+              height={20}
+              className="bg-white rounded-full"
+            />
+            <IoLanguage className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
+          </span>
+          <div
+            class={`absolute ${
+              showboxlanguage ? "visible opacity-100" : "opacity-0 hidden"
+            }    left-8 top-[14%] pt-4 z-10 transition-all show`}
+          >
+            <div className="w-[278px] bg-dark border-0 p-5 pb-3.5 rounded-xl">
+              <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
+                <span className="flex items-center gap-x-2">English </span>
+                <Image
+                  src="/image/en-flag.png"
+                  width={20}
+                  height={20}
+                  className="bg-white rounded-full"
+                />
+              </span>
+              <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
+                <span className="flex items-center gap-x-2">العربية </span>
+                <Image
+                  src="/image/saudi-flag.png"
+                  width={20}
+                  height={20}
+                  className="bg-white rounded-full"
+                />
+              </span>
+              <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
+                <span className="flex items-center gap-x-2">فارسی </span>
+                <Image
+                  src="/image/Iran-512.webp"
+                  width={20}
+                  height={20}
+                  className="bg-white rounded-full"
+                />
+              </span>
+              <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
+                <span className="flex items-center gap-x-2">Deutsch </span>
+                <Image
+                  src="/image/3909219.png"
+                  width={20}
+                  height={20}
+                  className="bg-white rounded-full"
+                />
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       {/* phone size */}
       <div className="xl:hidden flex items-center justify-between">
-        <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
+        <span className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
           <RxHamburgerMenu
             onClick={() => setshowsidebar(true)}
             className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all"
           />
-        </div>
-        <Image
-          src="/image/logo.webp"
-          className="h-12 "
-          width={70}
-          height={40}
-          alt=""
-        />
-        <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
-          <HiOutlineArrowRightOnRectangle className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
+        </span>
+
+        <Link href="/">
+          <Image
+            src="/image/logo.webp"
+            className="h-12 me-5"
+            width={70}
+            height={40}
+            alt=""
+          />
+        </Link>
+        <div className="flex items-center gap-2">
+          {islogin ? (
+            <>
+              <div
+                onClick={() => {
+                  setshowbox((prev) => !prev);
+                  setshowboxlanguage(false);
+                }}
+                className={`flex  ${
+                  showbox && "z-50"
+                } items-center bg-[#ffffff0D] p-4 rounded-full  justify-center`}
+              >
+                <FaRegUser className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
+              </div>
+
+              <div
+                class={`absolute ${
+                  showbox ? "visible opacity-100" : "opacity-0 hidden"
+                }    left-8 top-[14%] pt-4 z-10 transition-all show`}
+              >
+                <div className="w-[278px] bg-dark border-0 p-5 pb-3.5 rounded-xl">
+                  <div className="flex items-center border-b border-b-white/5 pb-5 mb-2">
+                    <a href="#" className="shrink-0">
+                      <Image
+                        src="/image/userimageaccont.png"
+                        alt="mohammadvalad"
+                        className="object-cover w-14 h-14 rounded-full inline-block"
+                        loading="lazy"
+                        width={50}
+                        height={50}
+                      />
+                    </a>
+                    <div className="mr-3.5 flex flex-col gap-y-3 overflow-hidden">
+                      <span className="text-white inline-block truncate">
+                        mohammad valadbiegi
+                      </span>
+                      <span className="text-sm  text-green-500 inline-block">
+                        موجودی: 0 تومان
+                      </span>
+                    </div>
+                  </div>
+                  <Link
+                    href="/userdeatails"
+                    className="flex items-center justify-between px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors"
+                  >
+                    <span className="flex items-center gap-x-2">
+                      <AiOutlineHome className="text-white w-6 h-6 " />
+                      پیشخوان{" "}
+                    </span>
+                  </Link>
+                  <Link
+                    href="/userdeatails/mycourse"
+                    className="flex items-center justify-between px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors"
+                  >
+                    <span className="flex items-center gap-x-2">
+                      <IoFolderOpenOutline className="text-white w-6 h-6 " />
+                      دوره های من{" "}
+                    </span>
+                  </Link>
+                  <Link
+                    href="/userdeatails/usertiket"
+                    className="flex items-center justify-between px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors"
+                  >
+                    <span className="flex items-center gap-x-2">
+                      <HiOutlineChatBubbleLeftRight className="text-white w-6 h-6 " />
+                      تیکت ها{" "}
+                    </span>
+                  </Link>
+                  <Link
+                    href="/userdeatails/accontdeatails"
+                    className="flex items-center justify-between px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors"
+                  >
+                    <span className="flex items-center gap-x-2">
+                      <FaRegUser className="text-white w-6 h-6 " />
+                      جزئیات حساب{" "}
+                    </span>
+                  </Link>
+                </div>
+              </div>
+            </>
+          ) : (
+            <Link
+              href="/login"
+              className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center"
+            >
+              <HiOutlineArrowRightOnRectangle className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
+            </Link>
+          )}
+          <span
+            onClick={() => {
+              setshowboxlanguage((prev) => !prev);
+              setshowbox(false);
+            }}
+            className="flex items-center gap-3 cursor-pointer bg-[#ffffff0D] p-4 rounded-full  justify-center"
+          >
+            <Image
+              src="/image/Iran-512.webp"
+              width={20}
+              height={20}
+              className="bg-white rounded-full"
+            />
+            <IoLanguage className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
+          </span>
+          <div
+            class={`absolute ${
+              showboxlanguage ? "visible opacity-100" : "opacity-0 hidden"
+            }    left-8 top-[14%] pt-4 z-10 transition-all show`}
+          >
+            <div className="w-[278px] bg-dark border-0 p-5 pb-3.5 rounded-xl">
+              <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
+                <span className="flex items-center gap-x-2">English </span>
+                <Image
+                  src="/image/en-flag.png"
+                  width={20}
+                  height={20}
+                  className="bg-white rounded-full"
+                />
+              </span>
+              <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
+                <span className="flex items-center gap-x-2">العربية </span>
+                <Image
+                  src="/image/saudi-flag.png"
+                  width={20}
+                  height={20}
+                  className="bg-white rounded-full"
+                />
+              </span>
+              <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
+                <span className="flex items-center gap-x-2">فارسی </span>
+                <Image
+                  src="/image/Iran-512.webp"
+                  width={20}
+                  height={20}
+                  className="bg-white rounded-full"
+                />
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       {<Sidebar showsidebar={showsidebar} setshowsidebar={setshowsidebar} />}

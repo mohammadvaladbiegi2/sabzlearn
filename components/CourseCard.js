@@ -8,9 +8,9 @@ export default function CourseCard({ temp }) {
   return (
     <div className=" flex flex-col bg-dark border border-none rounded-2xl">
       <div className="relative h-42 group">
-        <a
+        <Link
           className="block w-full h-full"
-          href="#"
+          href="/coursdetails/5"
           title="بهینه نویسی کد ها در پایتون"
         >
           <Image
@@ -20,12 +20,12 @@ export default function CourseCard({ temp }) {
             width={200}
             height={200}
           />
-        </a>
+        </Link>
       </div>
       <div className="p-3">
         <div className="flex-grow px-4.5 pt-4 pb-3">
           <h3 className="text-white line-clamp-2 mb-3">
-            <Link href="#">بهینه نویسی کد ها در پایتون</Link>
+            <Link href="/coursdetails/5">بهینه نویسی کد ها در پایتون</Link>
           </h3>
           <p className="text-sm text-white/70 line-clamp-2 opacity-70">
             همه میدونیم که زبان برنامه نویسی پایتون یه زبان خیلی جذاب، راحت و
