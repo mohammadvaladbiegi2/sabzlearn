@@ -3,6 +3,7 @@ import React from "react";
 import { IoIosSearch, IoMdClose } from "react-icons/io";
 import { IoSunnyOutline } from "react-icons/io5";
 import { FaAngleLeft } from "react-icons/fa6";
+import Link from "next/link";
 export default function Sidebar({ setshowsidebar, showsidebar }) {
   return (
     <div
@@ -40,10 +41,13 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
       </div>
       <ul className="py-2 mt-2">
         <li className="group my-6">
-          <span className="text-white text-[18px] group-hover:text-green-500 transition-colors cursor-pointer flex items-center justify-between">
+          <Link
+            href="/searchcours/frontend"
+            className="text-white text-[18px] group-hover:text-green-500 transition-colors cursor-pointer flex items-center justify-between"
+          >
             فرانت اند{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
-          </span>
+          </Link>
           {/* <ul className="py-2 px-4 mt-3 rounded-xl  active_sidebar_links w-[240px] bg-dark-100">
             <li className="my-4">
               <a
@@ -152,34 +156,40 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
           </ul> */}
         </li>
         <li className="group my-6">
-          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <Link
+            href="/searchcours/security"
+            className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
+          >
             امنیت{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
-          </span>
+          </Link>
         </li>
         <li className="group my-6">
-          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <Link
+            href="/searchcours/python"
+            className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
+          >
             پایتون{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
-          </span>
+          </Link>
         </li>
         <li className="group my-6">
-          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <Link
+            href="/searchcours/php"
+            className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
+          >
             پی‌اچ‌پی{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
-          </span>
+          </Link>
         </li>
         <li className="group my-6">
-          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
+          <Link
+            href="/searchcours/SkillUpgrade"
+            className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
+          >
             ارتقامهارت{" "}
             <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
-          </span>
-        </li>
-        <li className="group my-6">
-          <span className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between ">
-            مقالات{" "}
-            <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
-          </span>
+          </Link>
         </li>
       </ul>
     </div>
