@@ -82,29 +82,20 @@ export default function Searchcourse() {
                 </div>
                 <div className="flex gap-x-5 text-white leading-[64px] lg:gap-x-8 h-full">
                   <a
-                    href="javascript:setArchiveSort('default', 'همه دوره ها')"
+                    href="#"
                     data-id="default"
                     className="sort-btn sort-btn--active line-clamp-1"
                     role="button"
                   >
                     همه دوره ها
                   </a>
-                  <a
-                    className="line-clamp-1"
-                    href="javascript:setArchiveSort('cheapest', 'ارزان ترین')"
-                  >
+                  <a className="line-clamp-1" href="#">
                     ارزان ترین
                   </a>
-                  <a
-                    className="line-clamp-1"
-                    href="javascript:setArchiveSort('expensive', 'گران ترین')"
-                  >
+                  <a className="line-clamp-1" href="#">
                     گران ترین
                   </a>
-                  <a
-                    className="line-clamp-1"
-                    href="javascript:setArchiveSort('popular', 'پرمخاطب ها')"
-                  >
+                  <a className="line-clamp-1" href="#">
                     پرمخاطب ها
                   </a>
                 </div>

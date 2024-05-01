@@ -518,7 +518,7 @@ export default function navbar() {
         <Link href="/">
           <Image
             src="/image/logo.webp"
-            className="h-12 me-5"
+            className="h-12 mr-10"
             width={70}
             height={40}
             alt=""

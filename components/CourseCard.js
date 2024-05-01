@@ -37,7 +37,7 @@ export default function CourseCard({ temp }) {
             <div className="flex items-center gap-x-0.5 hover:text-green-500 transition-colors">
               <LuUsers className="w-5 h-5" />
 
-              <a href="">رضا دولتی</a>
+              <a href="#">رضا دولتی</a>
             </div>
             <div className="flex items-center gap-x-0.5 text-amber-500">
               <span>5.0</span>
