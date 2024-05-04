@@ -437,7 +437,7 @@ export default function navbar() {
               </div>
             </>
           ) : (
-            <Link href="/login">
+            <Link href="/auth/login">
               <button className="text-white font-bold flex items-center justify-center py-3 px-5 gap-2 rounded-full bg_button_navbar hover:opacity-90 cursor-pointer">
                 {" "}
                 <FaRegUser className="text-white font-medium text-[23px] mt-1" />
@@ -461,9 +461,9 @@ export default function navbar() {
             <IoLanguage className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
           </span>
           <div
-            class={`absolute ${
+            class={` absolute ${
               showboxlanguage ? "visible opacity-100" : "opacity-0 hidden"
-            }    left-8 top-[14%] pt-4 z-10 transition-all show`}
+            }    left-8 top-[14%] pt-4 z-10 transition-all  show`}
           >
             <div className="w-[278px] bg-dark border-0 p-5 pb-3.5 rounded-xl">
               <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
@@ -606,7 +606,7 @@ export default function navbar() {
             </>
           ) : (
             <Link
-              href="/login"
+              href="/auth/login"
               className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center"
             >
               <HiOutlineArrowRightOnRectangle className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
@@ -617,7 +617,7 @@ export default function navbar() {
               setshowboxlanguage((prev) => !prev);
               setshowbox(false);
             }}
-            className="flex items-center gap-3 cursor-pointer bg-[#ffffff0D] p-4 rounded-full  justify-center"
+            className="flex items-center gap-3 cursor-pointer  bg-[#ffffff0D] p-4 rounded-full  justify-center"
           >
             <Image
               src="/image/Iran-512.webp"
@@ -628,7 +628,7 @@ export default function navbar() {
             <IoLanguage className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
           </span>
           <div
-            class={`absolute ${
+            class={` absolute ${
               showboxlanguage ? "visible opacity-100" : "opacity-0 hidden"
             }    left-8 top-[14%] pt-4 z-10 transition-all show`}
           >
@@ -655,6 +655,15 @@ export default function navbar() {
                 <span className="flex items-center gap-x-2">فارسی </span>
                 <Image
                   src="/image/Iran-512.webp"
+                  width={20}
+                  height={20}
+                  className="bg-white rounded-full"
+                />
+              </span>
+              <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
+                <span className="flex items-center gap-x-2">Deutsch </span>
+                <Image
+                  src="/image/3909219.png"
                   width={20}
                   height={20}
                   className="bg-white rounded-full"

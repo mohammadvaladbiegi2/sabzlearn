@@ -212,3 +212,97 @@ body {
 .border_b_s {
   border-bottom: solid 0.2px #fafafa36;
 }
+
+.chapter__head {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  -moz-column-gap: 0.625rem;
+  column-gap: 0.625rem;
+  border-radius: 10px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 60 76 / var(--tw-bg-opacity));
+  padding: 1.5rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
+}
+
+.chapter__head__active {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(100 116 139/ 1) !important;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 640px) {
+  .chapter__lessons {
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+  }
+}
+.chapter__lessons {
+  visibility: hidden;
+  max-height: 0;
+  --tw-scale-x: 0.95;
+  --tw-scale-y: 0.95;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  overflow: hidden;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 60 76 / var(--tw-bg-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+  opacity: 0;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.15s;
+}
+
+.chapter__lessons__active {
+  visibility: visible !important;
+  max-height: 100% !important;
+  --tw-scale-x: 1 !important;
+  --tw-scale-y: 1 !important;
+  opacity: 1 !important;
+}
+
+@media (min-width: 640px) {
+  .lesson:first-child {
+    padding-top: 1.125rem;
+  }
+}
+
+.lesson:first-child {
+  padding-top: 1rem;
+}
+.lesson--watching {
+  position: relative;
+}
+
+.lesson {
+  cursor: default;
+  border-bottom-width: 1px;
+  border-bottom-color: #ffffff1a;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 15px;
+  background-color: rgb(17 24 39 / 1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 60 76 / var(--tw-bg-opacity));
+}

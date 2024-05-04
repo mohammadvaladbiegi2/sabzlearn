@@ -22,6 +22,7 @@ import { HiMiniAcademicCap } from "react-icons/hi2";
 import { HiArrowUturnLeft } from "react-icons/hi2";
 import { FaUsers } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
+import Link from "next/link";
 
 export default function DetailsCours() {
   const [showmoredesc, setshowmoredesc] = useState(false);
@@ -262,12 +263,12 @@ export default function DetailsCours() {
                           <div class="transition-colors w-8 h-6 md:h-7 text-sm  flex items-center justify-center bg-white/10 group-hover:bg-green-500 group-hover:text-white rounded">
                             1{" "}
                           </div>
-                          <a
-                            href="#"
+                          <Link
+                            href="/coursdetails/lesson/5"
                             class="mt-1 inline-block lg:max-w-3/4 text-sm md:text-base transition-colors group-hover:text-green-500 "
                           >
                             API چیست؟
-                          </a>
+                          </Link>
                         </div>
                         <div class="flex items-center gap-x-1.5 mr-auto group-hover:text-green-500 transition-colors">
                           <span class="text-sm md:text-base mt-1">10:00 </span>
@@ -280,12 +281,12 @@ export default function DetailsCours() {
                           <div class=" w-8 h-6 md:h-7 text-sm  flex items-center justify-center bg-white/10 group-hover:bg-green-500 group-hover:text-white rounded">
                             2{" "}
                           </div>
-                          <a
-                            href="#"
+                          <Link
+                            href="/coursdetails/lesson/5"
                             class=" mt-1 inline-block lg:max-w-3/4 text-sm md:text-base group-hover:text-green-500 "
                           >
                             چرا از API استفاده میشه؟
-                          </a>
+                          </Link>
                         </div>
                         <div class="flex items-center gap-x-1.5 mr-auto group-hover:text-green-500 transition-colors">
                           <span class="text-sm md:text-base mt-1">05:13 </span>
@@ -298,12 +299,12 @@ export default function DetailsCours() {
                           <div class=" w-8 h-6 md:h-7 text-sm  flex items-center justify-center bg-white/10 group-hover:bg-green-500 group-hover:text-white rounded">
                             3{" "}
                           </div>
-                          <a
-                            href="#"
+                          <Link
+                            href="/coursdetails/lesson/5"
                             class=" mt-1 inline-block lg:max-w-3/4 text-sm md:text-base group-hover:text-green-500 "
                           >
                             API ها چجوری کار میکنن؟
-                          </a>
+                          </Link>
                         </div>
                         <div class="flex items-center gap-x-1.5 mr-auto group-hover:text-green-500 transition-colors">
                           <span class="text-sm md:text-base mt-1">06:16 </span>
@@ -316,12 +317,12 @@ export default function DetailsCours() {
                           <div class=" w-8 h-6 md:h-7 text-sm  flex items-center justify-center bg-white/10 group-hover:bg-green-500 group-hover:text-white rounded">
                             4{" "}
                           </div>
-                          <a
-                            href="#"
+                          <Link
+                            href="/coursdetails/lesson/5"
                             class=" mt-1 inline-block lg:max-w-3/4 text-sm md:text-base group-hover:text-green-500 "
                           >
                             مزایای استفاده از API
-                          </a>
+                          </Link>
                         </div>
                         <div class="flex items-center gap-x-1.5 mr-auto group-hover:text-green-500 transition-colors">
                           <span class="text-sm md:text-base mt-1">04:57 </span>
@@ -334,12 +335,12 @@ export default function DetailsCours() {
                           <div class=" w-8 h-6 md:h-7 text-sm  flex items-center justify-center bg-white/10 group-hover:bg-green-500 group-hover:text-white rounded">
                             5{" "}
                           </div>
-                          <a
-                            href="#"
+                          <Link
+                            href="/coursdetails/lesson/5"
                             class=" mt-1 inline-block lg:max-w-3/4 text-sm md:text-base group-hover:text-green-500 "
                           >
                             معایب استفاده از API
-                          </a>
+                          </Link>
                         </div>
                         <div class="flex items-center gap-x-1.5 mr-auto group-hover:text-green-500 transition-colors">
                           <span class="text-sm md:text-base mt-1">04:03 </span>

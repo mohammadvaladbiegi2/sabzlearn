@@ -108,7 +108,7 @@ export default function Login() {
               </h4>
               <p className="flex items-center text-white gap-2 font-medium">
                 حساب کاربری ندارید؟{" "}
-                <Link href="#" className="text-green-500 ">
+                <Link href="/auth/signup" className="text-green-500 ">
                   ثبت نام کنید
                 </Link>
               </p>
@@ -134,7 +134,7 @@ export default function Login() {
               <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
                 <input
                   type="text"
-                  className="input_navBar text-white opacity-70 w-[240px]"
+                  className="input_navBar text-white  w-[240px]"
                   placeholder="شماره موبایل"
                   value={phon}
                   onChange={(e) => setphon(e.target.value)}
@@ -169,7 +169,7 @@ export default function Login() {
             </form>
           )}
           <div className="flex items-center justify-between font-danaMedium text-sm text-slate-500 w-full mt-5">
-            <span>ورود با ایمیل</span>
+            <span></span>
             <span className="underline underline-offset-2">
               حریم خصوصی
             </span>{" "}
