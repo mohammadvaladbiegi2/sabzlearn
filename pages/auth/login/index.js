@@ -6,6 +6,7 @@ import { FaCircleArrowLeft } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { FaLock } from "react-icons/fa";
+import { IoLockClosedOutline } from "react-icons/io5";
 
 export default function Login() {
   const [isSendPhoneNumber, setisSendPhoneNumber] = useState(false);
@@ -131,6 +132,14 @@ export default function Login() {
           )}
           {!isSendPhoneNumber ? (
             <form onSubmit={sendPhoneNumber}>
+              <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
+                <input
+                  type="text"
+                  className="input_navBar text-white  w-[240px]"
+                  placeholder="رمز عبور"
+                />
+                <IoLockClosedOutline className="text-white opacity-70 mt-1 w-4 h-4 " />
+              </div>
               <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
                 <input
                   type="text"
