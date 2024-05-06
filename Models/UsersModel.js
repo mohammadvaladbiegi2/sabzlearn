@@ -13,6 +13,7 @@ const mycourseschema = new Schema({
   progress: {
     type: Number,
     require: true,
+    default: 0,
   },
   courseid: {
     type: String,
