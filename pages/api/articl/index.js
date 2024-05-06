@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   connectToDB();
 
   if (req.method !== "POST") {
-    // creact New course
+    // creact New Articl
     return res.status(404).json("Bad Method || Use POST Method");
   }
 
