@@ -1,0 +1,83 @@
+main route: http://localhost:3000/api
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+///// Course 
+
+1-Get All Coourse
+method : GET,
+route: /course
+////
+
+
+2-Get Single Coourse
+method : GET,
+route: /course?id
+////
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+////// comment
+
+1-create Comment 
+method:"POST",
+route:"/comment",
+body:{
+"comment",
+"questioner",
+"answer": NOT requre,
+"whoanswers": NOT requre,
+"course": The ID of the course you want to create at the  comment
+}
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+///// ticket
+1-NewTicket
+method:"POST",
+route:"/newticket",
+body:{
+"title",
+"text",
+"department",
+"user": User ID,
+}
+/////////////////////////////////////////////////////////////////////////////////////
+
+///// Add course to User Panel
+
+method:"POST",
+route:"/addcoursepanel",
+body:{
+      "title": title Course tearget,
+"image": image Course tearget,
+"progress":Not require,
+"courseid":ID Course tearget,
+"user": The ID of the User you want to create  the New  course in panel
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+Sections
+
+1-Get Single Section
+method:"GET"
+route:"/section?id"
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+Articl
+
+1-Get All Articls
+method:"GET",
+route:"/articl"
+
+2-Get Single Articl
+method:"GET"
+route:"/articl?ID"

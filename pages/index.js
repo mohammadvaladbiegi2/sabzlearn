@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Image from "next/image";
 import { IoPlayOutline } from "react-icons/io5";
@@ -11,7 +11,10 @@ import ArticlsCard from "@/components/ArticlsCard";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import CourseCardSlider from "@/components/CourseCardSlider";
-export default function Home() {
+import connectToDB from "@/DB/DataBase";
+import { verify } from "jsonwebtoken";
+import { User } from "@/Models/UsersModel";
+export default function Home({ Articls, UserData }) {
   let [temp, setTemp] = useState(0);
   let [activeCours, setactiveCours] = useState(0);
 
@@ -36,7 +39,7 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
+      <Navbar UserData={UserData} />
       <header>
         <section className="flex flex-col-reverse xl:flex-row gap-8 xl:gap-0   justify-between items-center px-8 mt-7">
           <div className="md:w-[600px] flex flex-col xl:ms-[30px] gap-14">
@@ -170,11 +173,9 @@ export default function Home() {
           pointcolor="bg-amber-400 "
         />
         <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
-          {Array(4)
-            .fill(0)
-            .map((articls, index) => (
-              <ArticlsCard key={index} />
-            ))}
+          {Articls.map((articls) => (
+            <ArticlsCard key={articls._id} {...articls} />
+          ))}
         </div>
       </section>
       {/* popelar course */}
@@ -197,4 +198,29 @@ export default function Home() {
       <Footer />
     </>
   );
+}
+const verifyToken = (token) => {
+  try {
+    const validationResult = verify(token, process.env.PriveKey); // chek for valid token
+    return validationResult;
+  } catch (err) {
+    console.log("Verify Token Error =>", err);
+    return false;
+  }
+};
+
+export async function getServerSideProps(context) {
+  let articlsres = await fetch("http://localhost:3000/api/articl");
+  let articlsData = await articlsres.json();
+  connectToDB();
+  const { token } = context.req.cookies;
+
+  const tokenPayload = verifyToken(token); // verify and find payload
+  let FindUser = await User.findOne(
+    { phoneNumber: tokenPayload.phoneNumber },
+    "-__v -password"
+  );
+  let MainUser = JSON.parse(JSON.stringify(FindUser));
+
+  return { props: { Articls: articlsData, UserData: MainUser } };
 }

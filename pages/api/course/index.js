@@ -1,20 +1,23 @@
 import connectToDB from "@/DB/DataBase";
 import { CourseModel } from "@/Models/CoursesModel";
 
-export default async function Handler(req, res) {
+export default async function handler(req, res) {
   connectToDB();
   switch (req.method) {
     case "GET": {
-      // get All course
       try {
-        let Allcourses = await CourseModel.find();
-        if (Allcourses) {
-          return res.status(200).json(Allcourses);
+        let Allcourse = await CourseModel.find(
+          {},
+          "title desc teacher price student image"
+        );
+        if (Allcourse) {
+          return res.status(200).json(Allcourse);
         } else {
-          return res.status(404).json("Still dont cours Exist");
+          return res.status(400).json("still course not exist");
         }
       } catch (error) {
-        return res.status(500).json("Server Problem Try Another Time");
+        console.error("Error Get Articls:", error);
+        res.status(500).json({ message: "Internal server error" });
       }
     }
     case "POST": {
@@ -23,19 +26,18 @@ export default async function Handler(req, res) {
           .status(401)
           .json("You do not have permission to access the protected api");
       }
-      // create new course
       try {
         const newCourse = new CourseModel(req.body);
 
-        const savedCourse = await newCourse.save();
+        const savedArticls = await newCourse.save();
 
-        if (savedCourse) {
-          res.status(201).json("Course Creacte successfully");
+        if (savedArticls) {
+          return res.status(201).json("Creact New Course Successfully");
         } else {
           return res.status(424).json("Course Not Creact Try agin");
         }
       } catch (error) {
-        console.error("Error creating course:", error);
+        console.error("Error Get Articls:", error);
         res.status(500).json({ message: "Internal server error" });
       }
     }

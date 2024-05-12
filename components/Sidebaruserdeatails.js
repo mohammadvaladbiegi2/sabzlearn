@@ -80,8 +80,9 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
         </Link>
         <button
           onClick={() => {
-            localStorage.clear();
-            rout.push("/");
+            fetch("http://localhost:3000/api/auth/signout").then((res) => {
+              res.status === 200 && rout.push("/");
+            });
           }}
           className="flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary 
            text-white"

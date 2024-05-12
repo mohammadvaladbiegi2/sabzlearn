@@ -1,31 +1,8 @@
 const mongoose = require("mongoose");
+import { SeasonModel } from "./SeasonModel";
+import { CommentModel } from "./CommentModel";
+import { SectionModel } from "./SectionModel";
 const Schema = mongoose.Schema;
-
-const sectionSchema = new Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  time: {
-    type: Number,
-    required: true,
-  },
-});
-
-const commentSchema = new Schema({
-  question: {
-    type: String,
-    required: true,
-  },
-  answer: {
-    type: String,
-    required: true,
-  },
-  whoanswers: {
-    type: String,
-    required: true,
-  },
-});
 
 const courseSchema = new Schema(
   {
@@ -61,10 +38,7 @@ const courseSchema = new Schema(
       type: Number,
       required: true,
     },
-    lastupdate: {
-      type: String,
-      required: true,
-    },
+
     viewtype: {
       type: String,
       required: true,
@@ -73,23 +47,7 @@ const courseSchema = new Schema(
       type: Number,
       required: true,
     },
-    season: {
-      type: [
-        {
-          title: {
-            type: String,
-            required: true,
-          },
-          section: {
-            type: [sectionSchema],
-            required: true,
-          },
-        },
-      ],
-    },
-    comment: {
-      type: [commentSchema],
-    },
+
     ispresell: {
       type: Boolean,
       required: true,
@@ -99,6 +57,17 @@ const courseSchema = new Schema(
     timestamps: true,
   }
 );
+
+courseSchema.virtual("comments", {
+  ref: "Comment",
+  localField: "_id",
+  foreignField: "course",
+});
+courseSchema.virtual("seasons", {
+  ref: "Season",
+  localField: "_id",
+  foreignField: "course",
+});
 
 export const CourseModel =
   mongoose.models.Course || mongoose.model("Course", courseSchema);
