@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { IoSunnyOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-export default function HeaderAccontDetails({ setshowsidebar }) {
+export default function HeaderAccontDetails({ setshowsidebar, username }) {
   return (
     <header className="flex items-center justify-between bg-gray md:bg-transparent border-b md:border-none border-b-gray-700 mb-6 md:mb-14 p-5 md:p-0">
       <h3 className="hidden md:block text-2xl text-white">
-        mohammad valadbiegi عزیز؛ خوش اومدی 🙌
+        {username} عزیز؛ خوش اومدی 🙌
       </h3>
       <div className="flex md:hidden items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
         <RxHamburgerMenu

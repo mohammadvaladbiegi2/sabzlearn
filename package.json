@@ -11,7 +11,9 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie": "^0.6.0",
+    "formik": "^2.4.6",
     "jsonwebtoken": "^9.0.2",
+    "moment-jalaali": "^0.10.0",
     "mongoose": "^8.3.3",
     "next": "14.0.4",
     "react": "^18",

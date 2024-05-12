@@ -12,8 +12,11 @@ import { CiShare2 } from "react-icons/ci";
 import { FaChevronUp } from "react-icons/fa6";
 import { HiClipboardDocumentCheck } from "react-icons/hi2";
 import { HiAcademicCap } from "react-icons/hi2";
+import moment from "moment-jalaali";
 
-export default function Articl() {
+export default function Articl({ Articl }) {
+  const gregorianDate = moment(Articl.createdAt);
+  const jalaliDate = gregorianDate.format("jYYYY/jMM/jDD HH:mm:ss");
   return (
     <>
       <Navbar />
@@ -25,19 +28,21 @@ export default function Articl() {
                 <div className="flex items-center gap-x-2 mb-5 sm:mb-6 pb-5 sm:pb-6 border-b border-b-white/10 relative">
                   <span className="absolute -right-6 sm:-right-[26px] block w-1.5 h-[34px] md:h-9.5 bg-sky-500 rounded-r-sm"></span>
                   <h1 className=" text-xl md:text-[1.625rem]/10 text-white">
-                    BunJS چیست ؟
+                    {Articl.title}
                   </h1>
                 </div>
                 <div className="grid sm:flex grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 mb-6 text-slate-500  text-sm sm:text-base">
                   <div className="flex items-center gap-x-1.5">
                     <FaRegUser className="text-[20px]  mb-1 sm:size-5 text-white/70" />
 
-                    <span className="text-[20px]">کامل بهرامی</span>
+                    <span className="text-[20px]">{Articl.writer}</span>
                   </div>
                   <div className="flex items-center gap-x-1.5">
                     <CiCalendar className="text-[20px] mb-1 sm:size-5 text-white/70" />
 
-                    <span className="text-[20px]">1403/01/13</span>
+                    <span className="text-[20px]">
+                      {jalaliDate.slice(0, 10)}
+                    </span>
                   </div>
                   <div className="flex items-center gap-x-1.5">
                     <IoEyeOutline className="text-[20px] mb-1 sm:size-5 text-white/70" />
@@ -46,7 +51,7 @@ export default function Articl() {
                   </div>
                 </div>
                 <Image
-                  src="/image/what-is-bun-js0.webp"
+                  src={`/image/${Articl.img}`}
                   width={400}
                   height={400}
                   className="aspect-video w-full h-auto object-cover my-5 rounded-2xl"
@@ -54,17 +59,9 @@ export default function Articl() {
                 />
                 <div className="wp-content text-[1.1rem] mb-7 opacity-85  text-justify">
                   <h1 className="my-5">
-                    <strong>Bun js چیست</strong>؟
+                    <strong>{Articl.title}</strong>
                   </h1>
-                  <p className="my-4">
-                    <strong>Bun js</strong>
-                    <strong> چیست</strong> و آیا می‌توان به عنوان جایگزینی برای
-                    نود جی اس روی آن حساب ویژه‌ای باز کرد؟{" "}
-                    <strong>بان جی اس</strong> در اصل ابزار جدیدی شبیه Node.js و
-                    Deno برای اجرای کد جاوا اسکریپت است. Bun نوعی جعبه ابزار
-                    جامع جاوا اسکریپت ارائه می‌دهد که به عنوان یک فایل اجرایی به
-                    نام bun بسته‌بندی شده است.
-                  </p>
+                  <p className="my-4">{Articl.desc}</p>
                   <p className="my-4">
                     این نوع محیط زمان اجرا از JavaScriptCore، موتوری که سافاری
                     را تأمین می‌کند، استفاده کرده که معمولاً سریع شروع می‌شود و
@@ -1285,4 +1282,25 @@ export default function Articl() {
       <Footer />
     </>
   );
+}
+
+export async function getStaticPaths() {
+  let res = await fetch("http://localhost:3000/api/articl/");
+  let data = await res.json();
+  const paths = data.map((articl) => ({
+    params: { id: String(articl._id) },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps(contex) {
+  let res = await fetch(`http://localhost:3000/api/articl/${contex.params.id}`);
+  let Articl = await res.json();
+
+  return {
+    props: { Articl },
+  };
 }

@@ -7,86 +7,60 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import { FaLock } from "react-icons/fa";
 import { IoLockClosedOutline } from "react-icons/io5";
+import { useFormik } from "formik";
+import { validatPassword, validatePhoneNumber } from "@/Utils/Validations";
 
 export default function Login() {
-  const [isSendPhoneNumber, setisSendPhoneNumber] = useState(false);
-
-  const [code, setcode] = useState(null);
-  const [codeUser, setcodeUser] = useState("");
-  const [phon, setphon] = useState(null);
+  const [sendcode, setsendcode] = useState(false);
+  const [Code, setCode] = useState("");
+  const [Codeevaluation, setCodeevaluation] = useState("");
   let rout = useRouter();
+  const form = useFormik({
+    initialValues: {
+      password: "",
+      phoneNumber: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      fetch("http://localhost:3000/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      }).then((res) => {
+        res.status === 500 && toast.error("مشکل سرور وقت دیگر امتحان کنید");
+        res.status === 404 &&
+          toast.error("کاربری با این   شماره  ثبت نام نشده");
+        res.status === 412 && toast.error("مقادیر وارد شده معتبر نیست");
+        res.status === 422 && toast.error("رمز یا شماره درست نیست");
+        if (res.status === 200) {
+          const codegenerator = Math.floor(Math.random() * 100000);
+          setCodeevaluation(codegenerator);
+          toast.success(`کد ارسال شده : ${codegenerator}`, {
+            autoClose: 20000,
+          });
+          setsendcode(true);
+        }
+      });
+    },
+    validate: (values) => {
+      const errors = {};
 
-  const handleSubmit = async (e) => {
+      if (!validatePhoneNumber(values.phoneNumber)) {
+        errors.phoneNumber = "  شماره معتبر وارد کنید";
+      }
+
+      return errors;
+    },
+  });
+  const confirmCode = (e) => {
     e.preventDefault();
-
-    if (+codeUser === code) {
-      toast.success("ورود با موفقیت", {
-        position: "top-right",
-        rtl: true,
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        autoClose: 2000,
-      });
-      localStorage.setItem("login", true);
-
-      setTimeout(() => {
-        rout.push("/");
-      }, 1500);
+    if (+Codeevaluation === +Code) {
+      toast.success("خوش آمدید");
+      rout.push("/");
     } else {
-      toast.error("کد نامعتبر", {
-        position: "top-right",
-        rtl: true,
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        autoClose: 3000,
-      });
-    }
-  };
-
-  const sendPhoneNumber = (e) => {
-    e.preventDefault();
-    const phoneRegex =
-      /^(?:(?:(?:\+?|00)(98))|(0))?((?:90|91|92|93|99)[0-9]{8})$/;
-
-    if (phoneRegex.test(+phon)) {
-      const codeGenerator = Math.floor(Math.random() * 100000);
-      setcode(codeGenerator);
-      setisSendPhoneNumber(true);
-      toast.success(`کد ارسال شده ${codeGenerator}`, {
-        position: "top-right",
-        rtl: true,
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        autoClose: 15000,
-      });
-    } else {
-      toast.error("شماره نامعتبر", {
-        position: "top-right",
-        rtl: true,
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-        autoClose: 3000,
-      });
+      toast.error("کد وارد شده معتبر نیست");
     }
   };
   return (
@@ -102,7 +76,7 @@ export default function Login() {
           />
         </Link>
         <div className="bg-dark w-[330px] rounded-2xl flex flex-col items-center gap-2 p-6">
-          {!isSendPhoneNumber ? (
+          {!sendcode ? (
             <>
               <h4 className="text-white font-medium text-[23px]">
                 ورود با موبایل
@@ -118,60 +92,70 @@ export default function Login() {
             <>
               <h4 className="text-white font-medium w-full flex items-center mb-5 justify-between text-[23px]">
                 کد تایید
-                <FaCircleArrowLeft
-                  className=" opacity-70  cursor-pointer"
-                  onClick={() => {
-                    setisSendPhoneNumber(false);
-                  }}
-                />
+                <FaCircleArrowLeft className=" opacity-70  cursor-pointer" />
               </h4>
               <p className="flex items-center text-white gap-2 font-medium">
-                کد تایید برای 09106578534 ارسال شد.
+                کد تایید برای {form.values.phoneNumber} ارسال شد.
               </p>
             </>
           )}
-          {!isSendPhoneNumber ? (
-            <form onSubmit={sendPhoneNumber}>
-              <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
-                <input
-                  type="text"
-                  className="input_navBar text-white  w-[240px]"
-                  placeholder="رمز عبور"
-                />
-                <IoLockClosedOutline className="text-white opacity-70 mt-1 w-4 h-4 " />
+          {!sendcode ? (
+            <form onSubmit={form.handleSubmit}>
+              <div className="my-3">
+                <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
+                  <input
+                    type="text"
+                    className="input_navBar text-white  w-[240px]"
+                    placeholder="رمز عبور"
+                    onChange={form.handleChange}
+                    value={form.values.password}
+                    name="password"
+                  />
+                  <IoLockClosedOutline className="text-white opacity-70  w-4 h-4 " />
+                </div>
               </div>
-              <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
-                <input
-                  type="text"
-                  className="input_navBar text-white  w-[240px]"
-                  placeholder="شماره موبایل"
-                  value={phon}
-                  onChange={(e) => setphon(e.target.value)}
-                />
-                <FiPhone className="text-white opacity-70 mt-1 w-4 h-4 " />
+              <div className="my-3">
+                <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px]  justify-center">
+                  <input
+                    type="text"
+                    className="input_navBar text-white  w-[240px]"
+                    placeholder="شماره موبایل"
+                    onChange={form.handleChange}
+                    value={form.values.phoneNumber}
+                    name="phoneNumber"
+                  />
+                  <FiPhone className="text-white opacity-70  w-4 h-4 " />
+                </div>
+                {form.errors.phoneNumber && form.touched.phoneNumber && (
+                  <span className="text-rose-500 text-sm block mt-3">
+                    {form.errors.phoneNumber}{" "}
+                  </span>
+                )}
               </div>
               <button
-                onClick={sendPhoneNumber}
+                type="submit
+            "
                 className="bg-green-500 text-white rounded-full px-32  py-4"
               >
                 ادامه
               </button>
             </form>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={confirmCode}>
               <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
                 <input
                   type="text"
                   className="input_navBar text-white opacity-70 w-[240px]"
                   placeholder="کد تایید"
-                  value={codeUser}
-                  onChange={(e) => setcodeUser(e.target.value)}
+                  value={Code}
+                  onChange={(e) => setCode(e.target.value)}
                 />
                 <FaLock className="text-white opacity-70 mt-1 w-4 h-4 " />
               </div>
               <button
                 type="submit"
                 className="bg-green-500 text-white rounded-full px-32 py-4"
+                onClick={confirmCode}
               >
                 تایید
               </button>

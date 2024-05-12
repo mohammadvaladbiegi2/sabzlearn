@@ -14,13 +14,15 @@ import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoLanguage } from "react-icons/io5";
 
-export default function navbar() {
+export default function navbar({ UserData }) {
   const [showsidebar, setshowsidebar] = useState(false);
   let [islogin, setislogin] = useState(false);
   let [showbox, setshowbox] = useState(false);
   let [showboxlanguage, setshowboxlanguage] = useState(false);
   useEffect(() => {
-    setislogin(localStorage.getItem("login"));
+    if (UserData) {
+      setislogin(true);
+    }
   }, []);
   return (
     <nav className="px-3 md:px-8 py-6 bg-dark ">

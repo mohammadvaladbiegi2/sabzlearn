@@ -1,0 +1,80 @@
+main route: http://localhost:3000/api
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+//////// Create New Course
+method : POST,
+route: /course,
+body: {
+    PriveKey,
+title: String,
+image: String,
+desc: String,
+category: String,
+teacher: String,
+price: Number,
+suport: String,
+time: Number,
+lastupdate: String,
+viewtype: String,
+student: Number,
+ispresell: Boolean
+}
+headers : "Content-Type":"apliccations/json"
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+Season 
+
+1- Ceate New Season
+method:"POST",
+route:"/season",
+
+body:{
+"PriveKey" ,
+"title",
+"course" : The ID of the course you want to create at the   season
+}
+
+2-Get All Seasons
+method : GET,
+route: /course
+body : {PriveKey}
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+Section
+
+1-Get All sectionSchem
+method:"GET",
+route:"/section"
+body:{PriveKey}
+
+2-create Section
+method:"POST",
+route:"/section",
+body:{
+    PriveKey,
+    title,
+time,
+poster,
+season: The ID of the Season you want to create 
+}
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+Articl
+
+1-Create New Articl
+method:"POST"
+route:"/articl"
+body:{
+PriveKey 
+img
+desc
+writer
+title
+}

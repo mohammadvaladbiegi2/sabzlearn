@@ -20,7 +20,7 @@ export default async function SingUpapi(req, res) {
       !validatusername(username) ||
       !validatPassword(password)
     ) {
-      return res.status(422).json("prompt Not Valid");
+      return res.status(412).json("prompt Not Valid");
     }
 
     let ISRepeatUser = await User.findOne({

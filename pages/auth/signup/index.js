@@ -4,8 +4,57 @@ import React from "react";
 import { FaRegUser } from "react-icons/fa6";
 import { FiPhone } from "react-icons/fi";
 import { IoLockClosedOutline } from "react-icons/io5";
+import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import {
+  validatPassword,
+  validatePhoneNumber,
+  validatusername,
+} from "@/Utils/Validations";
+import { useRouter } from "next/router";
 
 export default function Signup() {
+  let rout = useRouter();
+  const form = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+      phoneNumber: "",
+    },
+    onSubmit: (values) => {
+      fetch("http://localhost:3000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      }).then((res) => {
+        res.status === 422 &&
+          toast.error("کاربری با این نام یا شماره قبلا ثبت نام کرده");
+        res.status === 412 && toast.error("مقادیر وارد شده معتبر نیست");
+        if (res.status === 201) {
+          toast.success("ثبت نام موفق خوش آمدید");
+          rout.push("/");
+        }
+      });
+    },
+    validate: (values) => {
+      const errors = {};
+      if (!validatusername(values.username)) {
+        errors.username = " نام کاربری بیشتر از 3 کاراکتر باشد";
+      }
+      if (!validatPassword(values.password)) {
+        errors.password =
+          "پسورد باید شامل حداقل یک حرف، یک عدد و یک علامت خاص(#$%@)";
+      }
+      if (!validatePhoneNumber(values.phoneNumber)) {
+        errors.phoneNumber = "  شماره معتبر وارد کنید";
+      }
+
+      return errors;
+    },
+  });
+
   return (
     <>
       <div className="hidden lg:block absolute top-0 left-0 w-[300px] h-[300px] bg-sky-500 opacity-20 blur-[120px] rounded-full"></div>
@@ -29,32 +78,65 @@ export default function Signup() {
             </p>
           </>
 
-          <form>
-            <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
-              <input
-                type="text"
-                className="input_navBar text-white  w-[240px]"
-                placeholder="نام کاربری"
-              />
-              <FaRegUser className="text-white opacity-70 mt-1 w-4 h-4 " />
+          <form onSubmit={form.handleSubmit}>
+            <div className="my-3">
+              <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px]  justify-center">
+                <input
+                  type="text"
+                  className="input_navBar text-white  w-[240px]"
+                  placeholder="نام کاربری"
+                  onChange={form.handleChange}
+                  value={form.values.username}
+                  name="username"
+                />
+                <FaRegUser className="text-white opacity-70  w-4 h-4 " />
+              </div>
+              {form.errors.username && form.touched.username && (
+                <span className="text-rose-500 text-sm block mt-3">
+                  {form.errors.username}{" "}
+                </span>
+              )}
             </div>
-            <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
-              <input
-                type="text"
-                className="input_navBar text-white  w-[240px]"
-                placeholder="رمز عبور"
-              />
-              <IoLockClosedOutline className="text-white opacity-70 mt-1 w-4 h-4 " />
+            <div className="my-3">
+              <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
+                <input
+                  type="text"
+                  className="input_navBar text-white  w-[240px]"
+                  placeholder="رمز عبور"
+                  onChange={form.handleChange}
+                  value={form.values.password}
+                  name="password"
+                />
+                <IoLockClosedOutline className="text-white opacity-70  w-4 h-4 " />
+              </div>
+              {form.errors.password && form.touched.password && (
+                <span className="text-rose-500 text-sm block mt-3">
+                  {form.errors.password}{" "}
+                </span>
+              )}
             </div>
-            <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
-              <input
-                type="text"
-                className="input_navBar text-white  w-[240px]"
-                placeholder="شماره موبایل"
-              />
-              <FiPhone className="text-white opacity-70 mt-1 w-4 h-4 " />
+            <div className="my-3">
+              <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px]  justify-center">
+                <input
+                  type="text"
+                  className="input_navBar text-white  w-[240px]"
+                  placeholder="شماره موبایل"
+                  onChange={form.handleChange}
+                  value={form.values.phoneNumber}
+                  name="phoneNumber"
+                />
+                <FiPhone className="text-white opacity-70  w-4 h-4 " />
+              </div>
+              {form.errors.phoneNumber && form.touched.phoneNumber && (
+                <span className="text-rose-500 text-sm block mt-3">
+                  {form.errors.phoneNumber}{" "}
+                </span>
+              )}
             </div>
-            <button className="bg-green-500 text-white rounded-full px-32  py-4">
+            <button
+              type="submit"
+              className="bg-green-500 text-white rounded-full px-32  py-4"
+            >
               ادامه
             </button>
           </form>

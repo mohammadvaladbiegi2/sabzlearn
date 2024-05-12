@@ -1,5 +1,6 @@
 import connectToDB from "@/DB/DataBase";
 import { User } from "@/Models/UsersModel";
+import { validatePhoneNumber } from "@/Utils/Validations";
 import { compare } from "bcryptjs";
 import { serialize } from "cookie";
 import { sign } from "jsonwebtoken";
@@ -11,6 +12,9 @@ export default async function Signinapi(req, res) {
   try {
     connectToDB();
     let { phoneNumber, password } = req.body;
+    if (!validatePhoneNumber(phoneNumber)) {
+      return res.status(412).json("prompt Not Valid");
+    }
     let FindUser = await User.findOne({ phoneNumber });
 
     if (!FindUser) {
