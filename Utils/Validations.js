@@ -11,7 +11,7 @@ export function validatePhoneNumber(phonNumber) {
 
 export function validatusername(username) {
   typeof username !== "string" && (username = String(username));
-  if (username.length > 3) {
+  if (username.length >= 3) {
     return true;
   }
 

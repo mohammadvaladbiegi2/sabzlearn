@@ -8,7 +8,7 @@ export default async function handler(req, res) {
       try {
         let Allcourse = await CourseModel.find(
           {},
-          "title desc teacher price student image"
+          "-createdAt -__v -updatedAt"
         );
         if (Allcourse) {
           return res.status(200).json(Allcourse);
@@ -21,6 +21,7 @@ export default async function handler(req, res) {
       }
     }
     case "POST": {
+      // create New course
       if (process.env.PriveKey !== req.body.PriveKey) {
         return res
           .status(401)
@@ -29,15 +30,15 @@ export default async function handler(req, res) {
       try {
         const newCourse = new CourseModel(req.body);
 
-        const savedArticls = await newCourse.save();
+        const savedCourse = await newCourse.save();
 
-        if (savedArticls) {
+        if (savedCourse) {
           return res.status(201).json("Creact New Course Successfully");
         } else {
           return res.status(424).json("Course Not Creact Try agin");
         }
       } catch (error) {
-        console.error("Error Get Articls:", error);
+        console.error("Error Get Course:", error);
         res.status(500).json({ message: "Internal server error" });
       }
     }

@@ -25,6 +25,7 @@ export default function ArticlsCard({
           className="rounded-t-2xl h-[190px] "
           width={320}
           height={190}
+          alt={title}
         />
       </div>
 

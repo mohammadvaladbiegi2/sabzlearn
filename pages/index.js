@@ -11,10 +11,8 @@ import ArticlsCard from "@/components/ArticlsCard";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import CourseCardSlider from "@/components/CourseCardSlider";
-import connectToDB from "@/DB/DataBase";
-import { verify } from "jsonwebtoken";
-import { User } from "@/Models/UsersModel";
-export default function Home({ Articls, UserData }) {
+
+export default function Home({ articlsData, courseData }) {
   let [temp, setTemp] = useState(0);
   let [activeCours, setactiveCours] = useState(0);
 
@@ -39,7 +37,7 @@ export default function Home({ Articls, UserData }) {
 
   return (
     <>
-      <Navbar UserData={UserData} />
+      <Navbar />
       <header>
         <section className="flex flex-col-reverse xl:flex-row gap-8 xl:gap-0   justify-between items-center px-8 mt-7">
           <div className="md:w-[600px] flex flex-col xl:ms-[30px] gap-14">
@@ -75,7 +73,6 @@ export default function Home({ Articls, UserData }) {
               height={650}
               width={850}
               alt="sabzlearnp"
-              className=""
             />
           </div>
         </section>
@@ -90,11 +87,9 @@ export default function Home({ Articls, UserData }) {
           pointcolor="bg-amber-400"
         />
         <div className="grid px-14 grid-rows-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7">
-          {Array(8)
-            .fill(0)
-            .map((course, index) => (
-              <CourseCard key={index} />
-            ))}
+          {courseData.slice(0, 8).map((course) => (
+            <CourseCard key={course._id} {...course} />
+          ))}
         </div>{" "}
       </section>
       {/* way sections */}
@@ -156,11 +151,9 @@ export default function Home({ Articls, UserData }) {
         />
         <div className="flex justify-center  overflow-x-hidden px-11 w-[90%] overflow-hidden m-auto">
           <div className="flex items-start justify-center gap-[44px] ">
-            {Array(7)
-              .fill(0)
-              .map((card, index) => (
-                <CourseCardSlider key={index} temp={temp} />
-              ))}
+            {courseData.slice(8, 15).map((card) => (
+              <CourseCardSlider key={card._id} {...card} temp={temp} />
+            ))}
           </div>
         </div>
       </section>
@@ -173,7 +166,7 @@ export default function Home({ Articls, UserData }) {
           pointcolor="bg-amber-400 "
         />
         <div className="flex flex-wrap items-center justify-evenly  mt-8 px-10">
-          {Articls.map((articls) => (
+          {articlsData.map((articls) => (
             <ArticlsCard key={articls._id} {...articls} />
           ))}
         </div>
@@ -188,10 +181,11 @@ export default function Home({ Articls, UserData }) {
           pointcolor="bg-blue-400 "
         />
         <div className="grid grid-rows-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7 px-14">
-          {Array(8)
-            .fill(0)
-            .map((course, index) => (
-              <CourseCard key={index} />
+          {[...courseData]
+            .reverse()
+            .slice(0, 8)
+            .map((course) => (
+              <CourseCard key={course._id} {...course} />
             ))}
         </div>{" "}
       </section>
@@ -199,28 +193,12 @@ export default function Home({ Articls, UserData }) {
     </>
   );
 }
-const verifyToken = (token) => {
-  try {
-    const validationResult = verify(token, process.env.PriveKey); // chek for valid token
-    return validationResult;
-  } catch (err) {
-    console.log("Verify Token Error =>", err);
-    return false;
-  }
-};
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   let articlsres = await fetch("http://localhost:3000/api/articl");
   let articlsData = await articlsres.json();
-  connectToDB();
-  const { token } = context.req.cookies;
+  let couresres = await fetch("http://localhost:3000/api/course");
+  let courseData = await couresres.json();
 
-  const tokenPayload = verifyToken(token); // verify and find payload
-  let FindUser = await User.findOne(
-    { phoneNumber: tokenPayload.phoneNumber },
-    "-__v -password"
-  );
-  let MainUser = JSON.parse(JSON.stringify(FindUser));
-
-  return { props: { Articls: articlsData, UserData: MainUser } };
+  return { props: { articlsData, courseData } };
 }

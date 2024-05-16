@@ -41,7 +41,7 @@ body:{
 ///// ticket
 1-NewTicket
 method:"POST",
-route:"/newticket",
+route:"/user/newticket",
 body:{
 "title",
 "text",
@@ -53,7 +53,7 @@ body:{
 ///// Add course to User Panel
 
 method:"POST",
-route:"/addcoursepanel",
+route:"/user/addcoursepanel",
 body:{
       "title": title Course tearget,
 "image": image Course tearget,
@@ -81,3 +81,11 @@ route:"/articl"
 2-Get Single Articl
 method:"GET"
 route:"/articl?ID"
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+Season
+
+1-Get Single Season
+method:"GET"
+route : "/season?id" 

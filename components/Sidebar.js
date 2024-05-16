@@ -17,7 +17,7 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
           className="h-12 "
           width={70}
           height={40}
-          alt=""
+          alt="logo"
         />
         <div className="flex gap-x-3">
           <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">

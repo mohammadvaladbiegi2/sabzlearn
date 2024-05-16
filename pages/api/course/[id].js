@@ -14,23 +14,21 @@ export default async function handler(req, res) {
         )
           .populate("seasons comments")
           .lean();
-
-        let Sections = await SeasonModel.findOne(
-          {
-            _id: MainCourse.seasons[0]._id,
-          },
+        const seasonIds = MainCourse.seasons.map((season) => season._id);
+        let Sections = await SeasonModel.find(
+          { _id: { $in: seasonIds } },
           "-createdAt -updatedAt -__v"
         )
           .populate("sections")
           .lean();
 
-        if (MainCourse || Sections) {
+        if (MainCourse) {
           return res.json({ MainCourse, Sections });
         } else {
           return res.status(400).json("Cant get course");
         }
       } catch (error) {
-        console.error("Error Get Articls:", error);
+        console.error("Error Get Cours:", error);
         res.status(500).json({ message: "Internal server error" });
       }
     }

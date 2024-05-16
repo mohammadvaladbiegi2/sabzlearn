@@ -4,32 +4,41 @@ import React from "react";
 import { FaStar } from "react-icons/fa6";
 import { LuUsers } from "react-icons/lu";
 
-export default function CourseCard({ temp }) {
+export default function CourseCard({
+  title,
+  image,
+  desc,
+  teacher,
+  price,
+  student,
+  _id,
+}) {
   return (
     <div className=" flex flex-col bg-dark border border-none rounded-2xl">
       <div className="relative h-42 group">
         <Link
           className="block w-full h-full"
-          href="/coursdetails/5"
+          href={`/coursdetails/${_id}`}
           title="بهینه نویسی کد ها در پایتون"
         >
           <Image
             className="block w-full h-full object-cover rounded-2xl"
-            src="/image/badusb-1-768x432.webp"
-            alt="بهینه نویسی کد ها در پایتون"
-            width={200}
-            height={200}
+            src={`/image/${image}`}
+            alt={title}
+            width={300}
+            height={300}
           />
         </Link>
       </div>
       <div className="p-3">
         <div className="flex-grow px-4.5 pt-4 pb-3">
           <h3 className="text-white line-clamp-2 mb-3">
-            <Link href="/coursdetails/5">بهینه نویسی کد ها در پایتون</Link>
+            <Link href="/coursdetails/5" className="line-clamp-1">
+              {title}
+            </Link>
           </h3>
           <p className="text-sm text-white/70 line-clamp-2 opacity-70">
-            همه میدونیم که زبان برنامه نویسی پایتون یه زبان خیلی جذاب، راحت و
-            همینطور کاربردیه.&nbsp; قبل از اینکه بخواین این…
+            {desc}
           </p>
         </div>
         <div className="px-4.5 pb-3">
@@ -37,7 +46,7 @@ export default function CourseCard({ temp }) {
             <div className="flex items-center gap-x-0.5 hover:text-green-500 transition-colors">
               <LuUsers className="w-5 h-5" />
 
-              <a href="#">رضا دولتی</a>
+              <a href="#">{teacher}</a>
             </div>
             <div className="flex items-center gap-x-0.5 text-amber-500">
               <span>5.0</span>
@@ -47,10 +56,10 @@ export default function CourseCard({ temp }) {
           <div className="flex items-center  justify-between pt-3">
             <span className="flex items-center gap-x-0.5 text-white/70 text-sm">
               <LuUsers className="w-5 h-5" />
-              738{" "}
+              {student}{" "}
             </span>
             <div className="flex flex-col">
-              <span className="text-green-500  text-lg">540,000 تومان</span>
+              <span className="text-green-500  text-lg">{price} تومان</span>
             </div>
           </div>
         </div>

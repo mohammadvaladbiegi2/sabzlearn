@@ -7,14 +7,14 @@ import { CiCalendar } from "react-icons/ci";
 import { IoEyeOutline } from "react-icons/io5";
 import { HiOutlineBookOpen } from "react-icons/hi2";
 import { IoChatbubbles } from "react-icons/io5";
-import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { CiShare2 } from "react-icons/ci";
 import { FaChevronUp } from "react-icons/fa6";
 import { HiClipboardDocumentCheck } from "react-icons/hi2";
 import { HiAcademicCap } from "react-icons/hi2";
 import moment from "moment-jalaali";
+import Link from "next/link";
 
-export default function Articl({ Articl }) {
+export default function Articl({ Articl, AllArdicldata }) {
   const gregorianDate = moment(Articl.createdAt);
   const jalaliDate = gregorianDate.format("jYYYY/jMM/jDD HH:mm:ss");
   return (
@@ -24,7 +24,7 @@ export default function Articl({ Articl }) {
         <div className="p-8">
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-x-7 gap-y-8 mt-8 md:mt-10 text-white">
             <div className="col-span-full lg:col-span-8 xl:col-span-9">
-              <div className="bg-dark rounded-2xl p-4.5 sm:p-5 ">
+              <div className="bg-dark rounded-2xl p-4 sm:p-5 ">
                 <div className="flex items-center gap-x-2 mb-5 sm:mb-6 pb-5 sm:pb-6 border-b border-b-white/10 relative">
                   <span className="absolute -right-6 sm:-right-[26px] block w-1.5 h-[34px] md:h-9.5 bg-sky-500 rounded-r-sm"></span>
                   <h1 className=" text-xl md:text-[1.625rem]/10 text-white">
@@ -52,10 +52,10 @@ export default function Articl({ Articl }) {
                 </div>
                 <Image
                   src={`/image/${Articl.img}`}
-                  width={400}
-                  height={400}
+                  width={1000}
+                  height={1000}
                   className="aspect-video w-full h-auto object-cover my-5 rounded-2xl"
-                  alt="BunJS چیست ؟"
+                  alt={Articl.title}
                 />
                 <div className="wp-content text-[1.1rem] mb-7 opacity-85  text-justify">
                   <h1 className="my-5">
@@ -264,7 +264,7 @@ export default function Articl({ Articl }) {
                     WSL، دستور زیر را در ترمینال خود اجرا کنید:
                   </p>
                   <pre
-                    className="code hljs text-left  "
+                    className="code hljs text-left  overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     curl -fsSL https://bun.sh/install | bash
@@ -275,10 +275,7 @@ export default function Articl({ Articl }) {
                       Bun را به صورت سراسری نصب کنید:
                     </li>
                   </ol>
-                  <pre
-                    className="code hljs text-left  "
-                    style={{ direction: "ltr" }}
-                  >
+                  <pre className="overflow-hidden" style={{ direction: "ltr" }}>
                     npm install -g bun
                   </pre>
                   <ol start="3">
@@ -288,13 +285,13 @@ export default function Articl({ Articl }) {
                     </li>
                   </ol>
                   <pre
-                    className="code hljs text-left "
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     brew tap oven-sh/bun
                   </pre>
                   <pre
-                    className="code hljs text-left "
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     brew install bun
@@ -306,13 +303,13 @@ export default function Articl({ Articl }) {
                     </li>
                   </ol>
                   <pre
-                    className="code hljs text-left "
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     docker pull oven/bun
                   </pre>
                   <pre
-                    className="code hljs text-left "
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     docker run --<span className="hljs-built_in">rm</span>{" "}
@@ -325,7 +322,7 @@ export default function Articl({ Articl }) {
                     دهید:
                   </p>
                   <pre
-                    className="code hljs text-left "
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     bun upgrade
@@ -339,7 +336,7 @@ export default function Articl({ Articl }) {
                     </li>
                   </ol>
                   <pre
-                    className="code hljs text-left "
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     <span className="hljs-built_in">rm</span> -rf ~/.bun
@@ -353,7 +350,7 @@ export default function Articl({ Articl }) {
                   </ol>
                   <p className="my-4">
                     <a href="#">
-                      <img
+                      <Image
                         decoding="async"
                         loading="lazy"
                         className="alignnone wp-image-3593 my-5 size-full"
@@ -495,7 +492,7 @@ export default function Articl({ Articl }) {
                     است:
                   </p>
                   <pre
-                    className="code hljs text-left language-javascript"
+                    className="code hljs text-left  overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     <span className="hljs-title class_">Bun</span>.
@@ -526,7 +523,7 @@ export default function Articl({ Articl }) {
                     هیچ‌گونه وابستگی اضافی اجرا کنید. برای مثال:
                   </p>
                   <pre
-                    className="code hljs text-left "
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     bun index.ts bun index.jsx bun index.tsx
@@ -546,14 +543,14 @@ export default function Articl({ Articl }) {
                   </p>
                   <p className="my-4">برای نصب پکیج‌ها:</p>
                   <pre
-                    className="code hljs text-left "
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     bun install
                   </pre>
                   <p className="my-4">برای افزودن بسته:</p>
                   <pre
-                    className="code hljs text-left language-lua"
+                    className="code hljs text-left "
                     style={{ direction: "ltr" }}
                   >
                     bun add &lt;<span className="hljs-built_in">package</span>
@@ -564,7 +561,7 @@ export default function Articl({ Articl }) {
                   </pre>
                   <p className="my-4">برای حذف بسته:</p>
                   <pre
-                    className="code hljs text-left language-lua"
+                    className="code hljs text-left  overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     bun <span className="hljs-built_in">remove</span> &lt;
@@ -572,7 +569,7 @@ export default function Articl({ Articl }) {
                   </pre>
                   <p className="my-4">برای به‌روز رسانی بسته:</p>
                   <pre
-                    className="code hljs text-left language-go"
+                    className="code hljs text-left  overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     bun update &lt;<span className="hljs-keyword">package</span>
@@ -588,7 +585,7 @@ export default function Articl({ Articl }) {
                   </p>
                   <p className="my-4">
                     <a href="#">
-                      <img
+                      <Image
                         decoding="async"
                         loading="lazy"
                         className="alignnone wp-image-3593 my-5 size-full"
@@ -622,7 +619,7 @@ export default function Articl({ Articl }) {
                     بیان این هدف است:
                   </p>
                   <pre
-                    className="code hljs text-left language-javascript"
+                    className="code hljs text-left  overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     <span className="hljs-keyword">import</span>{" "}
@@ -645,7 +642,7 @@ export default function Articl({ Articl }) {
                     الگوهای نام‌گذاری زیر اجرا کنید:
                   </p>
                   <pre
-                    className="code hljs text-left"
+                    className="code hljs text-left overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     <span className="hljs-built_in">test</span>
@@ -663,7 +660,7 @@ export default function Articl({ Articl }) {
                     برای ساخت بسته اولیه، می‌توانید از دستور زیر استفاده کنید:
                   </p>
                   <pre
-                    className="code hljs text-left language-php"
+                    className="code hljs text-left  overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     Bun.
@@ -689,7 +686,7 @@ export default function Articl({ Articl }) {
                     واردات فایل‌های.yaml را نشان می‌دهد:
                   </p>
                   <pre
-                    className="code hljs text-left language-typescript"
+                    className="code hljs text-left  overflow-hidden"
                     style={{ direction: "ltr" }}
                   >
                     <span className="hljs-keyword">import</span>{" "}
@@ -878,7 +875,7 @@ export default function Articl({ Articl }) {
                   </p>
                 </div>
               </div>
-              <div className="bg-dark rounded-2xl p-4.5 sm:p-5 mt-8">
+              <div className="bg-dark rounded-2xl p-4 sm:p-5 mt-8">
                 <div className="flex items-center gap-x-3 mb-6 sm:mb-7 relative">
                   <span className="absolute -right-6 sm:-right-[26px] block w-1.5 h-[34px] md:h-9.5 bg-amber-400 rounded-r-sm"></span>
                   <HiOutlineBookOpen className="hidden md:inline-block text-[36px] text-amber-400  w-9.5 h-9.5" />
@@ -886,81 +883,37 @@ export default function Articl({ Articl }) {
                   <h3 className=" text-xl md:text-2xl">پیشنهاد مطالعه</h3>
                 </div>
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-                  <div className="flex items-center gap-x-4 bg-dark-light p-3.5 rounded-xl">
-                    <Image
-                      src="/image/eval-in-java-script00.webp"
-                      className="h-20 rounded-lg my-5"
-                      alt="آموزش Eval در جاوا اسکریپت"
-                      height={150}
-                      width={150}
-                    />
-                    <div>
-                      <a href="#" className=" line-clamp-1">
-                        آموزش Eval در جاوا اسکریپت
-                      </a>
-                      <div className="flex items-center gap-x-1 mt-8 text-slate-500 mt-4.5">
-                        <CiCalendar className="size-5" />
-                        <span className=" text-sm">1403/01/20</span>
+                  {AllArdicldata.map((articl) => (
+                    <Link
+                      href={`/articls/${articl._id}`}
+                      key={articl._id}
+                      className="flex items-center gap-x-4 bg-dark-light p-3.5 rounded-xl"
+                    >
+                      <Image
+                        src={`/image/${articl.img}`}
+                        className="h-20 rounded-lg my-5"
+                        alt={articl.title}
+                        height={150}
+                        width={150}
+                      />
+                      <div>
+                        <a href="#" className=" line-clamp-1">
+                          {articl.title}
+                        </a>
+                        <div className="flex items-center gap-x-1 mt-8 text-slate-500 ">
+                          <CiCalendar className="size-5" />
+                          <span className="mt-1 text-sm">
+                            {moment(articl.createdAt)
+                              .format("jYYYY/jMM/jDD HH:mm:ss")
+                              .slice(0, 10)}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-x-4 bg-dark-light p-3.5 rounded-xl">
-                    <Image
-                      src="/image/arrow-in-java-script00.webp"
-                      className="h-20 rounded-lg my-5"
-                      alt="آموزش تابع Arrow در جاوا اسکریپت"
-                      width={150}
-                      height={150}
-                    />
-                    <div>
-                      <a href="#" className=" line-clamp-1">
-                        آموزش تابع Arrow در جاوا اسکریپت
-                      </a>
-                      <div className="flex items-center gap-x-1 mt-8 text-slate-500 mt-4.5">
-                        <CiCalendar className="size-5" />
-                        <span className=" text-sm">1403/01/18</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-x-4 bg-dark-light p-3.5 rounded-xl">
-                    <Image
-                      src="/image/bind-in-java-script00.webp"
-                      className="h-20 rounded-lg my-5"
-                      alt="آموزش bind در جاوا اسکریپت"
-                      width={150}
-                      height={150}
-                    />
-                    <div>
-                      <a href="" className=" line-clamp-1">
-                        آموزش bind در جاوا اسکریپت
-                      </a>
-                      <div className="flex items-center gap-x-1 mt-8 text-slate-500 mt-4.5">
-                        <CiCalendar className="size-5" />
-                        <span className=" text-sm">1403/01/15</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-x-4 bg-dark-light p-3.5 rounded-xl">
-                    <Image
-                      src="/image/foreach-in-javascript.webp"
-                      className="h-20 rounded-lg my-5"
-                      alt="forEach در جاوا اسکریپت"
-                      width={150}
-                      height={150}
-                    />
-                    <div>
-                      <a href="#" className=" line-clamp-1">
-                        forEach در جاوا اسکریپت
-                      </a>
-                      <div className="flex items-center gap-x-1 mt-8 text-slate-500 mt-4.5">
-                        <CiCalendar className="size-5" />
-                        <span className=" text-sm">1403/01/11</span>
-                      </div>
-                    </div>
-                  </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
-              <div className="bg-dark rounded-2xl p-4.5 sm:p-5 mt-8">
+              <div className="bg-dark rounded-2xl p-4 sm:p-5 mt-8">
                 <div className="flex items-center justify-between mb-6 sm:mb-7">
                   <div className="flex items-center gap-x-3 relative">
                     <span className="absolute -right-6 sm:-right-[26px] block w-1.5 h-[34px] md:h-9.5 bg-red-500 rounded-r-sm "></span>
@@ -1236,45 +1189,6 @@ export default function Articl({ Articl }) {
                   </span>
                 </div>
               </div>
-              <div className="bg-dark rounded-xl p-5 overflow-hidden">
-                <div className="flex items-center justify-between mb-5 pb-5 border-b border-b-white/10">
-                  <div className="flex items-center gap-x-2 ">
-                    <HiAcademicCap className="w-7 h-7" />
-                    دوره های مرتبط
-                  </div>
-                  <button type="button">
-                    <FaChevronUp className="w-5.5 h-5.5 rotate-180" />
-                  </button>
-                </div>
-                <div className="space-y-5 divide-y divide-dashed divide-white/10">
-                  <a
-                    href="#"
-                    className="flex items-center pt-5 first:pt-0 gap-x-2.5"
-                  >
-                    <img
-                      className="h-12 rounded"
-                      src="/image/ezgif.com-jpg-to-webp-converted-22-1.webp"
-                      alt="آموزش حرفه ای NodeJS بدون پیش نیاز"
-                    />
-                    <span className="text-sm line-clamp-2">
-                      آموزش حرفه ای NodeJS بدون پیش نیاز
-                    </span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center pt-5 first:pt-0 gap-x-2.5"
-                  >
-                    <img
-                      className="h-12 rounded"
-                      src="/image/Com_JAVASCRIPT-1.webp"
-                      alt="آموزش جاوا اسکریپت رایگان مقدماتی تا پیشرفته + مینی پروژه"
-                    />
-                    <span className="text-sm line-clamp-2">
-                      آموزش جاوا اسکریپت رایگان مقدماتی تا پیشرفته + مینی پروژه
-                    </span>
-                  </a>
-                </div>
-              </div>
             </aside>
           </section>
         </div>
@@ -1299,8 +1213,9 @@ export async function getStaticPaths() {
 export async function getStaticProps(contex) {
   let res = await fetch(`http://localhost:3000/api/articl/${contex.params.id}`);
   let Articl = await res.json();
-
+  let resAllArticl = await fetch("http://localhost:3000/api/articl/");
+  let AllArdicldata = await resAllArticl.json();
   return {
-    props: { Articl },
+    props: { Articl, AllArdicldata },
   };
 }
