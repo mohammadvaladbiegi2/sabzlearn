@@ -9,7 +9,7 @@ const sectionSchema = new Schema(
       required: true,
     },
     time: {
-      type: Number,
+      type: String,
       required: true,
     },
     poster: {

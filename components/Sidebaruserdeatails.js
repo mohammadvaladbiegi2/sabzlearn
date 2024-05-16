@@ -14,7 +14,7 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
 
   return (
     <aside
-      class={`${
+      className={`${
         showsidebar ? "active_Sidebar  " : "NONactive_Sidebar "
       } fixed top-0 bottom-0 -right-64  bg-gray-700 md:bg-slate-700/0   z-30 lg:static flex flex-col w-64 lg:w-56 lg:mt-10 px-7 py-5 lg:px-0 lg:py-0 shrink-0 lg:min-h-[calc(100vh-68px)] transition-all lg:transition-none`}
     >
@@ -25,7 +25,7 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
             className="h-12 "
             width={70}
             height={40}
-            alt="سبز لرن ممد"
+            alt="logo"
           />
         </Link>
         <div className="flex items-center md:hidden bg-[#ffffff0D] p-4 rounded-full  justify-center">
@@ -38,7 +38,7 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
       <div className="space-y-4 text-white">
         <Link
           href="/userdeatails"
-          class={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
+          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
             rout.route === "/userdeatails" && "bg-green-500"
           } text-white`}
         >
@@ -47,7 +47,7 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
         </Link>
         <Link
           href="/userdeatails/mycourse"
-          class={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
+          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
             rout.route === "/userdeatails/mycourse" && "bg-green-500"
           } text-white`}
         >
@@ -56,7 +56,7 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
         </Link>
         <Link
           href="/userdeatails/usertiket"
-          class={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
+          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
             rout.route === "/userdeatails/usertiket"
               ? "bg-green-500"
               : rout.route === "/userdeatails/usertiket/[idticket]"
@@ -71,7 +71,7 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
         </Link>
         <Link
           href="/userdeatails/accontdeatails"
-          class={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
+          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
             rout.route === "/userdeatails/accontdeatails" && "bg-green-500"
           } text-white`}
         >

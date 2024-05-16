@@ -29,7 +29,10 @@ export default async function GetMeapi(req, res) {
       return res.status(401).json("Firs Loggin");
     }
 
-    let FindUser = await User.findOne({ phoneNumber: tokenPayload.phoneNumber })
+    let FindUser = await User.findOne(
+      { phoneNumber: tokenPayload.phoneNumber },
+      "-createdAt -password -updatedAt -__v"
+    )
       .populate("tickets courses")
       .lean();
     return res.status(200).json(FindUser);

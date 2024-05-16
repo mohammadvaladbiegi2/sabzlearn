@@ -21,7 +21,6 @@ export default function Login() {
       phoneNumber: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       fetch("http://localhost:3000/api/auth/signin", {
         method: "POST",
         headers: {
@@ -68,11 +67,12 @@ export default function Login() {
       <div className="hidden lg:block absolute top-0 left-0 w-[300px] h-[300px] bg-sky-500 opacity-20 blur-[120px] rounded-full"></div>
       <section className="flex flex-col justify-center items-center h-[100vh]">
         <Link href="/" className="flex items-center gap-x-3.5 mb-10">
-          <Image src="/image/logo.webp" width={110} height={50} alt="mamad" />
+          <Image src="/image/logo.webp" width={110} height={50} alt="logo" />
           <Image
             src="/image/Screenshot_2024-04-06_025727-removebg-preview.png"
             width={136}
             height={62}
+            alt="logo"
           />
         </Link>
         <div className="bg-dark w-[330px] rounded-2xl flex flex-col items-center gap-2 p-6">
@@ -104,7 +104,7 @@ export default function Login() {
               <div className="my-3">
                 <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
                   <input
-                    type="text"
+                    type="password"
                     className="input_navBar text-white  w-[240px]"
                     placeholder="رمز عبور"
                     onChange={form.handleChange}
@@ -145,7 +145,7 @@ export default function Login() {
               <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
                 <input
                   type="text"
-                  className="input_navBar text-white opacity-70 w-[240px]"
+                  className="input_navBar  text-white opacity-70 w-[240px]"
                   placeholder="کد تایید"
                   value={Code}
                   onChange={(e) => setCode(e.target.value)}

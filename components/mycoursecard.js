@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function CourseCard({ progress, img, title, courseid }) {
+export default function CourseCard({ progress = 0, image, title, courseid }) {
   return (
     <div className=" flex flex-col overflow-hidden bg_black_100  border border-gray-700 rounded-2xl">
       <div className="relative h-42">
@@ -13,10 +13,10 @@ export default function CourseCard({ progress, img, title, courseid }) {
         >
           <Image
             className="block w-full h-full  object-cover rounded-2xl"
-            src={`/image/${img}`}
-            alt="آموزش جاوااسکریپت با گرایش امنیت | جاوااسکریپت سیاه"
-            width={200}
-            height={200}
+            src={`/image/${image}`}
+            alt={title}
+            width={300}
+            height={300}
           />
         </Link>
       </div>

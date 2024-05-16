@@ -3,9 +3,9 @@ import React from "react";
 
 export default function NotFound() {
   return (
-    <main class="flex-center flex-col relative px-4 py-6 min-h-screen text-center">
+    <main className="flex-center flex-col relative px-4 py-6 min-h-screen text-center">
       <svg
-        class="max-w-[696px] m-auto"
+        className="max-w-[696px] m-auto"
         viewBox="0 0 696 449"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -407,17 +407,17 @@ export default function NotFound() {
           fill="#FBBF24"
         ></path>
       </svg>
-      <p class="text-white text-lg md:text-2.5xl my-5 md:my-10">
+      <p className="text-white text-lg md:text-2.5xl my-5 md:my-10">
         متاسفانه صفحه مورد نظر شما پیدا نشد.
       </p>
       <Link
         href="/"
-        class="w-full sm:w-auto bg-green-500  rounded-full text-white p-5"
+        className="w-full sm:w-auto bg-green-500  rounded-full text-white p-5"
       >
         بازگشت به صفحه اصلی
       </Link>
-      <div class="hidden lg:block absolute top-0 left-0 w-[300px] h-[300px] bg-sky-500 opacity-20 blur-[120px] rounded-full"></div>
-      <div class="hidden lg:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-amber-400 opacity-20 blur-[120px] rounded-full"></div>
+      <div className="hidden lg:block absolute top-0 left-0 w-[300px] h-[300px] bg-sky-500 opacity-20 blur-[120px] rounded-full"></div>
+      <div className="hidden lg:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-amber-400 opacity-20 blur-[120px] rounded-full"></div>
     </main>
   );
 }

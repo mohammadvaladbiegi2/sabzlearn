@@ -13,16 +13,36 @@ import Sidebar from "./Sidebar";
 import Link from "next/link";
 import { AiOutlineHome } from "react-icons/ai";
 import { IoLanguage } from "react-icons/io5";
+import { useRouter } from "next/router";
 
-export default function navbar({ UserData }) {
+export default function navbar() {
+  let route = useRouter();
   const [showsidebar, setshowsidebar] = useState(false);
+  const [userToken, setUserToken] = useState("");
+  const [searchtext, setSearchtext] = useState("");
   let [islogin, setislogin] = useState(false);
   let [showbox, setshowbox] = useState(false);
   let [showboxlanguage, setshowboxlanguage] = useState(false);
-  useEffect(() => {
-    if (UserData) {
+  const getuser = async (cookies) => {
+    let res = await fetch("http://localhost:3000/api/auth/me", {
+      headers: {
+        Authorization: `Bearer ${cookies}`,
+      },
+    });
+
+    if (res.status === 200) {
       setislogin(true);
     }
+  };
+  useEffect(() => {
+    const token = document.cookie /// get cookie
+      .split("; ")
+      .find((row) => row.startsWith("token="));
+    if (token) {
+      setUserToken(token.split("=")[1]);
+    }
+
+    getuser(userToken);
   }, []);
   return (
     <nav className="px-3 md:px-8 py-6 bg-dark ">
@@ -35,7 +55,7 @@ export default function navbar({ UserData }) {
               className="h-12 "
               width={70}
               height={40}
-              alt=""
+              alt="logo"
             />
           </Link>
           <ul className="flex items-center justify-around gap-6">
@@ -347,14 +367,24 @@ export default function navbar({ UserData }) {
           </ul>
         </div>
         <div className="flex items-center justify-between gap-7">
-          <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-full justify-center">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              route.push(`/searchcours/${searchtext}`);
+            }}
+            className="flex items-center  bg-[#ffffff0D] p-4 rounded-full justify-center"
+          >
             <input
               type="text"
               className="input_navBar text-slate-300  font-medium"
               placeholder="چی مخوای یادبگیری؟"
+              value={searchtext}
+              onChange={(e) => setSearchtext(e.target.value)}
             />
-            <IoIosSearch className="text-white w-6 h-6 cursor-pointer" />
-          </div>
+            <button type="submit">
+              <IoIosSearch className="text-white w-6 h-6 cursor-pointer" />
+            </button>
+          </form>
           <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
             <IoSunnyOutline className="text-white w-6 h-6 text-xl cursor-pointer hover:text-yellow-400 transition-all" />
           </div>
@@ -374,7 +404,7 @@ export default function navbar({ UserData }) {
               </div>
 
               <div
-                class={`absolute ${
+                className={`absolute ${
                   showbox ? "visible opacity-100" : "opacity-0 hidden"
                 }    left-8 top-[14%] pt-4 z-10 transition-all show`}
               >
@@ -383,7 +413,7 @@ export default function navbar({ UserData }) {
                     <a href="#" className="shrink-0">
                       <Image
                         src="/image/userimageaccont.png"
-                        alt="mohammadvalad"
+                        alt="user"
                         className="object-cover w-14 h-14 rounded-full inline-block"
                         loading="lazy"
                         width={50}
@@ -459,11 +489,12 @@ export default function navbar({ UserData }) {
               width={20}
               height={20}
               className="bg-white rounded-full"
+              alt="languge"
             />
             <IoLanguage className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
           </span>
           <div
-            class={` absolute ${
+            className={` absolute ${
               showboxlanguage ? "visible opacity-100" : "opacity-0 hidden"
             }    left-8 top-[14%] pt-4 z-10 transition-all  show`}
           >
@@ -475,6 +506,7 @@ export default function navbar({ UserData }) {
                   width={20}
                   height={20}
                   className="bg-white rounded-full"
+                  alt="languge"
                 />
               </span>
               <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
@@ -484,6 +516,7 @@ export default function navbar({ UserData }) {
                   width={20}
                   height={20}
                   className="bg-white rounded-full"
+                  alt="languge"
                 />
               </span>
               <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
@@ -493,6 +526,7 @@ export default function navbar({ UserData }) {
                   width={20}
                   height={20}
                   className="bg-white rounded-full"
+                  alt="languge"
                 />
               </span>
               <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
@@ -502,6 +536,7 @@ export default function navbar({ UserData }) {
                   width={20}
                   height={20}
                   className="bg-white rounded-full"
+                  alt="languge"
                 />
               </span>
             </div>
@@ -523,7 +558,7 @@ export default function navbar({ UserData }) {
             className="h-12 mr-10"
             width={70}
             height={40}
-            alt=""
+            alt="languge"
           />
         </Link>
         <div className="flex items-center gap-2">
@@ -542,7 +577,7 @@ export default function navbar({ UserData }) {
               </div>
 
               <div
-                class={`absolute ${
+                className={`absolute ${
                   showbox ? "visible opacity-100" : "opacity-0 hidden"
                 }    left-8 top-[14%] pt-4 z-10 transition-all show`}
               >
@@ -551,7 +586,7 @@ export default function navbar({ UserData }) {
                     <a href="#" className="shrink-0">
                       <Image
                         src="/image/userimageaccont.png"
-                        alt="mohammadvalad"
+                        alt="user"
                         className="object-cover w-14 h-14 rounded-full inline-block"
                         loading="lazy"
                         width={50}
@@ -626,11 +661,12 @@ export default function navbar({ UserData }) {
               width={20}
               height={20}
               className="bg-white rounded-full"
+              alt="languge"
             />
             <IoLanguage className="text-white w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all" />
           </span>
           <div
-            class={` absolute ${
+            className={` absolute ${
               showboxlanguage ? "visible opacity-100" : "opacity-0 hidden"
             }    left-8 top-[14%] pt-4 z-10 transition-all show`}
           >
@@ -642,6 +678,7 @@ export default function navbar({ UserData }) {
                   width={20}
                   height={20}
                   className="bg-white rounded-full"
+                  alt="languge"
                 />
               </span>
               <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
@@ -651,6 +688,7 @@ export default function navbar({ UserData }) {
                   width={20}
                   height={20}
                   className="bg-white rounded-full"
+                  alt="languge"
                 />
               </span>
               <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
@@ -660,6 +698,7 @@ export default function navbar({ UserData }) {
                   width={20}
                   height={20}
                   className="bg-white rounded-full"
+                  alt="languge"
                 />
               </span>
               <span className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg text-white hover:bg-green-500 transition-colors">
@@ -669,6 +708,7 @@ export default function navbar({ UserData }) {
                   width={20}
                   height={20}
                   className="bg-white rounded-full"
+                  alt="languge"
                 />
               </span>
             </div>
