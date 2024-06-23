@@ -10,7 +10,6 @@ import { IoChatbubbles } from "react-icons/io5";
 import { CiShare2 } from "react-icons/ci";
 import { FaChevronUp } from "react-icons/fa6";
 import { HiClipboardDocumentCheck } from "react-icons/hi2";
-import { HiAcademicCap } from "react-icons/hi2";
 import moment from "moment-jalaali";
 import Link from "next/link";
 
@@ -1206,7 +1205,6 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    fallback: false,
   };
 }
 

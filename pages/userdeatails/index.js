@@ -16,16 +16,29 @@ import { User } from "@/Models/UsersModel";
 import connectToDB from "@/DB/DataBase";
 import Notfound from "@/components/Notfound";
 import moment from "moment-jalaali";
+import { useGlobalState } from "@/context/GlobalState";
 
 export default function UserDeatailsPage({ MainUser }) {
   const [showsidebar, setshowsidebar] = useState(false);
+  const { state } = useGlobalState();
+
   return (
-    <div className=" flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 ">
+    <div
+      className={`${
+        state.them === "dark" ? "bg_black_100" : "bg-white"
+      } flex gap-x-10 2xl:gap-x-14 px-4 my-4 md:my-0 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+    >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
         setshowsidebar={setshowsidebar}
       />
-      <section className="bg-dark px-5 rounded-2xl w-full max-w-[1432px] mx-auto bg-dark md:p-10 lg:rounded-4xl">
+      <section
+        className={`${
+          state.them === "dark"
+            ? "bg-dark text-white"
+            : "bg-gray-100 text-black"
+        } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+      >
         <HeaderAccontDetails
           username={MainUser.username}
           setshowsidebar={setshowsidebar}
@@ -58,11 +71,17 @@ export default function UserDeatailsPage({ MainUser }) {
         </div>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-7 items-start">
           <div>
-            <div className="flex justify-between items-center bg-gray-700 px-3.5 py-2.5 md:p-4.5 mb-4 md:mb-5 rounded-2xl">
-              <span className=" md:text-xl text-white">دوره‌های اخیر</span>
+            <div
+              className={`flex justify-between items-center ${
+                state.them === "dark" ? "bg-gray-700" : "bg-white"
+              } px-3 py-2 md:p-4 mb-4 md:mb-5 rounded-2xl`}
+            >
+              <span className=" md:text-xl ">دوره‌های اخیر</span>
               <Link
                 href="/userdeatails/mycourse"
-                className="flex items-center gap-x-1.5 text-sky-500 bg-sky-800/30 p-3 rounded-xl  text-sm"
+                className={`flex items-center gap-x-1.5 text-sky-500 ${
+                  state.them === "dark" && " bg-sky-800/30"
+                } p-3 rounded-xl  text-sm`}
               >
                 همه دوره‌های ثبت نام شده
                 <FaArrowLeftLong className="w-6 h-6" />
@@ -73,7 +92,11 @@ export default function UserDeatailsPage({ MainUser }) {
                 {MainUser.courses.map((course) => (
                   <Link
                     href={`/coursdetails/${course.courseid}`}
-                    className=" flex flex-col overflow-hidden bg-gray-700  border border-gray-700 rounded-2xl"
+                    className={` flex flex-col overflow-hidden ${
+                      state.them === "dark"
+                        ? "bg-gray-700 border border-gray-700"
+                        : "bg-white"
+                    }  rounded-2xl`}
                   >
                     <div className="relative h-42">
                       <a className="w-full h-full block" href="#">
@@ -86,15 +109,27 @@ export default function UserDeatailsPage({ MainUser }) {
                       </a>
                     </div>
                     <div className="px-5 pb-3.5 pt-2.5 flex-grow ">
-                      <h4 className=" h-12 line-clamp-2 text-white mb-2.5">
+                      <h4 className=" h-12 line-clamp-2  mb-2.5">
                         <a href="#">{course.title}</a>
                       </h4>
-                      <div className="pt-3 border-t border-t-gray-700">
+                      <div
+                        className={`pt-3 border-t ${
+                          state.them === "dark"
+                            ? "border-t-gray-700"
+                            : " border-t-slate-300"
+                        }`}
+                      >
                         <div className="flex items-center justify-between text-xs mb-1.5">
-                          <span className="text-white">میزان مشاهده</span>
+                          <span className="">میزان مشاهده</span>
                           <span className="text-slate-400">0%</span>
                         </div>
-                        <div className="bg-gray-700 h-[5px] rounded-full">
+                        <div
+                          className={`${
+                            state.them === "dark"
+                              ? "bg-gray-700"
+                              : "bg-slate-300"
+                          } h-[5px] rounded-full`}
+                        >
                           <div className="bg-green-500 w-[0%] h-full rounded-full"></div>
                         </div>
                       </div>
@@ -107,9 +142,13 @@ export default function UserDeatailsPage({ MainUser }) {
             )}
           </div>
           <div>
-            <div className="bg-gray-700 p-3.5 md:p-4.5 rounded-2xl">
+            <div
+              className={`${
+                state.them === "dark" ? "bg-gray-700" : "bg-white"
+              } p-3.5 md:p-4.5 rounded-2xl`}
+            >
               <div className="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-bborder-b-gray-700">
-                <span className=" md:text-xl text-white">تیکت های اخیر</span>
+                <span className=" md:text-xl ">تیکت های اخیر</span>
                 <Link
                   href="/userdeatails/usertiket"
                   className="flex items-center gap-x-1.5 text-sky-500  text-sm"
@@ -121,10 +160,10 @@ export default function UserDeatailsPage({ MainUser }) {
               <div>
                 {MainUser.tickets.length ? (
                   MainUser.tickets?.map((ticket) => (
-                    <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
+                    <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:opacity-60 rounded-xl transition-colors">
                       <Link
                         href={`/userdeatails/usertiket/${ticket._id}`}
-                        className="text-white w-full sm:max-w-sm sm:truncate"
+                        className=" w-full sm:max-w-sm sm:truncate"
                       >
                         {ticket.title}
                       </Link>
@@ -135,7 +174,7 @@ export default function UserDeatailsPage({ MainUser }) {
                             .format("jYYYY/jMM/jDD HH:mm:ss")
                             .slice(0, 10)}
                         </span>
-                        <span className="text-xs py-1 px-1 bg-blue-400/60 text-white rounded">
+                        <span className="text-xs py-1 px-1 bg-blue-400/60  rounded">
                           منتظر پاسخ
                         </span>
                       </div>
@@ -146,18 +185,17 @@ export default function UserDeatailsPage({ MainUser }) {
                 )}
               </div>
             </div>
-            <div className="bg-gray-700 p-3.5 md:p-4.5 rounded-2xl mt-7">
+            <div
+              className={`${
+                state.them === "dark" ? "bg-gray-700" : "bg-white"
+              } p-3.5 md:p-4.5 rounded-2xl mt-7`}
+            >
               <div className="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-700">
-                <span className=" md:text-xl text-white">
-                  پرسش های اخیر تستی
-                </span>
+                <span className=" md:text-xl ">پرسش های اخیر تستی</span>
               </div>
               <div>
                 <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
-                  <a
-                    href="#"
-                    className="text-white w-full sm:max-w-sm sm:truncate"
-                  >
+                  <a href="#" className=" w-full sm:max-w-sm sm:truncate">
                     آموزش Next.js بصورت پروژه محور - آشنایی با متد Populate
                   </a>
                   <div className="flex items-center gap-3">
@@ -168,10 +206,7 @@ export default function UserDeatailsPage({ MainUser }) {
                   </div>
                 </div>
                 <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
-                  <a
-                    href="#"
-                    className="text-white w-full sm:max-w-sm sm:truncate"
-                  >
+                  <a href="#" className=" w-full sm:max-w-sm sm:truncate">
                     آموزش Next.js بصورت پروژه محور - پیاده سازی SSR در Dynamic
                     Routes
                   </a>
@@ -183,10 +218,7 @@ export default function UserDeatailsPage({ MainUser }) {
                   </div>
                 </div>
                 <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
-                  <a
-                    href="#"
-                    className="text-white w-full sm:max-w-sm sm:truncate"
-                  >
+                  <a href="#" className=" w-full sm:max-w-sm sm:truncate">
                     آموزش Next.js بصورت پروژه محور - مفهوم Pre-rendering و انواع
                     آن
                   </a>
@@ -198,10 +230,7 @@ export default function UserDeatailsPage({ MainUser }) {
                   </div>
                 </div>
                 <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
-                  <a
-                    href="#"
-                    className="text-white w-full sm:max-w-sm sm:truncate"
-                  >
+                  <a href="#" className=" w-full sm:max-w-sm sm:truncate">
                     آموزش Next.js بصورت پروژه محور - معرفی فصل و پروژه
                   </a>
                   <div className="flex items-center gap-3">

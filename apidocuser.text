@@ -2,6 +2,19 @@ main route: http://localhost:3000/api
 /////////////////////////////////////////////////////////////////////////////////////
 
 
+////// comment
+
+1-create Comment 
+method:"POST",
+route:"/comment",
+body:{
+"comment",
+"questioner",
+"answer": NOT requre,
+"whoanswers": NOT requre,
+"course": The ID of the course you want to create at the  comment
+}
+
 ///// Course 
 
 1-Get All Coourse

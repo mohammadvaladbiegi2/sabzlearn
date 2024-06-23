@@ -47,7 +47,7 @@ export default function Searchcourse({ courses, Allcourse }) {
     e.preventDefault();
     let search = Allcourse.filter(
       (course) =>
-        course.title.includes(searchtext.toLowerCase()) ||
+        course.title.fa.includes(searchtext.toLowerCase()) ||
         course.category.includes(searchtext.toLowerCase())
     );
     setcourse([...search]);

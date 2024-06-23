@@ -1,194 +1,137 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { IoIosSearch, IoMdClose } from "react-icons/io";
 import { IoSunnyOutline } from "react-icons/io5";
 import { FaAngleLeft } from "react-icons/fa6";
 import Link from "next/link";
+import { useGlobalState } from "@/context/GlobalState";
+import { FaMoon } from "react-icons/fa";
+import { useRouter } from "next/router";
 export default function Sidebar({ setshowsidebar, showsidebar }) {
+  const { state, dispatch } = useGlobalState();
+  const [searchtext, setSearchtext] = useState("");
+  let route = useRouter();
+
   return (
     <div
       className={`${
         showsidebar ? "active_Sidebar" : "NONactive_Sidebar"
-      } xl:hidden bg-dark w-60 overflow-y-auto fixed top-0 bottom-0 z-50 p-4 transition-all right-[-240px]`}
+      } xl:hidden ${
+        state.them === "dark" ? "bg-dark text-white" : "bg-white text-black"
+      } w-60 overflow-y-auto fixed top-0 bottom-0 z-50 p-4 transition-all right-[-240px]`}
     >
       <div className="flex items-center justify-between pb-6 relative border-b  border-b-white/10">
-        <Image
-          src="/image/logo.webp"
-          className="h-12 "
-          width={70}
-          height={40}
-          alt="logo"
-        />
+        <Link href="/">
+          <Image
+            src="/image/logo.webp"
+            className="h-12 "
+            width={70}
+            height={40}
+            alt="logo"
+          />
+        </Link>
         <div className="flex gap-x-3">
-          <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
-            <IoSunnyOutline className="text-white w-5 h-5 text-xl cursor-pointer hover:text-green-500 transition-all" />
+          <div
+            className={`flex items-center ${
+              state.them === "dark"
+                ? "bg-[#ffffff0D] text-white"
+                : "text-gray-500 bg_white_100"
+            } p-4 rounded-full  justify-center`}
+          >
+            {state.them === "dark" ? (
+              <IoSunnyOutline
+                onClick={() => dispatch({ type: "light" })}
+                className=" w-6 h-6 text-xl cursor-pointer hover:text-yellow-400 transition-all"
+              />
+            ) : (
+              <FaMoon
+                onClick={() => dispatch({ type: "dark" })}
+                className=" w-6 h-6 text-xl cursor-pointer hover:text-yellow-400 transition-all"
+              />
+            )}
           </div>
-          <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full  justify-center">
+          <div
+            className={`flex items-center ${
+              state.them === "dark"
+                ? "bg-[#ffffff0D] text-white"
+                : "text-gray-500 bg_white_100"
+            } p-4 rounded-full  justify-center`}
+          >
             <IoMdClose
               onClick={() => setshowsidebar(false)}
-              className="text-white w-5 h-5 text-xl cursor-pointer hover:text-green-500 transition-all"
+              className=" w-5 h-5 text-xl cursor-pointer hover:text-green-500 transition-all"
             />
           </div>
         </div>
       </div>
-      <div className="flex items-center bg-[#ffffff0D] p-4 rounded-full mt-2 justify-center">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          route.push(`/searchcours/${searchtext}`);
+        }}
+        className={`flex items-center ${
+          state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
+        }  p-3 my-2 rounded-full justify-center`}
+      >
         <input
           type="text"
-          className="input_navBar text-slate-300 w-[160px] "
+          className="input_navBar text-slate-300 text-sm  "
           placeholder="چی مخوای یادبگیری؟"
+          value={searchtext}
+          onChange={(e) => setSearchtext(e.target.value)}
         />
-        <IoIosSearch className="text-white w-5 h-5 cursor-pointer" />
-      </div>
+        <button type="submit">
+          <IoIosSearch
+            className={`${
+              state.them === "dark" ? "text-white" : "text-gray-500"
+            }  w-4 h-4 cursor-pointer`}
+          />
+        </button>
+      </form>
       <ul className="py-2 mt-2">
         <li className="group my-6">
           <Link
             href="/searchcours/frontend"
-            className="text-white text-[18px] group-hover:text-green-500 transition-colors cursor-pointer flex items-center justify-between"
+            className="text-[18px] group-hover:text-green-500 transition-colors cursor-pointer flex items-center justify-between"
           >
             فرانت اند{" "}
-            <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
+            <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
-          {/* <ul className="py-2 px-4 mt-3 rounded-xl  active_sidebar_links w-[240px] bg-dark-100">
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش HTML
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش CSS
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش FlexBox
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش CSS Grid
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                مینی پروژه های تخصصی با Css
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش Tailwind CSS
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white"
-                href="#-design-with-html-css-flexbox/"
-              >
-                آموزش اصولی طراحی قالب
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش بوت استرپ
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش جاوااسکریپت
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                پروژه های تخصصی با JS
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش جامع ری اکت ReactJS
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش ویو جی اس
-              </a>
-            </li>
-            <li className="my-4">
-              <a
-                className="text-[16px] text-white hover:text-green-500 transition-colors"
-                href="#"
-              >
-                آموزش وی اس کد - Vscode
-              </a>
-            </li>
-          </ul> */}
         </li>
         <li className="group my-6">
           <Link
             href="/searchcours/security"
-            className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
+            className="group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
           >
             امنیت{" "}
-            <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
+            <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
         <li className="group my-6">
           <Link
             href="/searchcours/python"
-            className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
+            className="group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
           >
             پایتون{" "}
-            <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
+            <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
         <li className="group my-6">
           <Link
             href="/searchcours/php"
-            className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
+            className="group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
           >
             پی‌اچ‌پی{" "}
-            <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
+            <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
         <li className="group my-6">
           <Link
             href="/searchcours/SkillUpgrade"
-            className="text-white group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
+            className="group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
           >
             ارتقامهارت{" "}
-            <FaAngleLeft className="text-white h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
+            <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
       </ul>

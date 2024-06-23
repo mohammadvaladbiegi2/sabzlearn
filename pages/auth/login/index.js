@@ -9,11 +9,14 @@ import { FaLock } from "react-icons/fa";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { useFormik } from "formik";
 import { validatPassword, validatePhoneNumber } from "@/Utils/Validations";
+import { useGlobalState } from "@/context/GlobalState";
 
 export default function Login() {
   const [sendcode, setsendcode] = useState(false);
   const [Code, setCode] = useState("");
   const [Codeevaluation, setCodeevaluation] = useState("");
+  const { state } = useGlobalState();
+
   let rout = useRouter();
   const form = useFormik({
     initialValues: {
@@ -63,25 +66,33 @@ export default function Login() {
     }
   };
   return (
-    <>
+    <div
+      className={`${state.them === "dark" ? "bg_black_100" : "bg_white_100"}`}
+    >
       <div className="hidden lg:block absolute top-0 left-0 w-[300px] h-[300px] bg-sky-500 opacity-20 blur-[120px] rounded-full"></div>
       <section className="flex flex-col justify-center items-center h-[100vh]">
         <Link href="/" className="flex items-center gap-x-3.5 mb-10">
           <Image src="/image/logo.webp" width={110} height={50} alt="logo" />
           <Image
-            src="/image/Screenshot_2024-04-06_025727-removebg-preview.png"
+            src={`/image/${
+              state.them === "dark"
+                ? "Screenshot_2024-04-06_025727-removebg-preview.png"
+                : "Screenshot 2024-05-23 225320.png"
+            }`}
             width={136}
             height={62}
             alt="logo"
           />
         </Link>
-        <div className="bg-dark w-[330px] rounded-2xl flex flex-col items-center gap-2 p-6">
+        <div
+          className={`${
+            state.them === "dark" ? "bg-dark text-white" : "bg-white text-black"
+          } w-[330px] rounded-2xl flex flex-col items-center gap-2 p-6`}
+        >
           {!sendcode ? (
             <>
-              <h4 className="text-white font-medium text-[23px]">
-                ورود با موبایل
-              </h4>
-              <p className="flex items-center text-white gap-2 font-medium">
+              <h4 className="   text-[23px]">ورود با موبایل</h4>
+              <p className="flex items-center  gap-2  ">
                 حساب کاربری ندارید؟{" "}
                 <Link href="/auth/signup" className="text-green-500 ">
                   ثبت نام کنید
@@ -90,11 +101,11 @@ export default function Login() {
             </>
           ) : (
             <>
-              <h4 className="text-white font-medium w-full flex items-center mb-5 justify-between text-[23px]">
+              <h4 className="   w-full flex items-center mb-5 justify-between text-[23px]">
                 کد تایید
                 <FaCircleArrowLeft className=" opacity-70  cursor-pointer" />
               </h4>
-              <p className="flex items-center text-white gap-2 font-medium">
+              <p className="flex items-center  gap-2  ">
                 کد تایید برای {form.values.phoneNumber} ارسال شد.
               </p>
             </>
@@ -102,29 +113,37 @@ export default function Login() {
           {!sendcode ? (
             <form onSubmit={form.handleSubmit}>
               <div className="my-3">
-                <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
+                <div
+                  className={`flex items-center ${
+                    state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
+                  }  p-4 rounded-xl w-[290px] my-6 justify-center`}
+                >
                   <input
                     type="password"
-                    className="input_navBar text-white  w-[240px]"
+                    className="input_navBar   w-[240px]"
                     placeholder="رمز عبور"
                     onChange={form.handleChange}
                     value={form.values.password}
                     name="password"
                   />
-                  <IoLockClosedOutline className="text-white opacity-70  w-4 h-4 " />
+                  <IoLockClosedOutline className=" opacity-70  w-4 h-4 " />
                 </div>
               </div>
               <div className="my-3">
-                <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px]  justify-center">
+                <div
+                  className={`flex items-center ${
+                    state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
+                  }   p-4 rounded-xl w-[290px]  justify-center`}
+                >
                   <input
                     type="text"
-                    className="input_navBar text-white  w-[240px]"
+                    className="input_navBar   w-[240px]"
                     placeholder="شماره موبایل"
                     onChange={form.handleChange}
                     value={form.values.phoneNumber}
                     name="phoneNumber"
                   />
-                  <FiPhone className="text-white opacity-70  w-4 h-4 " />
+                  <FiPhone className=" opacity-70  w-4 h-4 " />
                 </div>
                 {form.errors.phoneNumber && form.touched.phoneNumber && (
                   <span className="text-rose-500 text-sm block mt-3">
@@ -135,26 +154,30 @@ export default function Login() {
               <button
                 type="submit
             "
-                className="bg-green-500 text-white rounded-full px-32  py-4"
+                className="bg-green-500  rounded-full px-32  py-4"
               >
                 ادامه
               </button>
             </form>
           ) : (
             <form onSubmit={confirmCode}>
-              <div className="flex items-center  bg-[#ffffff0D] p-4 rounded-xl w-[290px] my-6 justify-center">
+              <div
+                className={`flex items-center ${
+                  state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
+                }   p-4 rounded-xl w-[290px] my-6 justify-center`}
+              >
                 <input
                   type="text"
-                  className="input_navBar  text-white opacity-70 w-[240px]"
+                  className="input_navBar   opacity-70 w-[240px]"
                   placeholder="کد تایید"
                   value={Code}
                   onChange={(e) => setCode(e.target.value)}
                 />
-                <FaLock className="text-white opacity-70 mt-1 w-4 h-4 " />
+                <FaLock className=" opacity-70 mt-1 w-4 h-4 " />
               </div>
               <button
                 type="submit"
-                className="bg-green-500 text-white rounded-full px-32 py-4"
+                className="bg-green-500  rounded-full px-32 py-4"
                 onClick={confirmCode}
               >
                 تایید
@@ -169,7 +192,11 @@ export default function Login() {
           </div>
         </div>
 
-        <span className="max-w-[330px] text-white font-normal text-[18px] text-center my-5">
+        <span
+          className={`max-w-[330px] ${
+            state.them === "dark" ? "text-white " : "text-black"
+          } font-normal text-[18px] text-center my-5`}
+        >
           با عضویت در سایت، تمامی قوانین و شرایط استفاده از خدمت{" "}
           <Link href="/" className="text-green-500 m-1">
             سبز لرن{"  "}
@@ -178,6 +205,6 @@ export default function Login() {
         </span>
       </section>
       <div className="hidden lg:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-amber-400 opacity-20 blur-[120px] rounded-full"></div>
-    </>
+    </div>
   );
 }

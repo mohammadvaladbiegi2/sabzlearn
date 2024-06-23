@@ -4,10 +4,101 @@ import { CommentModel } from "./CommentModel";
 import { SectionModel } from "./SectionModel";
 const Schema = mongoose.Schema;
 
+const titleschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+  ge: {
+    type: String,
+    required: true,
+  },
+  ku: {
+    type: String,
+    required: true,
+  },
+});
+const descschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+  ge: {
+    type: String,
+    required: true,
+  },
+  ku: {
+    type: String,
+    required: true,
+  },
+});
+const teacherschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+  ge: {
+    type: String,
+    required: true,
+  },
+  ku: {
+    type: String,
+    required: true,
+  },
+});
+const suportschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+  ge: {
+    type: String,
+    required: true,
+  },
+  ku: {
+    type: String,
+    required: true,
+  },
+});
+const viewtypeschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+  ge: {
+    type: String,
+    required: true,
+  },
+  ku: {
+    type: String,
+    required: true,
+  },
+});
+
 const courseSchema = new Schema(
   {
     title: {
-      type: String,
+      type: { titleschema },
       required: true,
     },
     image: {
@@ -15,7 +106,7 @@ const courseSchema = new Schema(
       required: true,
     },
     desc: {
-      type: String,
+      type: { descschema },
       required: true,
     },
     category: {
@@ -23,7 +114,7 @@ const courseSchema = new Schema(
       required: true,
     },
     teacher: {
-      type: String,
+      type: { teacherschema },
       required: true,
     },
     price: {
@@ -31,7 +122,7 @@ const courseSchema = new Schema(
       required: true,
     },
     suport: {
-      type: String,
+      type: { suportschema },
       required: true,
     },
     time: {
@@ -40,7 +131,7 @@ const courseSchema = new Schema(
     },
 
     viewtype: {
-      type: String,
+      type: { viewtypeschema },
       required: true,
     },
     student: {
