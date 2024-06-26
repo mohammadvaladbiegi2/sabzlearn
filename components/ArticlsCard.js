@@ -40,15 +40,36 @@ export default function ArticlsCard({
       </div>
 
       <div className="p-3">
-        <h3 className="line-clamp-1  text-lg">{title}</h3>
+        <h3 className="line-clamp-1  text-lg">
+          {" "}
+          {state.lan === "fa"
+            ? title?.fa
+            : state.lan === "en"
+            ? title?.en
+            : state.lan === "ku"
+            ? title?.ku
+            : title?.ge}
+        </h3>
         <p className="text_articls_card text-justify line-clamp-4 opacity-70 my-4">
-          {desc}
+          {state.lan === "fa"
+            ? desc?.fa
+            : state.lan === "en"
+            ? desc?.en
+            : state.lan === "ku"
+            ? desc?.ku
+            : desc?.ge}
         </p>
         <div className=" flex justify-between items-center opacity-70 text-sm p-4 border-b border-b-white/10">
           <div className="flex items-center gap-x-0.5">
             <LuUsers className=" opacity-70 text-xl" />
             <a href="#" className="mt-1">
-              {writer}
+              {state.lan === "fa"
+                ? writer?.fa
+                : state.lan === "en"
+                ? writer?.en
+                : state.lan === "ku"
+                ? writer?.ku
+                : writer?.ge}
             </a>
           </div>
           <div className="flex items-center gap-x-0.5">
