@@ -1,7 +1,12 @@
 import React from "react";
-import { IoCodeSlash } from "react-icons/io5";
 
-export default function Waybox({ gradientfrom, gradientto, title, number }) {
+export default function Waybox({
+  gradientfrom,
+  gradientto,
+  title,
+  number,
+  icon,
+}) {
   return (
     <div
       className={`py-5 text-white  overflow-hidden rounded-2xl flex justify-center items-center`}
@@ -10,9 +15,9 @@ export default function Waybox({ gradientfrom, gradientto, title, number }) {
       }}
     >
       <div className="flex flex-col justify-center items-center ">
-        <IoCodeSlash className="text-[30px]" />
+        {icon}
         <h5 className="text-[22px] lg:text-[25px] font-bold">{title}</h5>
-        <span className="text-[14px] lg:text-[16px]">دوره {number}</span>
+        <span className="text-[14px] lg:text-[16px]"> {number}</span>
       </div>
     </div>
   );

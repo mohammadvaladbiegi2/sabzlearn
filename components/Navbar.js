@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
@@ -17,36 +17,14 @@ import { useRouter } from "next/router";
 import { useGlobalState } from "@/context/GlobalState";
 import { FaMoon } from "react-icons/fa";
 
-export default function navbar() {
+export default function navbar({ islogin, username }) {
   let route = useRouter();
   const [showsidebar, setshowsidebar] = useState(false);
-  const [userToken, setUserToken] = useState("");
   const [searchtext, setSearchtext] = useState("");
-  let [islogin, setislogin] = useState(false);
   let [showbox, setshowbox] = useState(false);
   let [showboxlanguage, setshowboxlanguage] = useState(false);
-  const { state, dispatch } = useGlobalState();
-  const getuser = async (cookies) => {
-    let res = await fetch("http://localhost:3000/api/auth/me", {
-      headers: {
-        Authorization: `Bearer ${cookies}`,
-      },
-    });
+  const { state, dispatch, lan } = useGlobalState();
 
-    if (res.status === 200) {
-      setislogin(true);
-    }
-  };
-  useEffect(() => {
-    const token = document.cookie /// get cookie
-      .split("; ")
-      .find((row) => row.startsWith("token="));
-    if (token) {
-      setUserToken(token.split("=")[1]);
-    }
-
-    getuser(userToken);
-  }, []);
   return (
     <nav
       className={`px-3 md:px-8 py-6 ${
@@ -75,7 +53,7 @@ export default function navbar() {
                 href="/searchcours/frontend"
                 className=" group-hover:text-green-500  transition-colors   text-lg"
               >
-                فرانت‌اند
+                {state.lan === "fa" ? "فراند اند" : "front end"}
               </Link>
               <IoIosArrowDown className="   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
@@ -90,31 +68,61 @@ export default function navbar() {
                     href="/coursdetails/6640c9a2eb3e5323a79b0d89"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    توسعه کتابخانه با جاوااسکریپت
+                    {state.lan === "fa"
+                      ? "توسعه کتابخانه با جاوااسکریپت"
+                      : state.lan === "en"
+                      ? "Library development with JavaScript"
+                      : state.lan === "ku"
+                      ? "Pêşveçûna pirtûkxaneyê bi JavaScript"
+                      : "Bibliotheksentwicklung mit JavaScript"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e375eb3e5323a79b0d9d"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش جامع Tailwind css{" "}
+                    {state.lan === "fa"
+                      ? "آموزش جامع Tailwind css"
+                      : state.lan === "en"
+                      ? "Comprehensive training and project-oriented Tailwind css"
+                      : state.lan === "ku"
+                      ? "Perwerdehiya berfereh û Tailwind css-ya projeyî"
+                      : "Umfassende Schulung und projektorientiertes Tailwind-CSS"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e406eb3e5323a79b0d9f"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش کاربردی Typescript{" "}
+                    {state.lan === "fa"
+                      ? "آموزش کاربردی Typescript"
+                      : state.lan === "en"
+                      ? "Project-oriented Typescript practical training"
+                      : state.lan === "ku"
+                      ? "Perwerdehiya pratîkî ya Typescript-ya Projeyê"
+                      : "Projektorientierte Typescript-Praxisausbildung"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e46feb3e5323a79b0da1"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش PWA{" "}
+                    {state.lan === "fa"
+                      ? "آموزش PWA"
+                      : state.lan === "en"
+                      ? "Project-oriented PWA training"
+                      : state.lan === "ku"
+                      ? "Perwerdehiya PWA-ya projeyî"
+                      : "Projektorientiertes PWA-Training"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e4d1eb3e5323a79b0da3"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش Next.js{" "}
+                    {state.lan === "fa"
+                      ? "آموزش Next.js"
+                      : state.lan === "en"
+                      ? "Next.js project-oriented training"
+                      : state.lan === "ku"
+                      ? "Next.js perwerdeya proje-oriented"
+                      : "Next.js projektorientierte Schulung"}
                   </Link>
                 </div>
               </div>
@@ -124,7 +132,7 @@ export default function navbar() {
                 href="/searchcours/security"
                 className=" group-hover:text-green-500  transition-colors   text-lg"
               >
-                امنیت
+                {state.lan === "fa" ? "امنیت" : "security"}
               </Link>
               <IoIosArrowDown className="   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
@@ -139,13 +147,25 @@ export default function navbar() {
                     href="/coursdetails/6640e5b3eb3e5323a79b0da7"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    دوره هکرقانونمند{" "}
+                    {state.lan === "fa"
+                      ? "دوره هکرقانونمند"
+                      : state.lan === "en"
+                      ? "Lawful hacker course"
+                      : state.lan === "ku"
+                      ? "Kurs für rechtmäßige Hacker"
+                      : "Kursa hacker ya zagonî"}
                   </Link>
                   <Link
                     href="/coursdetails/664103f0eb3e5323a79b0da9"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    اموزش لینوکس با گرایش امنیت{" "}
+                    {state.lan === "fa"
+                      ? "اموزش لینوکس با گرایش امنیت"
+                      : state.lan === "en"
+                      ? "Linux training with a focus on security"
+                      : state.lan === "ku"
+                      ? "Perwerdehiya Linux bi baldarî li ser ewlehiyê"
+                      : "Linux-Schulung mit Schwerpunkt Sicherheit"}
                   </Link>
                 </div>
               </div>
@@ -155,7 +175,7 @@ export default function navbar() {
                 href="/searchcours/python"
                 className=" group-hover:text-green-500  transition-colors   text-lg"
               >
-                پایتون
+                {state.lan === "fa" ? "پایتون" : "python"}
               </Link>
               <IoIosArrowDown className="   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
@@ -170,19 +190,37 @@ export default function navbar() {
                     href="/coursdetails/6640ca95eb3e5323a79b0d8b"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش جنگو{" "}
+                    {state.lan === "fa"
+                      ? "آموزش جنگو"
+                      : state.lan === "en"
+                      ? "Project-based Django training"
+                      : state.lan === "ku"
+                      ? "Perwerdehiya Django ya li ser projeyê"
+                      : "Projektbasiertes Django-Training"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e160eb3e5323a79b0d95"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    بهینه نویسی کد ها در پایتون{" "}
+                    {state.lan === "fa"
+                      ? "بهینه نویسی کد ها در پایتون"
+                      : state.lan === "en"
+                      ? "Code optimization in Python"
+                      : state.lan === "ku"
+                      ? "Optimîzasyona kodê di Python de"
+                      : "Codeoptimierung in Python"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e1cbeb3e5323a79b0d97"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    Data Visualization با پایتون{" "}
+                    {state.lan === "fa"
+                      ? "Data Visualization با پایتون"
+                      : state.lan === "en"
+                      ? "Data Visualization with Python"
+                      : state.lan === "ku"
+                      ? "Dîtina daneyan bi Python"
+                      : "Datenvisualisierung mit Python"}
                   </Link>
                 </div>
               </div>
@@ -192,7 +230,7 @@ export default function navbar() {
                 href="/searchcours/php"
                 className=" group-hover:text-green-500  transition-colors   text-lg"
               >
-                پی‌اچ‌پی
+                {state.lan === "fa" ? "پی‌اچ‌پی" : "PHP"}
               </Link>
               <IoIosArrowDown className="   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
@@ -207,19 +245,37 @@ export default function navbar() {
                     href="/coursdetails/6640cb2deb3e5323a79b0d8d"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش جامع api نویسی با PHP{" "}
+                    {state.lan === "fa"
+                      ? "آموزش جامع api نویسی با PHP"
+                      : state.lan === "en"
+                      ? "Comprehensive api writing training with PHP"
+                      : state.lan === "ku"
+                      ? "Bi PHP re perwerdehiya nivîsandina api ya berfireh"
+                      : "Umfassendes API-Schreibtraining mit PHP"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e24feb3e5323a79b0d99"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    وب سوکت در لاراول با Reverb{" "}
+                    {state.lan === "fa"
+                      ? "وب سوکت در لاراول با Reverb"
+                      : state.lan === "en"
+                      ? "WebSocket in Laravel with Reverb"
+                      : state.lan === "ku"
+                      ? "WebSocket li Laravel bi Reverb"
+                      : "WebSocket in Laravel mit Reverb"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e2b5eb3e5323a79b0d9b"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش ساخت ربات تلگرام با PHP{" "}
+                    {state.lan === "fa"
+                      ? "آموزش ساخت ربات تلگرام با PHP"
+                      : state.lan === "en"
+                      ? "How to build a Telegram bot with PHP"
+                      : state.lan === "ku"
+                      ? "Meriv çawa bi PHP-ê botek Telegram ava dike"
+                      : "So erstellen Sie einen Telegram-Bot mit PHP"}
                   </Link>
                 </div>
               </div>
@@ -229,7 +285,7 @@ export default function navbar() {
                 href="/searchcours/SkillUpgrade"
                 className=" group-hover:text-green-500  transition-colors   text-lg"
               >
-                ارتقا مهارت
+                {state.lan === "fa" ? "ارتقا مهارت" : "Skill upgrade"}
               </Link>
               <IoIosArrowDown className="   group-hover:text-green-500 transition-colors " />
               <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute right-0 top-full pt-7 transition-all z-10">
@@ -244,19 +300,37 @@ export default function navbar() {
                     href="/coursdetails/6640cc7eeb3e5323a79b0d8f"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش Docker از صفر مطلق!
+                    {state.lan === "fa"
+                      ? "آموزش Docker از صفر مطلق!"
+                      : state.lan === "en"
+                      ? "Learning Docker from Absolute Zero!"
+                      : state.lan === "ku"
+                      ? "Docker ji bê guman ji sifir fêr bibin!"
+                      : "Lernen Docker von absolut Null an!"}
                   </Link>
                   <Link
                     href="/coursdetails/6640ccfdeb3e5323a79b0d91"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش جامع پروژه محور GraphQL
+                    {state.lan === "fa"
+                      ? "آموزش جامع پروژه محور GraphQL"
+                      : state.lan === "en"
+                      ? "Comprehensive Project-Based GraphQL Course"
+                      : state.lan === "ku"
+                      ? "Kursa GraphQL-ya bingehîn a berfireh"
+                      : "Umfassender projektbasierter GraphQL-Kurs"}
                   </Link>
                   <Link
                     href="/coursdetails/6640e0caeb3e5323a79b0d93"
                     className="  hover:text-green-500 transition-colors"
                   >
-                    آموزش git و github
+                    {state.lan === "fa"
+                      ? " آموزش git و github"
+                      : state.lan === "en"
+                      ? "Git and GitHub Tutorial"
+                      : state.lan === "ku"
+                      ? "Git û GitHub Tutorial"
+                      : "Git and GitHub Tutorial"}
                   </Link>
                 </div>
               </div>
@@ -276,7 +350,15 @@ export default function navbar() {
             <input
               type="text"
               className="input_navBar text-slate-300   "
-              placeholder="چی مخوای یادبگیری؟"
+              placeholder={
+                state.lan === "fa"
+                  ? "چی مخوای یادبگیری؟"
+                  : state.lan === "en"
+                  ? "What do you want to learn?"
+                  : state.lan === "ku"
+                  ? "Tu dixwazî ​​çi hîn bibî?"
+                  : "Was möchtest du lernen?"
+              }
               value={searchtext}
               onChange={(e) => setSearchtext(e.target.value)}
             />
@@ -346,11 +428,15 @@ export default function navbar() {
                       />
                     </a>
                     <div className="mr-3.5 flex flex-col gap-y-3 overflow-hidden">
-                      <span className=" inline-block truncate">
-                        mohammad valadbiegi
-                      </span>
+                      <span className=" inline-block truncate">{username}</span>
                       <span className="text-sm  text-green-500 inline-block">
-                        موجودی: 0 تومان
+                        {state.lan === "fa"
+                          ? "موجودی: 0 تومان"
+                          : state.lan === "en"
+                          ? "Balance: 0 $"
+                          : state.lan === "ku"
+                          ? "Bîlanço: 0 $"
+                          : "Balance: 0 $"}
                       </span>
                     </div>
                   </div>
@@ -360,7 +446,7 @@ export default function navbar() {
                   >
                     <span className="flex items-center gap-x-2">
                       <AiOutlineHome className=" w-6 h-6 " />
-                      پیشخوان{" "}
+                      {state.lan === "fa" ? "پیشخوان" : "Dashboard"}
                     </span>
                   </Link>
                   <Link
@@ -369,7 +455,13 @@ export default function navbar() {
                   >
                     <span className="flex items-center gap-x-2">
                       <IoFolderOpenOutline className=" w-6 h-6 " />
-                      دوره های من{" "}
+                      {state.lan === "fa"
+                        ? "دوره های من"
+                        : state.lan === "en"
+                        ? "My Courses"
+                        : state.lan === "ku"
+                        ? "Kursên min"
+                        : "Meine Kurse"}
                     </span>
                   </Link>
                   <Link
@@ -378,7 +470,7 @@ export default function navbar() {
                   >
                     <span className="flex items-center gap-x-2">
                       <HiOutlineChatBubbleLeftRight className=" w-6 h-6 " />
-                      تیکت ها{" "}
+                      {state.lan === "fa" ? "تیکت ها" : "Tickets"}
                     </span>
                   </Link>
                   <Link
@@ -387,7 +479,13 @@ export default function navbar() {
                   >
                     <span className="flex items-center gap-x-2">
                       <FaRegUser className=" w-6 h-6 " />
-                      جزئیات حساب{" "}
+                      {state.lan === "fa"
+                        ? "جزئیات حساب"
+                        : state.lan === "en"
+                        ? "Account Details"
+                        : state.lan === "ku"
+                        ? "Agahiyên hesabê"
+                        : "Kontodetails"}
                     </span>
                   </Link>
                 </div>
@@ -398,7 +496,13 @@ export default function navbar() {
               <button className="text-white font-bold flex items-center justify-center py-3 px-5 gap-2 rounded-full bg_button_navbar hover:opacity-90 cursor-pointer">
                 {" "}
                 <FaRegUser className="text-white   text-[23px] mt-1" />
-                ورود | عضویت
+                {state.lan === "fa"
+                  ? " ورود | عضویت"
+                  : state.lan === "en"
+                  ? "Login | Sign Up"
+                  : state.lan === "ku"
+                  ? "Têkeve | ji bo qeydkirinê"
+                  : "Anmelden | Registrieren"}
               </button>
             </Link>
           )}
@@ -574,11 +678,15 @@ export default function navbar() {
                       />
                     </a>
                     <div className="mr-3.5 flex flex-col gap-y-3 overflow-hidden">
-                      <span className=" inline-block truncate">
-                        mohammad valadbiegi
-                      </span>
+                      <span className=" inline-block truncate">{username}</span>
                       <span className="text-sm  text-green-500 inline-block">
-                        موجودی: 0 تومان
+                        {state.lan === "fa"
+                          ? "موجودی: 0 تومان"
+                          : state.lan === "en"
+                          ? "Balance: 0 $"
+                          : state.lan === "ku"
+                          ? "Bîlanço: 0 $"
+                          : "Balance: 0 $"}
                       </span>
                     </div>
                   </div>
@@ -588,7 +696,7 @@ export default function navbar() {
                   >
                     <span className="flex items-center gap-x-2">
                       <AiOutlineHome className=" w-6 h-6 " />
-                      پیشخوان{" "}
+                      {state.lan === "fa" ? "پیشخوان" : "Dashboard"}
                     </span>
                   </Link>
                   <Link
@@ -597,7 +705,13 @@ export default function navbar() {
                   >
                     <span className="flex items-center gap-x-2">
                       <IoFolderOpenOutline className=" w-6 h-6 " />
-                      دوره های من{" "}
+                      {state.lan === "fa"
+                        ? "دوره های من"
+                        : state.lan === "en"
+                        ? "My Courses"
+                        : state.lan === "ku"
+                        ? "Kursên min"
+                        : "Meine Kurse"}
                     </span>
                   </Link>
                   <Link
@@ -606,7 +720,7 @@ export default function navbar() {
                   >
                     <span className="flex items-center gap-x-2">
                       <HiOutlineChatBubbleLeftRight className=" w-6 h-6 " />
-                      تیکت ها{" "}
+                      {state.lan === "fa" ? "تیکت ها" : "Tickets"}
                     </span>
                   </Link>
                   <Link
@@ -615,7 +729,13 @@ export default function navbar() {
                   >
                     <span className="flex items-center gap-x-2">
                       <FaRegUser className=" w-6 h-6 " />
-                      جزئیات حساب{" "}
+                      {state.lan === "fa"
+                        ? "جزئیات حساب"
+                        : state.lan === "en"
+                        ? "Account Details"
+                        : state.lan === "ku"
+                        ? "Agahiyên hesabê"
+                        : "Kontodetails"}
                     </span>
                   </Link>
                 </div>
@@ -745,4 +865,16 @@ export default function navbar() {
       {<Sidebar showsidebar={showsidebar} setshowsidebar={setshowsidebar} />}
     </nav>
   );
+}
+
+export async function getServerSideProps(context) {
+  console.log();
+  let islogin = true;
+  const { token } = context.req.cookies;
+
+  if (!token) {
+    islogin = false;
+  }
+
+  return { props: { islogin } };
 }
