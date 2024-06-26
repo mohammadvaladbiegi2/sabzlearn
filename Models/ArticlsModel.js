@@ -1,6 +1,53 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const titleschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+  ge: {
+    type: String,
+    required: true,
+  },
+  ku: {
+    type: String,
+    required: true,
+  },
+});
+const writerschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+});
+const descschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+  ge: {
+    type: String,
+    required: true,
+  },
+  ku: {
+    type: String,
+    required: true,
+  },
+});
+
 const articleSchema = new Schema(
   {
     img: {
@@ -8,15 +55,15 @@ const articleSchema = new Schema(
       required: true,
     },
     desc: {
-      type: String,
+      type: { descschema },
       required: true,
     },
     writer: {
-      type: String,
+      type: { writerschema },
       required: true,
     },
     title: {
-      type: String,
+      type: { titleschema },
       required: true,
     },
   },
