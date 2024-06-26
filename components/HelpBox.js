@@ -1,9 +1,16 @@
+import { useGlobalState } from "@/context/GlobalState";
 import Image from "next/image";
 import React from "react";
 
 export default function HelpBox({ img, title, desc }) {
+  const { state } = useGlobalState();
+
   return (
-    <div className="bg-dark rounded-2xl flex flex-col md:flex-row items-center gap-3 w-[660px] p-6 m-3">
+    <div
+      className={`${
+        state.them === "dark" ? "bg-dark text-white" : "bg-white text-black"
+      } rounded-2xl flex flex-col md:flex-row items-center gap-3 w-[660px] p-6 m-3`}
+    >
       <Image
         src={`/image/${img}`}
         height={100}
@@ -12,10 +19,10 @@ export default function HelpBox({ img, title, desc }) {
         quality={100}
       />
       <div>
-        <h4 className="text-white font-bold text-[18px] mb-2 text-center md:text-start">
+        <h4 className=" font-bold text-[18px] mb-2 text-center md:text-start">
           {title}
         </h4>
-        <span className="text-white opacity-70 text-[16px] text-center md:text-start">
+        <span className=" opacity-70 text-[16px] text-center md:text-start">
           {desc}
         </span>
       </div>

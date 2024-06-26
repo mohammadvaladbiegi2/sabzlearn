@@ -2,31 +2,53 @@ import connectToDB from "@/DB/DataBase";
 import { User } from "@/Models/UsersModel";
 import HeaderAccontDetails from "@/components/HeaderAccontDetails";
 import Sidebaruserdeatails from "@/components/Sidebaruserdeatails";
+import { useGlobalState } from "@/context/GlobalState";
 import { verify } from "jsonwebtoken";
 import moment from "moment-jalaali";
 import React, { useState } from "react";
 
 export default function Mainticket({ MainUser, ticket }) {
   const [showsidebar, setshowsidebar] = useState(false);
+  const { state } = useGlobalState();
 
   return (
-    <div className=" flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 ">
+    <div
+      className={`${
+        state.them === "dark" ? "bg_black_100" : "bg-white"
+      } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+    >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
         setshowsidebar={setshowsidebar}
       />
-      <section className="bg-dark px-5 rounded-2xl w-full max-w-[1432px] mx-auto bg-dark md:p-10 lg:rounded-4xl">
+      <section
+        className={`${
+          state.them === "dark"
+            ? "bg-dark text-white"
+            : "bg-gray-100 text-black"
+        } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+      >
         <HeaderAccontDetails
           username={MainUser?.username}
           setshowsidebar={setshowsidebar}
         />
 
-        <div className="bg_black_100 my-6  p-3.5 md:p-4.5 rounded-2xl">
+        <div
+          className={`${
+            state.them === "dark"
+              ? "bg_black_100 text-white"
+              : "bg-white text-black"
+          } my-6  p-3 md:p-4 rounded-2xl`}
+        >
           <div className="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-700">
-            <span className=" md:text-xl text-white">{ticket?.title}</span>
+            <span className=" md:text-xl ">{ticket?.title}</span>
           </div>
           <div className="space-y-4">
-            <div className="w-11/12 sm:w-2/3 bg-gray-700 text-white mb-12 p-4 rounded-2xl rounded-tr-sm">
+            <div
+              className={`w-11/12 sm:w-2/3 ${
+                state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+              }  mb-12 p-4 rounded-2xl rounded-tr-sm`}
+            >
               <h4 className="font-danaMedium text-xl mb-1 text-right">
                 {MainUser?.username}
               </h4>
@@ -45,7 +67,7 @@ export default function Mainticket({ MainUser, ticket }) {
               <p className=" mt-4.5">{ticket?.text}</p>
             </div>
 
-            <div className="w-11/12 sm:w-2/3 bg-sky-800 mr-auto text-center  text-white p-4 rounded-2xl rounded-tl-sm">
+            <div className="w-11/12 sm:w-2/3 bg-sky-800 mr-auto text-center text-white  p-4 rounded-2xl rounded-tl-sm">
               <p className=" mt-4.5"></p>
 
               <p>در انتظار پاسخ</p>

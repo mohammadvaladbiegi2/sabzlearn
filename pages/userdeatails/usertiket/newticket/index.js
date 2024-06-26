@@ -8,9 +8,12 @@ import connectToDB from "@/DB/DataBase";
 import { User } from "@/Models/UsersModel";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { useGlobalState } from "@/context/GlobalState";
 
 export default function NewTickts({ MainUser }) {
   let rout = useRouter();
+  const { state } = useGlobalState();
+
   const [showsidebar, setshowsidebar] = useState(false);
   const [ticket, setticket] = useState({
     title: "",
@@ -46,29 +49,44 @@ export default function NewTickts({ MainUser }) {
     }
   };
   return (
-    <div className=" flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 ">
+    <div
+      className={`${
+        state.them === "dark" ? "bg_black_100" : "bg-white"
+      } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+    >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
         setshowsidebar={setshowsidebar}
       />
-      <section className="bg-dark px-5 rounded-2xl w-full max-w-[1432px] mx-auto bg-dark md:p-10 lg:rounded-4xl">
+      <section
+        className={`${
+          state.them === "dark"
+            ? "bg-dark text-white"
+            : "bg-gray-100 text-black"
+        } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+      >
         <HeaderAccontDetails
           username={MainUser.username}
           setshowsidebar={setshowsidebar}
         />
 
-        <div className="bg_black_100 my-6  p-3.5 md:p-4.5 rounded-2xl">
+        <div
+          className={`${
+            state.them === "dark"
+              ? "bg_black_100 text-white"
+              : "bg-white text-black"
+          } my-6  p-3.5 md:p-4.5 rounded-2xl`}
+        >
           <div className="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-700">
-            <span className=" md:text-xl text-white">ارسال تیکت</span>
+            <span className=" md:text-xl ">ارسال تیکت</span>
           </div>
           <form onSubmit={sendTicket}>
             <div>
-              <label htmlFor="department" className=" text-white">
-                دپارتمان
-              </label>
+              <label htmlFor="department">دپارتمان</label>
               <select
-                required=""
-                className="mt-3.5 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight text-white bg-gray-700 rounded-xl border border-transparent focus:border-slate placeholder:text-gray-500 transition-all"
+                className={`mt-3 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${
+                  state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+                } rounded-xl   placeholder:text-gray-500 transition-all`}
                 onChange={(e) =>
                   setticket((prev) => {
                     return { ...prev, department: e.target.value };
@@ -83,15 +101,16 @@ export default function NewTickts({ MainUser }) {
               </select>
             </div>
             <div className="mt-6">
-              <label htmlFor="title" className=" text-white">
+              <label htmlFor="title" className=" ">
                 موضوع تیکت
               </label>
               <input
                 type="text"
-                className="mt-3.5 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight text-white bg-gray-700 rounded-xl border border-transparent focus:border-slate placeholder:text-gray-500 transition-all"
+                className={`mt-3 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${
+                  state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+                } rounded-xl border border-transparent focus:border-slate placeholder:text-gray-500 transition-all`}
                 id="title"
                 name="title"
-                required=""
                 placeholder="موضوع تیکت خود را وارد کنید"
                 onChange={(e) =>
                   setticket((prev) => {
@@ -101,15 +120,16 @@ export default function NewTickts({ MainUser }) {
               />
             </div>
             <div className="mt-6">
-              <label htmlFor="text" className=" text-white">
+              <label htmlFor="text" className=" ">
                 متن تیکت
               </label>
               <textarea
                 rows="8"
-                className="mt-3.5 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight text-white bg-gray-700 rounded-xl border border-transparent focus:border-slateplaceholder:text-gray-500 transition-all"
+                className={`mt-3.5 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${
+                  state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+                } rounded-xl border border-transparent focus:border-slateplaceholder:text-gray-500 transition-all`}
                 id="text"
                 name="text"
-                required=""
                 placeholder="متن تیکت خود را وارد کنید"
                 onChange={(e) =>
                   setticket((prev) => {
@@ -121,7 +141,7 @@ export default function NewTickts({ MainUser }) {
             <div className="flex justify-between gap-5 flex-wrap mt-6">
               <div className="flex gap-x-3 mr-auto">
                 <button
-                  className="bg-green-500 text-white py-3 px-4 hover:opacity-90 rounded-xl"
+                  className="bg-green-500  py-3 px-4 hover:opacity-90 rounded-xl"
                   type="submit"
                 >
                   ارسال

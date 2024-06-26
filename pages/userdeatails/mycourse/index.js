@@ -10,16 +10,29 @@ import { verify } from "jsonwebtoken";
 import connectToDB from "@/DB/DataBase";
 import { User } from "@/Models/UsersModel";
 import Notfound from "@/components/Notfound";
+import { useGlobalState } from "@/context/GlobalState";
 
 export default function Mycourse({ MainUser }) {
   const [showsidebar, setshowsidebar] = useState(false);
+  const { state } = useGlobalState();
+
   return (
-    <div className=" flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 ">
+    <div
+      className={`${
+        state.them === "dark" ? "bg_black_100" : "bg-white"
+      } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+    >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
         setshowsidebar={setshowsidebar}
       />
-      <section className="bg-dark px-5 rounded-2xl w-full max-w-[1432px] mx-auto bg-dark md:p-10 lg:rounded-4xl">
+      <section
+        className={`${
+          state.them === "dark"
+            ? "bg-dark text-white"
+            : "bg-gray-100 text-black"
+        } px-5 rounded-2xl w-full max-w-[1432px] mx-auto md:p-10 lg:rounded-4xl`}
+      >
         <HeaderAccontDetails
           username={MainUser?.username}
           setshowsidebar={setshowsidebar}

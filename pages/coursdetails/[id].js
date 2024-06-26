@@ -483,7 +483,7 @@ export default function DetailsCours({ course, user, isbuycourse, islogin }) {
                     >
                       <button className="text-white font-bold flex items-center justify-center py-3 px-5 gap-2 rounded-full bg_button_navbar hover:opacity-90 cursor-pointer">
                         {" "}
-                        <FaRegUser className="text-white font-medium text-[23px] mt-1" />
+                        <FaRegUser className="text-white   text-[23px] mt-1" />
                         ورود | عضویت
                       </button>
                     </Link>

@@ -1,3 +1,4 @@
+import { useGlobalState } from "@/context/GlobalState";
 import Link from "next/link";
 import React from "react";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -15,10 +16,16 @@ export default function TitleCourseIntroduction({
   leftClick,
   rightClick,
 }) {
+  const { state } = useGlobalState();
+
   return (
     <div className="flex  md:flex-row flex-col gap-6  items-center md:justify-between px-12 my-20">
       <div>
-        <h3 className="text-white text-center md:text-start text-2xl sm:text-2.5xl font-medium mb-5">
+        <h3
+          className={`${
+            state.them === "dark" ? "text-white" : "text-black"
+          } text-center md:text-start text-2xl sm:text-2.5xl   mb-5`}
+        >
           <span
             className={`hidden sm:inline-block w-4 h-4 ${pointcolor}  rounded-sm me-4`}
           ></span>
@@ -32,7 +39,7 @@ export default function TitleCourseIntroduction({
       {showlink && (
         <div className="flex group hover:bg-green-500 items-center gap-4 transition p-4 rounded-full justify-center">
           <Link
-            className="text-green-500 group-hover:text-white text-[16px] font-medium"
+            className="text-green-500 group-hover:text-white text-[16px]  "
             href={link}
           >
             {linktitle}
