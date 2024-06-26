@@ -8,7 +8,7 @@ import { useGlobalState } from "@/context/GlobalState";
 import { FaMoon } from "react-icons/fa";
 import { useRouter } from "next/router";
 export default function Sidebar({ setshowsidebar, showsidebar }) {
-  const { state, dispatch } = useGlobalState();
+  const { state, dispatch, lan } = useGlobalState();
   const [searchtext, setSearchtext] = useState("");
   let route = useRouter();
 
@@ -76,7 +76,15 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
         <input
           type="text"
           className="input_navBar text-slate-300 text-sm  "
-          placeholder="چی مخوای یادبگیری؟"
+          placeholder={
+            state.lan === "fa"
+              ? "چی مخوای یادبگیری؟"
+              : state.lan === "en"
+              ? "What do you want to learn?"
+              : state.lan === "ku"
+              ? "Tu dixwazî ​​çi hîn bibî?"
+              : "Was möchtest du lernen?"
+          }
           value={searchtext}
           onChange={(e) => setSearchtext(e.target.value)}
         />
@@ -94,7 +102,7 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
             href="/searchcours/frontend"
             className="text-[18px] group-hover:text-green-500 transition-colors cursor-pointer flex items-center justify-between"
           >
-            فرانت اند{" "}
+            {state.lan === "fa" ? "فراند اند" : "front end"}
             <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
@@ -103,7 +111,7 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
             href="/searchcours/security"
             className="group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
           >
-            امنیت{" "}
+            {state.lan === "fa" ? "امنیت" : "security"}
             <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
@@ -112,7 +120,7 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
             href="/searchcours/python"
             className="group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
           >
-            پایتون{" "}
+            {state.lan === "fa" ? "پایتون" : "python"}
             <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
@@ -121,7 +129,7 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
             href="/searchcours/php"
             className="group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
           >
-            پی‌اچ‌پی{" "}
+            {state.lan === "fa" ? "پی‌اچ‌پی" : "PHP"}
             <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
@@ -130,7 +138,7 @@ export default function Sidebar({ setshowsidebar, showsidebar }) {
             href="/searchcours/SkillUpgrade"
             className="group-hover:text-green-500 text-[18px] transition-colors cursor-pointer flex items-center justify-between "
           >
-            ارتقامهارت{" "}
+            {state.lan === "fa" ? "ارتقا مهارت" : "Skill upgrade"}
             <FaAngleLeft className="h-4 w-4 group-hover:text-green-500 transition-colors cursor-pointer" />
           </Link>
         </li>
