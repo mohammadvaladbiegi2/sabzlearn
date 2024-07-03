@@ -29,10 +29,13 @@ import connectToDB from "@/DB/DataBase";
 import { verify } from "jsonwebtoken";
 import { User } from "@/Models/UsersModel";
 import { toast } from "react-toastify";
+import { useGlobalState } from "@/context/GlobalState";
 
 export default function DetailsCours({ course, user, isbuycourse, islogin }) {
   const [showmoredesc, setshowmoredesc] = useState(false);
   const [commentText, setcommentText] = useState("");
+  const { state, them } = useGlobalState();
+
   /// Add Course To user Panel
   const addCourseToPanel = async ([courseid, title, image, user]) => {
     if (isbuycourse) {
@@ -91,16 +94,32 @@ export default function DetailsCours({ course, user, isbuycourse, islogin }) {
   return (
     <>
       <Navbar />
-      <main className="max-w-[1920px] mx-auto overflow-x-hidden mt-8 sm:mt-10">
+      <main
+        className={`${
+          state.them === "dark" ? "bg_black_100" : "bg_white_100"
+        } max-w-[1920px] mx-auto overflow-x-hidden pb-8`}
+      >
         <div className="px-6 md:px-14">
           <section className="p-3 grid grid-cols-1 lg:grid-cols-2 gap-y-4.5 gap-x-6 sm:gap-x-7 lg:items-center xl:items-stretch mt-8 sm:mt-10 rounded-2xl p-4.5 lg:p-0 bg-dark lg:!bg-transparent  ">
             <div className="flex flex-col justify-between order-2 lg:order-1">
               <div id="up">
                 <h1 className="text-white my-4  text-[1.375rem]/8 sm:text-[1.625rem]/10 mb-4.5">
-                  {course.MainCourse?.title}
+                  {state.lan === "fa"
+                    ? course.MainCourse?.title.fa
+                    : state.lan === "en"
+                    ? course.MainCourse?.title.en
+                    : state.lan === "ku"
+                    ? course.MainCourse?.title.ku
+                    : course.MainCourse?.title.ge}
                 </h1>
                 <p className="text-white my-2 sm:text-lg line-clamp-4 sm:line-clamp-3">
-                  {course.MainCourse?.desc}
+                  {state.lan === "fa"
+                    ? course.MainCourse?.desc.fa
+                    : state.lan === "en"
+                    ? course.MainCourse?.desc.en
+                    : state.lan === "ku"
+                    ? course.MainCourse?.desc.ku
+                    : course.MainCourse?.desc.ge}
                 </p>
               </div>
               {isbuycourse ? (
@@ -110,14 +129,26 @@ export default function DetailsCours({ course, user, isbuycourse, islogin }) {
                       <LuUsers className="w-7 md:w-11 h-7 md:h-11 text-green-500" />
 
                       <p className="text-white text-sm md:text-lg">
-                        شما دانشجوی دوره هستید
+                        {state.lan === "fa"
+                          ? "شما دانشجوی دوره هستید"
+                          : state.lan === "en"
+                          ? "You are a course student"
+                          : state.lan === "ku"
+                          ? " Tu xwendekarek kursê yî"
+                          : "Sie sind Kursteilnehmer"}
                       </p>
                     </div>
                     <a
                       href="#lesson"
                       className="bg-green-500 p-3 md:p-5 text-white text-center rounded-full lg:w-56"
                     >
-                      مشاهده دوره
+                      {state.lan === "fa"
+                        ? "مشاهده دوره"
+                        : state.lan === "en"
+                        ? "View course"
+                        : state.lan === "ku"
+                        ? " Dîtina kursê"
+                        : "Kurs ansehen"}
                     </a>
                   </div>
                 </div>
@@ -134,16 +165,34 @@ export default function DetailsCours({ course, user, isbuycourse, islogin }) {
                             user._id,
                           ]);
                         } else {
-                          toast.error("ابتدا عضو شوید");
+                          {
+                            state.lan === "fa"
+                              ? toast.error("ابتدا عضو شوید")
+                              : state.lan === "en"
+                              ? toast.error("First, sign up")
+                              : state.lan === "ku"
+                              ? toast.error("Yekem, qeydkirin")
+                              : toast.error("Zuerst registrieren");
+                          }
                         }
                       }}
                       className="bg-green-500 cursor-pointer  p-3 md:p-4 text-white text-center rounded-full lg:w-56"
                     >
-                      افزودن دوره به پنل
+                      {state.lan === "fa"
+                        ? "افزودن دوره به پنل"
+                        : state.lan === "en"
+                        ? "Add course to panel"
+                        : state.lan === "ku"
+                        ? "Kursê bi panelê zêde bike"
+                        : "Kurs zum Panel hinzufügen"}
                     </a>
                     <div className="flex items-end gap-x-2.5">
                       <span className="text-white text-2xl">
-                        {course.MainCourse?.price.toLocaleString("fa-IR")} تومان
+                        {state.lan === "fa"
+                          ? `${course.MainCourse?.price.toLocaleString(
+                              "fa-IR"
+                            )} تومان`
+                          : `${course.MainCourse?.price.toLocaleString()}$`}
                       </span>
                     </div>
                   </div>
@@ -196,7 +245,15 @@ export default function DetailsCours({ course, user, isbuycourse, islogin }) {
               <Image
                 src={`/image/${course.MainCourse?.image}`}
                 className="w-full h-full object-cover"
-                alt={course.MainCourse?.title}
+                alt={
+                  state.lan === "fa"
+                    ? course.MainCourse?.title.fa
+                    : state.lan === "en"
+                    ? course.MainCourse?.title.en
+                    : state.lan === "ku"
+                    ? course.MainCourse?.title.ku
+                    : course.MainCourse?.title.ge
+                }
                 width={800}
                 height={800}
               />
@@ -250,7 +307,9 @@ export default function DetailsCours({ course, user, isbuycourse, islogin }) {
                       روش پشتیبانی
                     </span>
                     <span className="block text-sm opacity-70">
-                      {course.MainCourse?.suport}
+                      {state.lan === "fa"
+                        ? course.MainCourse?.suport.fa
+                        : course.MainCourse?.suport.en}
                     </span>
                   </div>
                 </div>
@@ -274,7 +333,9 @@ export default function DetailsCours({ course, user, isbuycourse, islogin }) {
                       نوع مشاهده
                     </span>
                     <span className="block text-sm opacity-70">
-                      {course.MainCourse?.viewtype}
+                      {state.lan === "fa"
+                        ? course.MainCourse?.suport.fa
+                        : course.MainCourse?.suport.en}
                     </span>
                   </div>
                 </div>
@@ -569,11 +630,18 @@ export default function DetailsCours({ course, user, isbuycourse, islogin }) {
                   width="90"
                   height="90"
                   src=""
-                  alt={course.MainCourse?.teacher}
+                  alt={
+                    state.lan === "fa"
+                      ? course.MainCourse?.teacher.fa
+                      : course.MainCourse?.teacher.en
+                  }
                 />
                 <span className=" text-lg mb-2">
                   {" "}
-                  {course.MainCourse?.teacher} | مدرس دوره
+                  {state.lan === "fa"
+                    ? course.MainCourse?.teacher.fa
+                    : course.MainCourse?.teacher.en}{" "}
+                  | مدرس دوره
                 </span>
               </div>
               <div className="text-white hidden lg:block bg-dark rounded-2xl p-5 text-center">

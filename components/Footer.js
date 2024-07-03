@@ -10,7 +10,7 @@ export default function Footer() {
     <div
       className={`${
         state.them === "dark" ? "bg-dark text-white" : "bg-white text-black"
-      } flex flex-wrap items-center justify-evenly gap-[50px]  mt-8 p-10`}
+      } flex flex-wrap items-center justify-evenly gap-[50px]   p-10`}
     >
       <div className="flex flex-col  gap-y-3 flex-grow">
         <h4 className="font-bold  text-xl">
