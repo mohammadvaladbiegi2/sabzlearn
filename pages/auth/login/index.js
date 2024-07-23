@@ -31,17 +31,41 @@ export default function Login() {
         },
         body: JSON.stringify(values),
       }).then((res) => {
-        res.status === 500 && toast.error("مشکل سرور وقت دیگر امتحان کنید");
+        res.status === 500 &&
+          toast.error(
+            state.lan === "fa"
+              ? "مشکل سرور وقت دیگر امتحان کنید"
+              : "Server problem, try again"
+          );
         res.status === 404 &&
-          toast.error("کاربری با این   شماره  ثبت نام نشده");
-        res.status === 412 && toast.error("مقادیر وارد شده معتبر نیست");
-        res.status === 422 && toast.error("رمز یا شماره درست نیست");
+          toast.error(
+            state.lan === "fa"
+              ? "کاربری با این   شماره  ثبت نام نشده"
+              : "The user is not registered with this number"
+          );
+        res.status === 412 &&
+          toast.error(
+            state.lan === "fa"
+              ? "مقادیر وارد شده معتبر نیست"
+              : "The entered values ​​are not valid"
+          );
+        res.status === 422 &&
+          toast.error(
+            state.lan === "fa"
+              ? "رمز یا شماره درست نیست"
+              : "Password or number is not correct"
+          );
         if (res.status === 200) {
           const codegenerator = Math.floor(Math.random() * 100000);
           setCodeevaluation(codegenerator);
-          toast.success(`کد ارسال شده : ${codegenerator}`, {
-            autoClose: 20000,
-          });
+          toast.success(
+            `${
+              state.lan === "fa" ? "کد ارسال شده " : "Code sent"
+            } : ${codegenerator}`,
+            {
+              autoClose: 20000,
+            }
+          );
           setsendcode(true);
         }
       });
@@ -50,7 +74,8 @@ export default function Login() {
       const errors = {};
 
       if (!validatePhoneNumber(values.phoneNumber)) {
-        errors.phoneNumber = "  شماره معتبر وارد کنید";
+        errors.phoneNumber =
+          state.lan === "fa" ? "شماره معتبر وارد کنید" : "Enter a valid number";
       }
 
       return errors;
@@ -59,10 +84,14 @@ export default function Login() {
   const confirmCode = (e) => {
     e.preventDefault();
     if (+Codeevaluation === +Code) {
-      toast.success("خوش آمدید");
+      toast.success(state.lan === "fa" ? "خوش آمدید" : "welcom");
       rout.push("/");
     } else {
-      toast.error("کد وارد شده معتبر نیست");
+      toast.error(
+        state.lan === "fa"
+          ? "کد وارد شده معتبر نیست"
+          : "The code entered is not valid"
+      );
     }
   };
   return (
@@ -91,22 +120,44 @@ export default function Login() {
         >
           {!sendcode ? (
             <>
-              <h4 className="   text-[23px]">ورود با موبایل</h4>
-              <p className="flex items-center  gap-2  ">
-                حساب کاربری ندارید؟{" "}
+              <h4 className="text-[23px]">
+                {state.lan === "fa"
+                  ? "ورود با موبایل"
+                  : state.lan === "en"
+                  ? "Login with mobile"
+                  : state.lan === "ku"
+                  ? "Têkeve bi mobîl"
+                  : "Mit dem Handy anmelden"}
+              </h4>
+              <p className="flex items-center gap-2">
+                {state.lan === "fa"
+                  ? "حساب کاربری ندارید؟"
+                  : state.lan === "en"
+                  ? "Don't have an account?"
+                  : state.lan === "ku"
+                  ? "Hesabê we tune?"
+                  : "Sie haben noch kein Konto?"}
                 <Link href="/auth/signup" className="text-green-500 ">
-                  ثبت نام کنید
+                  {state.lan === "fa" ? "ثبت نام کنید" : "SignUp"}
                 </Link>
               </p>
             </>
           ) : (
             <>
               <h4 className="   w-full flex items-center mb-5 justify-between text-[23px]">
-                کد تایید
+                {state.lan === "fa"
+                  ? "کد تایید"
+                  : state.lan === "en"
+                  ? "Verification code"
+                  : state.lan === "ku"
+                  ? "Koda verastkirinê"
+                  : "Bestätigungscode"}
                 <FaCircleArrowLeft className=" opacity-70  cursor-pointer" />
               </h4>
               <p className="flex items-center  gap-2  ">
-                کد تایید برای {form.values.phoneNumber} ارسال شد.
+                {state.lan === "fa"
+                  ? `کد ارسال شد برای ${form.values.phoneNumber}`
+                  : `code send to ${form.values.phoneNumber}`}
               </p>
             </>
           )}
@@ -121,7 +172,7 @@ export default function Login() {
                   <input
                     type="password"
                     className="input_navBar   w-[240px]"
-                    placeholder="رمز عبور"
+                    placeholder={state.lan === "fa" ? "رمز عبور" : "password"}
                     onChange={form.handleChange}
                     value={form.values.password}
                     name="password"
@@ -138,7 +189,9 @@ export default function Login() {
                   <input
                     type="text"
                     className="input_navBar   w-[240px]"
-                    placeholder="شماره موبایل"
+                    placeholder={
+                      state.lan === "fa" ? "شماره موبایل" : "phone number"
+                    }
                     onChange={form.handleChange}
                     value={form.values.phoneNumber}
                     name="phoneNumber"
@@ -156,7 +209,7 @@ export default function Login() {
             "
                 className="bg-green-500  rounded-full px-32  py-4"
               >
-                ادامه
+                {state.lan === "fa" ? "ادامه" : "Continuation"}
               </button>
             </form>
           ) : (
@@ -169,7 +222,7 @@ export default function Login() {
                 <input
                   type="text"
                   className="input_navBar   opacity-70 w-[240px]"
-                  placeholder="کد تایید"
+                  placeholder={state.lan === "fa" ? "کد تایید" : "confirm code"}
                   value={Code}
                   onChange={(e) => setCode(e.target.value)}
                 />
@@ -180,14 +233,14 @@ export default function Login() {
                 className="bg-green-500  rounded-full px-32 py-4"
                 onClick={confirmCode}
               >
-                تایید
+                {state.lan === "fa" ? "تایید" : "Confirm"}
               </button>
             </form>
           )}
           <div className="flex items-center justify-between font-danaMedium text-sm text-slate-500 w-full mt-5">
             <span></span>
             <span className="underline underline-offset-2">
-              حریم خصوصی
+              {state.lan === "fa" ? "حریم خصوصی" : "Privacy"}
             </span>{" "}
           </div>
         </div>
@@ -197,11 +250,24 @@ export default function Login() {
             state.them === "dark" ? "text-white " : "text-black"
           } font-normal text-[18px] text-center my-5`}
         >
-          با عضویت در سایت، تمامی قوانین و شرایط استفاده از خدمت{" "}
+          {state.lan === "fa"
+            ? "با عضویت در سایت، تمامی قوانین و شرایط استفاده از خدمت"
+            : state.lan === "en"
+            ? "By joining the site, all the rules and conditions of using the service"
+            : state.lan === "ku"
+            ? "Bi tevlêbûna malperê, hemî rêgez û mercên karanîna karûbarê"
+            : "Durch den Beitritt zur Website gelten alle Regeln und Bedingungen für die Nutzung des Dienstes"}
           <Link href="/" className="text-green-500 m-1">
-            سبز لرن{"  "}
+            {state.lan === "fa" ? "سبز لرن" : "Sabzlearn"}
+            {"  "}
           </Link>
-          را پذیرفته اید.
+          {state.lan === "fa"
+            ? "را پذیرفته اید."
+            : state.lan === "en"
+            ? "have accepted"
+            : state.lan === "ku"
+            ? "qebûl kirine"
+            : "akzeptiert haben"}
         </span>
       </section>
       <div className="hidden lg:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-amber-400 opacity-20 blur-[120px] rounded-full"></div>
