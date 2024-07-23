@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { FaLock } from "react-icons/fa";
 import { IoLockClosedOutline } from "react-icons/io5";
 import { useFormik } from "formik";
-import { validatPassword, validatePhoneNumber } from "@/Utils/Validations";
+import { validatePhoneNumber } from "@/Utils/Validations";
 import { useGlobalState } from "@/context/GlobalState";
 
 export default function Login() {
