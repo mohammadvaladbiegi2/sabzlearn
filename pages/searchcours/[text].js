@@ -10,7 +10,7 @@ import { IoTrashSharp } from "react-icons/io5";
 import Notfoundcourse from "@/components/Notfoundcourse";
 import { useGlobalState } from "@/context/GlobalState";
 
-export default function Searchcourse({ courses, Allcourse }) {
+export default function Searchcourse({ courses, Allcourse,islogin }) {
   const [showbottomShet, setshowbottomShet] = useState(false);
   const [showfilterbox, setshowfilterbox] = useState(false);
   const [course, setcourse] = useState([]);
@@ -60,7 +60,7 @@ export default function Searchcourse({ courses, Allcourse }) {
 
   return (
     <>
-      <Navbar />
+      <Navbar islogin={islogin}/>
       <main
         className={`${
           state.them === "dark" ? "bg_black_100" : "bg_white_100"
@@ -592,6 +592,11 @@ export default function Searchcourse({ courses, Allcourse }) {
 }
 
 export async function getServerSideProps(contex) {
+  let islogin = false;
+  const { token } = contex.req.cookies;
+  if (token) {
+    islogin = true;
+  }
   let res = await fetch(
     `http://localhost:3000/api/course/search/${contex.query.text}`
   );
@@ -601,6 +606,6 @@ export async function getServerSideProps(contex) {
   let Allcourse = JSON.parse(JSON.stringify(dataAllcourse));
   let courses = JSON.parse(JSON.stringify(data));
   return {
-    props: { courses, Allcourse },
+    props: { courses, Allcourse,islogin },
   };
 }

@@ -198,7 +198,7 @@ body {
 .topic {
   overflow: hidden;
   border-radius: 0.75rem;
-  background-color: rgb(51 60 76 / 1);
+ 
 }
 
 @media (min-width: 768px) {
@@ -223,9 +223,7 @@ body {
   border-bottom: solid 0.2px #fafafa36;
 }
 
-.border_b_s {
-  border-bottom: solid 0.2px #fafafa36;
-}
+
 
 .chapter__head {
   display: flex;

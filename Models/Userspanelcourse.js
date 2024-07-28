@@ -2,10 +2,30 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
+
+const titleschema = new Schema({
+  fa: {
+    type: String,
+    required: true,
+  },
+  en: {
+    type: String,
+    required: true,
+  },
+  ge: {
+    type: String,
+    required: true,
+  },
+  ku: {
+    type: String,
+    required: true,
+  },
+});
+
 const courseSchema = new Schema(
   {
     title: {
-      type: String,
+      type: titleschema,
       required: true,
     },
     image: {

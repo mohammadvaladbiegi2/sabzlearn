@@ -31,7 +31,7 @@ export default function CourseCard({ progress = 0, image, title, courseid }) {
       </div>
       <div className="px-5 pb-3.5 pt-2.5 flex-grow ">
         <h4 className=" h-12 line-clamp-2  mb-2.5">
-          <Link href={`/coursdetails/${courseid}`}>{title}</Link>
+          <Link href={`/coursdetails/${courseid}`}>{state.lan === "fa" ? title.fa : state.lan === "en" ? title.en : state.lan === "ku" ? title.ku : title.ge}</Link>
         </h4>
         <div
           className={`pt-3 border-t ${

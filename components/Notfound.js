@@ -1,10 +1,13 @@
+import { useGlobalState } from "@/context/GlobalState";
 import React from "react";
 
 export default function Notfound({ title }) {
+  const { state } = useGlobalState();
+
   return (
-    <div className="bg-dark rounded-2xl p-4.5 sm:p-5 mt-8">
+    <div className={`${state.them === "dark" ? 'bg-dark' : 'bg-white'} rounded-2xl p-4.5 sm:p-5 mt-8`}>
       <div className=" space-y-4.5 sm:space-y-5">
-        <div className="flex flex-col items-center justify-center py-5 bg-dark rounded-xl">
+        <div className={`flex flex-col items-center justify-center py-5 ${state.them === "dark" ? 'bg-dark' : 'bg-white'} rounded-xl`}>
           <svg
             width="112"
             height="100"

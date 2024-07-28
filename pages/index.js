@@ -425,7 +425,7 @@ export default function Home({ articlsData, courseData, islogin, username }) {
                 ? "Li Sabzleran qursên herî populer û çêtirîn"
                 : "Die beliebtesten und besten Kurse in Sabzleran"
             }
-            link="/searchcours/All"
+            link="/searchcours/frontend"
             linktitle={
               state.lan === "fa"
                 ? "مشاهده همه دوره‌ها"
