@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
@@ -17,13 +17,22 @@ import { useRouter } from "next/router";
 import { useGlobalState } from "@/context/GlobalState";
 import { FaMoon } from "react-icons/fa";
 
-export default function navbar({ islogin, username }) {
+
+
+
+export default function navbar({  username,islogin }) {
   let route = useRouter();
   const [showsidebar, setshowsidebar] = useState(false);
   const [searchtext, setSearchtext] = useState("");
   let [showbox, setshowbox] = useState(false);
   let [showboxlanguage, setshowboxlanguage] = useState(false);
-  const { state, dispatch, lan } = useGlobalState();
+  const { state, dispatch } = useGlobalState();
+
+  useEffect(() => {
+    
+    
+  }, [islogin]);
+
 
   return (
     <nav
