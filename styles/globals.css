@@ -10,6 +10,10 @@
     url("https://fonts.cdnfonts.com/s/87601/dana demibold.woff") format("woff");
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   direction: rtl;
   font-family: dana_600;

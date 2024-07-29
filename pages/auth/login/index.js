@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiPhone } from "react-icons/fi";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { toast } from "react-toastify";
@@ -17,6 +17,8 @@ export default function Login() {
   const [Codeevaluation, setCodeevaluation] = useState("");
   const { state } = useGlobalState();
 
+
+
   let rout = useRouter();
   const form = useFormik({
     initialValues: {
@@ -31,15 +33,53 @@ export default function Login() {
         },
         body: JSON.stringify(values),
       }).then((res) => {
-        res.status === 500 && toast.error("مشکل سرور وقت دیگر امتحان کنید");
+        res.status === 500 && toast.error(
+          state.lan === "fa"
+            ? "مشکل سرور وقت دیگر امتحان کنید"
+            : state.lan === "en"
+              ? "Server issue, please try again later"
+              : state.lan === "ku"
+                ? "Pirsgirêka serverê, ji kerema xwe paşê jî biceribînin"
+                : "Serverproblem, bitte später noch einmal versuchen"
+
+        );
         res.status === 404 &&
-          toast.error("کاربری با این   شماره  ثبت نام نشده");
-        res.status === 412 && toast.error("مقادیر وارد شده معتبر نیست");
-        res.status === 422 && toast.error("رمز یا شماره درست نیست");
+          toast.error(state.lan === "fa"
+            ? "کاربری با این شماره ثبت نام نشده"
+            : state.lan === "en"
+              ? "No user registered with this number"
+              : state.lan === "ku"
+                ? "Kêşeya ku bi vê hejmarê qeydkirî nîne"
+                : "Kein Benutzer mit dieser Nummer registriert");
+        res.status === 412 && toast.error(
+          state.lan === "fa"
+            ? "مقادیر وارد شده معتبر نیست"
+            : state.lan === "en"
+              ? "The entered values are not valid"
+              : state.lan === "ku"
+                ? "Nirxên hatî binivîsîn ne rast in"
+                : "Die eingegebenen Werte sind ungültig"
+
+        );
+        res.status === 422 && toast.error(state.lan === "fa"
+          ? "رمز یا شماره درست نیست"
+          : state.lan === "en"
+            ? "Password or number is incorrect"
+            : state.lan === "ku"
+              ? "Şîfre an hejmar çewt e"
+              : "Passwort oder Nummer ist falsch");
         if (res.status === 200) {
           const codegenerator = Math.floor(Math.random() * 100000);
           setCodeevaluation(codegenerator);
-          toast.success(`کد ارسال شده : ${codegenerator}`, {
+          toast.success(`${state.lan === "fa"
+              ? "کد ارسال شده"
+              : state.lan === "en"
+                ? "Code sent"
+                : state.lan === "ku"
+                  ? "Koda şandî"
+                  : "Gesendeter Code"
+            }
+           : ${codegenerator}`, {
             autoClose: 20000,
           });
           setsendcode(true);
@@ -50,7 +90,16 @@ export default function Login() {
       const errors = {};
 
       if (!validatePhoneNumber(values.phoneNumber)) {
-        errors.phoneNumber = "  شماره معتبر وارد کنید";
+        errors.phoneNumber =
+          state.lan === "fa"
+            ? "شماره معتبر وارد کنید"
+            : state.lan === "en"
+              ? "Enter a valid number"
+              : state.lan === "ku"
+                ? "Hejmara rast binivîse"
+                : "Geben Sie eine gültige Nummer ein"
+
+          ;
       }
 
       return errors;
@@ -59,10 +108,28 @@ export default function Login() {
   const confirmCode = (e) => {
     e.preventDefault();
     if (+Codeevaluation === +Code) {
-      toast.success("خوش آمدید");
+      toast.success(
+        state.lan === "fa"
+          ? "خوش آمدید"
+          : state.lan === "en"
+            ? "Welcome"
+            : state.lan === "ku"
+              ? "Bi xêr hatin"
+              : "Willkommen"
+
+      );
       rout.push("/");
     } else {
-      toast.error("کد وارد شده معتبر نیست");
+      toast.error(
+        state.lan === "fa"
+          ? "کد وارد شده معتبر نیست"
+          : state.lan === "en"
+            ? "The entered code is not valid"
+            : state.lan === "ku"
+              ? "Koda hatî binivîsîn ne rast e"
+              : "Der eingegebene Code ist ungültig"
+
+      );
     }
   };
   return (
@@ -74,39 +141,82 @@ export default function Login() {
         <Link href="/" className="flex items-center gap-x-3.5 mb-10">
           <Image src="/image/logo.webp" width={110} height={50} alt="logo" />
           <Image
-            src={`/image/${
-              state.them === "dark"
+            src={`/image/${state.them === "dark"
                 ? "Screenshot_2024-04-06_025727-removebg-preview.png"
                 : "Screenshot 2024-05-23 225320.png"
-            }`}
+              }`}
             width={136}
             height={62}
             alt="logo"
           />
         </Link>
         <div
-          className={`${
-            state.them === "dark" ? "bg-dark text-white" : "bg-white text-black"
-          } w-[330px] rounded-2xl flex flex-col items-center gap-2 p-6`}
+          className={`${state.them === "dark" ? "bg-dark text-white" : "bg-white text-black"
+            } w-[330px] rounded-2xl flex flex-col items-center gap-2 p-6`}
         >
           {!sendcode ? (
             <>
-              <h4 className="   text-[23px]">ورود با موبایل</h4>
+              <h4 className="   text-[23px]">{
+                state.lan === "fa"
+                  ? "ورود با موبایل"
+                  : state.lan === "en"
+                    ? "Login with Mobile"
+                    : state.lan === "ku"
+                      ? "Têketin bi mobîl"
+                      : "Einloggen mit Mobiltelefon"
+              }
+              </h4>
               <p className="flex items-center  gap-2  ">
-                حساب کاربری ندارید؟{" "}
+                {
+                  state.lan === "fa"
+                    ? "حساب کاربری ندارید؟"
+                    : state.lan === "en"
+                      ? "Don't have an account?"
+                      : state.lan === "ku"
+                        ? "Hesabê xwe tune ye?"
+                        : "Haben Sie kein Konto?"
+                }
+                {" "}
                 <Link href="/auth/signup" className="text-green-500 ">
-                  ثبت نام کنید
+                  {
+                    state.lan === "fa"
+                      ? "ثبت نام کنید"
+                      : state.lan === "en"
+                        ? "Sign up"
+                        : state.lan === "ku"
+                          ? "Têketin"
+                          : "Registrieren"
+                  }
+
                 </Link>
               </p>
             </>
           ) : (
             <>
               <h4 className="   w-full flex items-center mb-5 justify-between text-[23px]">
-                کد تایید
-                <FaCircleArrowLeft className=" opacity-70  cursor-pointer" />
+                {
+                  state.lan === "fa"
+                    ? "کد تایید"
+                    : state.lan === "en"
+                      ? "Verification Code"
+                      : state.lan === "ku"
+                        ? "Koda pêşînkirinê"
+                        : "Bestätigungscode"
+                }
+
+                <FaCircleArrowLeft onClick={() => setsendcode(false)} className=" opacity-70  cursor-pointer" />
               </h4>
               <p className="flex items-center  gap-2  ">
-                کد تایید برای {form.values.phoneNumber} ارسال شد.
+                {form.values.phoneNumber} {
+                  state.lan === "fa"
+                    ? "کد ارسال شد"
+                    : state.lan === "en"
+                      ? "Code sent"
+                      : state.lan === "ku"
+                        ? "Koda şandî"
+                        : "Code gesendet"
+                }
+
               </p>
             </>
           )}
@@ -114,14 +224,22 @@ export default function Login() {
             <form onSubmit={form.handleSubmit}>
               <div className="my-3">
                 <div
-                  className={`flex items-center ${
-                    state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
-                  }  p-4 rounded-xl w-[290px] my-6 justify-center`}
+                  className={`flex items-center ${state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
+                    }  p-4 rounded-xl w-[290px] my-6 justify-center`}
                 >
                   <input
                     type="password"
                     className="input_navBar   w-[240px]"
-                    placeholder="رمز عبور"
+                    placeholder={
+                      state.lan === "fa"
+                        ? "رمز عبور"
+                        : state.lan === "en"
+                          ? "Password"
+                          : state.lan === "ku"
+                            ? "Şîfre"
+                            : "Passwort"
+                    }
+
                     onChange={form.handleChange}
                     value={form.values.password}
                     name="password"
@@ -131,14 +249,22 @@ export default function Login() {
               </div>
               <div className="my-3">
                 <div
-                  className={`flex items-center ${
-                    state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
-                  }   p-4 rounded-xl w-[290px]  justify-center`}
+                  className={`flex items-center ${state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
+                    }   p-4 rounded-xl w-[290px]  justify-center`}
                 >
                   <input
                     type="text"
                     className="input_navBar   w-[240px]"
-                    placeholder="شماره موبایل"
+                    placeholder={
+                      state.lan === "fa"
+                        ? "شماره موبایل"
+                        : state.lan === "en"
+                          ? "Mobile Number"
+                          : state.lan === "ku"
+                            ? "Hejmara mobîl"
+                            : "Handynummer"
+                    }
+
                     onChange={form.handleChange}
                     value={form.values.phoneNumber}
                     name="phoneNumber"
@@ -156,52 +282,113 @@ export default function Login() {
             "
                 className="bg-green-500  rounded-full px-32  py-4"
               >
-                ادامه
+                {
+                  state.lan === "fa"
+                    ? "ادامه"
+                    : state.lan === "en"
+                      ? "Continue"
+                      : state.lan === "ku"
+                        ? "Bişopîne"
+                        : "Fortsetzen"
+                }
+
               </button>
             </form>
           ) : (
             <form onSubmit={confirmCode}>
               <div
-                className={`flex items-center ${
-                  state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
-                }   p-4 rounded-xl w-[290px] my-6 justify-center`}
+                className={`flex items-center ${state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
+                  }   p-4 rounded-xl w-[290px] my-6 justify-center`}
               >
                 <input
                   type="text"
                   className="input_navBar   opacity-70 w-[240px]"
-                  placeholder="کد تایید"
+                  placeholder={
+                    state.lan === "fa"
+                      ? "کد تایید"
+                      : state.lan === "en"
+                        ? "Verification Code"
+                        : state.lan === "ku"
+                          ? "Koda peşînkirinê"
+                          : "Bestätigungscode"
+                  }
+
                   value={Code}
                   onChange={(e) => setCode(e.target.value)}
                 />
-                <FaLock className=" opacity-70 mt-1 w-4 h-4 " />
+                <FaLock  className=" opacity-70 mt-1 w-4 h-4 " />
               </div>
               <button
                 type="submit"
                 className="bg-green-500  rounded-full px-32 py-4"
                 onClick={confirmCode}
               >
-                تایید
+                {
+                  state.lan === "fa"
+                    ? "تایید"
+                    : state.lan === "en"
+                      ? "Verify"
+                      : state.lan === "ku"
+                        ? "Peşînkirin"
+                        : "Bestätigen"
+                }
+
               </button>
             </form>
           )}
           <div className="flex items-center justify-between font-danaMedium text-sm text-slate-500 w-full mt-5">
             <span></span>
             <span className="underline underline-offset-2">
-              حریم خصوصی
+              {
+                state.lan === "fa"
+                  ? "حریم خصوصی"
+                  : state.lan === "en"
+                    ? "Privacy"
+                    : state.lan === "ku"
+                      ? "Taybetmendî"
+                      : "Datenschutz"
+              }
+
             </span>{" "}
           </div>
         </div>
 
         <span
-          className={`max-w-[330px] ${
-            state.them === "dark" ? "text-white " : "text-black"
-          } font-normal text-[18px] text-center my-5`}
+          className={`max-w-[330px] ${state.them === "dark" ? "text-white " : "text-black"
+            } font-normal text-[18px] text-center my-5`}
         >
-          با عضویت در سایت، تمامی قوانین و شرایط استفاده از خدمت{" "}
+          {
+            state.lan === "fa"
+              ? "با عضویت در سایت، تمامی قوانین و شرایط استفاده از خدمت"
+              : state.lan === "en"
+                ? "By joining the site, you agree to all terms and conditions of service"
+                : state.lan === "ku"
+                  ? "Bi têketina malpera, hûn razî ne bi hemû şert û şertên xizmetê"
+                  : "Mit der Mitgliedschaft auf der Website stimmen Sie allen Nutzungsbedingungen zu"
+          }
+          {" "}
           <Link href="/" className="text-green-500 m-1">
-            سبز لرن{"  "}
+            {
+              state.lan === "fa"
+                ? "سبز لرن"
+                : state.lan === "en"
+                  ? "Sabzlearn Learn"
+                  : state.lan === "ku"
+                    ? "Sabzlearn Learn"
+                    : "Sabzlearn Learn"
+            }
+            {"  "}
           </Link>
-          را پذیرفته اید.
+          {
+            state.lan === "fa"
+              ? "را پذیرفته اید."
+              : state.lan === "en"
+                ? "You have accepted."
+                : state.lan === "ku"
+                  ? "Hûn qebûl kiriye."
+                  : "Sie haben akzeptiert."
+          }
+
         </span>
       </section>
       <div className="hidden lg:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-amber-400 opacity-20 blur-[120px] rounded-full"></div>

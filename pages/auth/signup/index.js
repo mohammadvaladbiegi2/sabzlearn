@@ -33,10 +33,34 @@ export default function Signup() {
         body: JSON.stringify(values),
       }).then((res) => {
         res.status === 422 &&
-          toast.error("کاربری با این نام یا شماره قبلا ثبت نام کرده");
-        res.status === 412 && toast.error("مقادیر وارد شده معتبر نیست");
+          toast.error(
+            state.lan === "fa"
+              ? "کاربری با این نام یا شماره قبلا ثبت نام کرده"
+              : state.lan === "en"
+              ? "A user with this name or number is already registered"
+              : state.lan === "ku"
+              ? "Kêşeya bi vî navnîşan an hejmarê pêşî qeydkirî ye"
+              : "Ein Benutzer mit diesem Namen oder dieser Nummer ist bereits registriert"
+          
+          );
+        res.status === 412 && toast.error( state.lan === "fa"
+          ? "مقادیر وارد شده معتبر نیست"
+          : state.lan === "en"
+          ? "The entered values are not valid"
+          : state.lan === "ku"
+          ? "Nirxên hatî binivîsîn ne rast in"
+          : "Die eingegebenen Werte sind ungültig");
         if (res.status === 201) {
-          toast.success("ثبت نام موفق خوش آمدید");
+          toast.success(
+            state.lan === "fa"
+              ? "ثبت نام موفق خوش آمدید"
+              : state.lan === "en"
+              ? "Registration successful, welcome"
+              : state.lan === "ku"
+              ? "Qeydkirin serkeftî bû, bi xêr hatin"
+              : "Registrierung erfolgreich, willkommen"
+          
+          );
           rout.push("/");
         }
       });
@@ -44,14 +68,36 @@ export default function Signup() {
     validate: (values) => {
       const errors = {};
       if (!validatusername(values.username)) {
-        errors.username = " نام کاربری بیشتر از 3 کاراکتر باشد";
+        errors.username =   state.lan === "fa"
+        ? "نام کاربری باید بیشتر از ۳ کاراکتر باشد"
+        : state.lan === "en"
+        ? "Username must be more than 3 characters"
+        : state.lan === "ku"
+        ? "Navê bikarhêner divê ji 3 tîpan zêde be"
+        : "Benutzername muss mehr als 3 Zeichen enthalten"
+    
       }
       if (!validatPassword(values.password)) {
         errors.password =
-          "پسورد باید شامل حداقل یک حرف، یک عدد و یک علامت خاص(#$%@)";
+        
+          state.lan === "fa"
+            ? "پسورد باید شامل حداقل یک حرف، یک عدد و یک علامت خاص (#$%@) باشد"
+            : state.lan === "en"
+            ? "Password must include at least one letter, one number, and one special character (#$%@)"
+            : state.lan === "ku"
+            ? "Şîfre divê tê de herî kêm yek tîp, yek hejmar û yek nişan taybet (#$%@) be"
+            : "Das Passwort muss mindestens einen Buchstaben, eine Zahl und ein Sonderzeichen (#$%@) enthalten"
+        
+        ;
       }
       if (!validatePhoneNumber(values.phoneNumber)) {
-        errors.phoneNumber = "  شماره معتبر وارد کنید";
+        errors.phoneNumber =   state.lan === "fa"
+        ? "شماره معتبر وارد کنید"
+        : state.lan === "en"
+        ? "Enter a valid number"
+        : state.lan === "ku"
+        ? "Hejmara rast binivîse"
+        : "Geben Sie eine gültige Nummer ein";
       }
 
       return errors;
@@ -83,11 +129,38 @@ export default function Signup() {
           } w-[330px] rounded-2xl flex flex-col items-center gap-2 p-6`}
         >
           <>
-            <h4 className="   text-[23px]">عضویت </h4>
+            <h4 className="   text-[23px]">{
+  state.lan === "fa"
+    ? "عضویت"
+    : state.lan === "en"
+    ? "Membership"
+    : state.lan === "ku"
+    ? "Endamî"
+    : "Mitgliedschaft"
+}
+ </h4>
             <p className="flex items-center  gap-2  ">
-              قبلا ثبت نام کرده اید؟{" "}
+            {
+  state.lan === "fa"
+    ? "قبلا ثبت نام کرده‌اید؟"
+    : state.lan === "en"
+    ? "Already registered?"
+    : state.lan === "ku"
+    ? "Pêşî qeydkirî ye?"
+    : "Bereits registriert?"
+}
+
               <Link href="/auth/login" className="text-green-500 ">
-                وارد شوید
+              {
+  state.lan === "fa"
+    ? "وارد شوید"
+    : state.lan === "en"
+    ? "Log in"
+    : state.lan === "ku"
+    ? "Têkevin"
+    : "Einloggen"
+}
+
               </Link>
             </p>
           </>
@@ -102,7 +175,16 @@ export default function Signup() {
                 <input
                   type="text"
                   className="input_navBar   w-[240px]"
-                  placeholder="نام کاربری"
+                  placeholder={
+                    state.lan === "fa"
+                      ? "نام کاربری"
+                      : state.lan === "en"
+                      ? "Username"
+                      : state.lan === "ku"
+                      ? "Navê bikarhêner"
+                      : "Benutzername"
+                  }
+                  
                   onChange={form.handleChange}
                   value={form.values.username}
                   name="username"
@@ -124,7 +206,16 @@ export default function Signup() {
                 <input
                   type="text"
                   className="input_navBar   w-[240px]"
-                  placeholder="رمز عبور"
+                  placeholder={
+                    state.lan === "fa"
+                      ? "رمز عبور"
+                      : state.lan === "en"
+                      ? "Password"
+                      : state.lan === "ku"
+                      ? "Şîfre"
+                      : "Passwort"
+                  }
+                  
                   onChange={form.handleChange}
                   value={form.values.password}
                   name="password"
@@ -146,7 +237,16 @@ export default function Signup() {
                 <input
                   type="text"
                   className="input_navBar   w-[240px]"
-                  placeholder="شماره موبایل"
+                  placeholder={
+                    state.lan === "fa"
+                      ? "شماره موبایل"
+                      : state.lan === "en"
+                      ? "Mobile Number"
+                      : state.lan === "ku"
+                      ? "Hejmara mobîl"
+                      : "Handynummer"
+                  }
+                  
                   onChange={form.handleChange}
                   value={form.values.phoneNumber}
                   name="phoneNumber"
@@ -163,28 +263,72 @@ export default function Signup() {
               type="submit"
               className="bg-green-500  rounded-full px-32  py-4"
             >
-              ادامه
+              {
+  state.lan === "fa"
+    ? "ادامه"
+    : state.lan === "en"
+    ? "Continue"
+    : state.lan === "ku"
+    ? "Bişopîne"
+    : "Fortsetzen"
+}
+
             </button>
           </form>
 
           <div className="flex items-center justify-between font-danaMedium text-sm text-slate-500 w-full mt-5">
             <span></span>
             <span className="underline underline-offset-2">
-              حریم خصوصی
+              {
+                state.lan === "fa"
+                  ? "حریم خصوصی"
+                  : state.lan === "en"
+                    ? "Privacy"
+                    : state.lan === "ku"
+                      ? "Taybetmendî"
+                      : "Datenschutz"
+              }
+
             </span>{" "}
           </div>
         </div>
 
-        <span
-          className={`max-w-[330px] ${
-            state.them === "dark" ? "text-white " : "text-black"
-          } font-normal text-[18px] text-center my-5`}
+     <span
+          className={`max-w-[330px] ${state.them === "dark" ? "text-white " : "text-black"
+            } font-normal text-[18px] text-center my-5`}
         >
-          با عضویت در سایت، تمامی قوانین و شرایط استفاده از خدمت{" "}
+          {
+            state.lan === "fa"
+              ? "با عضویت در سایت، تمامی قوانین و شرایط استفاده از خدمت"
+              : state.lan === "en"
+                ? "By joining the site, you agree to all terms and conditions of service"
+                : state.lan === "ku"
+                  ? "Bi têketina malpera, hûn razî ne bi hemû şert û şertên xizmetê"
+                  : "Mit der Mitgliedschaft auf der Website stimmen Sie allen Nutzungsbedingungen zu"
+          }
+          {" "}
           <Link href="/" className="text-green-500 m-1">
-            سبز لرن{"  "}
+            {
+              state.lan === "fa"
+                ? "سبز لرن"
+                : state.lan === "en"
+                  ? "Sabzlearn Learn"
+                  : state.lan === "ku"
+                    ? "Sabzlearn Learn"
+                    : "Sabzlearn Learn"
+            }
+            {"  "}
           </Link>
-          را پذیرفته اید.
+          {
+            state.lan === "fa"
+              ? "را پذیرفته اید."
+              : state.lan === "en"
+                ? "You have accepted."
+                : state.lan === "ku"
+                  ? "Hûn qebûl kiriye."
+                  : "Sie haben akzeptiert."
+          }
+
         </span>
       </section>
       <div className="hidden lg:block absolute bottom-0 right-0 w-[300px] h-[300px] bg-amber-400 opacity-20 blur-[120px] rounded-full"></div>
