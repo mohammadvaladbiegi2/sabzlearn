@@ -13,20 +13,18 @@ export default function Mainticket({ MainUser, ticket }) {
 
   return (
     <div
-      className={`${
-        state.them === "dark" ? "bg_black_100" : "bg-white"
-      } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+      className={`${state.them === "dark" ? "bg_black_100" : "bg-white"
+        } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
     >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
         setshowsidebar={setshowsidebar}
       />
       <section
-        className={`${
-          state.them === "dark"
+        className={`${state.them === "dark"
             ? "bg-dark text-white"
             : "bg-gray-100 text-black"
-        } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+          } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
       >
         <HeaderAccontDetails
           username={MainUser?.username}
@@ -34,20 +32,18 @@ export default function Mainticket({ MainUser, ticket }) {
         />
 
         <div
-          className={`${
-            state.them === "dark"
+          className={`${state.them === "dark"
               ? "bg_black_100 text-white"
               : "bg-white text-black"
-          } my-6  p-3 md:p-4 rounded-2xl`}
+            } my-6  p-3 md:p-4 rounded-2xl`}
         >
           <div className="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-700">
             <span className=" md:text-xl ">{ticket?.title}</span>
           </div>
           <div className="space-y-4">
             <div
-              className={`w-11/12 sm:w-2/3 ${
-                state.them === "dark" ? "bg-gray-700" : "bg_white_100"
-              }  mb-12 p-4 rounded-2xl rounded-tr-sm`}
+              className={`w-11/12 sm:w-2/3 ${state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+                }  mb-12 p-4 rounded-2xl rounded-tr-sm`}
             >
               <h4 className="font-danaMedium text-xl mb-1 text-right">
                 {MainUser?.username}
@@ -70,7 +66,15 @@ export default function Mainticket({ MainUser, ticket }) {
             <div className="w-11/12 sm:w-2/3 bg-sky-800 mr-auto text-center text-white  p-4 rounded-2xl rounded-tl-sm">
               <p className=" mt-4.5"></p>
 
-              <p>در انتظار پاسخ</p>
+              <p>  {
+                state.lan === "fa"
+                  ? "منتظر پاسخ"
+                  : state.lan === "en"
+                    ? "Waiting for a response"
+                    : state.lan === "ku"
+                      ? "Li benda bersiva"
+                      : "Warten auf Antwort"
+              }</p>
             </div>
           </div>
         </div>

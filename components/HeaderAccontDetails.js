@@ -12,18 +12,25 @@ export default function HeaderAccontDetails({ setshowsidebar, username }) {
   return (
     <header className="flex items-center justify-between bg-gray md:bg-transparent border-b md:border-none border-b-gray-700 mb-6 md:mb-14 p-5 md:p-0">
       <h3
-        className={`hidden md:block text-2xl ${
-          state.them === "dark" ? "text-white" : "text-black"
-        }`}
+        className={`hidden md:block text-2xl ${state.them === "dark" ? "text-white" : "text-black"
+          }`}
       >
-        {username} عزیز؛ خوش اومدی 🙌
+        {username} {
+          state.lan === "fa"
+            ? "عزیز؛ خوش اومدی"
+            : state.lan === "en"
+              ? "Dear; Welcome"
+              : state.lan === "ku"
+                ? "Heval; Bi xêr hatî"
+                : "Liebe/r; Willkommen"
+        }
+        🙌
       </h3>
       <div
-        className={`flex md:hidden items-center ${
-          state.them === "dark"
+        className={`flex md:hidden items-center ${state.them === "dark"
             ? "bg-[#ffffff0D] text-white"
             : " bg-white text-gray-400"
-        } p-4 rounded-full  justify-center`}
+          } p-4 rounded-full  justify-center`}
       >
         <RxHamburgerMenu
           onClick={() => setshowsidebar(true)}
@@ -33,20 +40,18 @@ export default function HeaderAccontDetails({ setshowsidebar, username }) {
       <div className="flex gap-x-3.5 md:gap-x-7">
         <Link
           href="/userdeatails/usertiket"
-          className={`${
-            state.them === "dark"
+          className={`${state.them === "dark"
               ? "bg-[#ffffff0D] text-white"
               : " bg-white text-gray-400"
-          } flex items-center  p-4 rounded-full  justify-center`}
+            } flex items-center  p-4 rounded-full  justify-center`}
         >
           <IoNotificationsOutline className=" w-6 h-6 text-xl cursor-pointer hover:text-yellow-400 transition-all" />
         </Link>
         <div
-          className={`flex items-center ${
-            state.them === "dark"
+          className={`flex items-center ${state.them === "dark"
               ? "bg-[#ffffff0D] text-white"
               : "bg-white text-gray-400"
-          }  p-4 rounded-full  justify-center`}
+            }  p-4 rounded-full  justify-center`}
         >
           {state.them === "dark" ? (
             <IoSunnyOutline

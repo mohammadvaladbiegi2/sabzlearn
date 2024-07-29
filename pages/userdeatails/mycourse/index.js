@@ -40,20 +40,47 @@ export default function Mycourse({ MainUser }) {
 
         <div className="flex flex-wrap gap-x-3 gap-y-4 md:gap-x-10 mb-9">
           <Userdeatailsheaderbox
-            title="دوره‌های ثبت نام شده"
-            desc={`${MainUser.courses.length} دوره`}
+            title={
+              state.lan === "fa"
+                ? "دوره‌های ثبت نام شده"
+                : state.lan === "en"
+                ? "Registered Courses"
+                : state.lan === "ku"
+                ? "Dersên qeyd kirî"
+                : "Angemeldete Kurse"
+            }
+            
+            desc={`${MainUser.courses.length} ${state.lan === 'fa' ? 'دوره' : 'course'}`}
             icon={<FaCreditCard />}
             bg="bg-amber-400"
           />
           <Userdeatailsheaderbox
-            title="دوره‌های نقدی"
-            desc={`${MainUser.courses.length} دوره`}
+            title={
+              state.lan === "fa"
+                ? "دوره‌های نقدی"
+                : state.lan === "en"
+                ? "Paid Courses"
+                : state.lan === "ku"
+                ? "Dersên parêdanî"
+                : "Bezahlte Kurse"
+            }
+            
+            desc={`${MainUser.courses.length} ${state.lan === 'fa' ? 'دوره' : 'course'}`}
             icon={<AiOutlineDollar />}
             bg="bg-sky-500"
           />
           <Userdeatailsheaderbox
-            title="دوره‌های رایگان"
-            desc="0 دوره"
+            title={
+              state.lan === "fa"
+                ? "دوره‌های رایگان"
+                : state.lan === "en"
+                ? "Free Courses"
+                : state.lan === "ku"
+                ? "Dersên belaş"
+                : "Kostenlose Kurse"
+            }
+            
+            desc={`0 ${state.lan === 'fa' ? 'دوره ': 'course'}`}
             icon={<SlRocket />}
             bg="bg-green-400"
           />
@@ -65,7 +92,16 @@ export default function Mycourse({ MainUser }) {
             ))}
           </div>
         ) : (
-          <Notfound title="هنوز در هیچ دوره ای ثبت نام نکرده اید" />
+          <Notfound title={
+            state.lan === "fa"
+              ? "هنوز در هیچ دوره‌ای ثبت نام نکرده‌اید"
+              : state.lan === "en"
+              ? "You have not enrolled in any course yet"
+              : state.lan === "ku"
+              ? "Heta niha tu di kursê de nehatî qeyd kirin"
+              : "Sie haben sich noch in keinem Kurs angemeldet"
+          }
+           />
         )}
       </section>
     </div>

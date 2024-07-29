@@ -20,20 +20,18 @@ export default function UserTiket({ MainUser }) {
 
   return (
     <div
-      className={`${
-        state.them === "dark" ? "bg_black_100" : "bg-white"
-      } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+      className={`${state.them === "dark" ? "bg_black_100" : "bg-white"
+        } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
     >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
         setshowsidebar={setshowsidebar}
       />
       <section
-        className={`${
-          state.them === "dark"
-            ? "bg-dark text-white"
-            : "bg-gray-100 text-black"
-        } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+        className={`${state.them === "dark"
+          ? "bg-dark text-white"
+          : "bg-gray-100 text-black"
+          } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
       >
         <HeaderAccontDetails
           username={MainUser?.username}
@@ -42,27 +40,67 @@ export default function UserTiket({ MainUser }) {
 
         <div className="flex flex-wrap gap-x-3 gap-y-4 md:gap-x-10 mb-10">
           <Userdeatailsheaderbox
-            title="همه تیکت ها"
-            desc={`${MainUser.tickets?.length} عدد`}
+            title={
+              state.lan === "fa"
+                ? "همه تیکت‌ها"
+                : state.lan === "en"
+                  ? "All Tickets"
+                  : state.lan === "ku"
+                    ? "Hemî tikêtan"
+                    : "Alle Tickets"
+            }
+            desc={`${MainUser.tickets?.length} ${state.lan === "fa"
+                ? "عدد"
+                : state.lan === "en"
+                  ? "Number"
+                  : state.lan === "ku"
+                    ? "Hejmara"
+                    : "Zahl"
+              }
+            `}
             icon={<BsTicketPerforated />}
             bg="bg-amber-400"
           />
           <Userdeatailsheaderbox
-            title="تیکت های باز"
-            desc={`${MainUser.tickets?.length} تیکت`}
+            title={
+              state.lan === "fa"
+                ? "تیکت‌های باز"
+                : state.lan === "en"
+                  ? "Open Tickets"
+                  : state.lan === "ku"
+                    ? "Tikêtên vekirî"
+                    : "Offene Tickets"
+            }
+            desc={`${MainUser.tickets?.length} ${state.lan === 'fa' ? 'تیکت' : 'Tickets'}`}
             icon={<IoMailOpenOutline />}
             bg="bg-sky-500"
           />
           <Userdeatailsheaderbox
-            title="تیکت های بسته شده"
-            desc="0 تیکت"
+            title={
+              state.lan === "fa"
+                ? "تیکت‌های بسته شده"
+                : state.lan === "en"
+                  ? "Closed Tickets"
+                  : state.lan === "ku"
+                    ? "Tikêtên girtî"
+                    : "Geschlossene Tickets"
+            }
+            desc={`${state.lan === 'fa' ? 'تیکت' : 'Tickets'}`}
             icon={<HiOutlineChatAlt2 />}
             bg="bg-rose-500"
           />
         </div>
         <div className="mb-3">
           <Userdeatailsheaderbox
-            desc="تیکت جدید"
+            desc={
+              state.lan === "fa"
+                ? "تیکت جدید"
+                : state.lan === "en"
+                  ? "New Ticket"
+                  : state.lan === "ku"
+                    ? "Tikêt nû"
+                    : "Neues Ticket"
+            }
             icon={<FiPlusCircle />}
             bg="bg-secondry"
             href="/userdeatails/usertiket/newticket"
@@ -70,20 +108,27 @@ export default function UserTiket({ MainUser }) {
         </div>
         {MainUser.tickets?.length ? (
           <div
-            className={`${
-              state.them === "dark"
-                ? "bg_black_100 text-white"
-                : "bg-white text-black"
-            } my-6  p-3.5 md:p-4.5 rounded-2xl`}
+            className={`${state.them === "dark"
+              ? "bg_black_100 text-white"
+              : "bg-white text-black"
+              } my-6  p-3.5 md:p-4.5 rounded-2xl`}
           >
             <div
-              className={`flex justify-between items-center pb-3 md:pb-4.5 mb-6 md:mb-7 border-b ${
-                state.them === "dark"
-                  ? " border-b-gray-700"
-                  : " border-b-slate-400"
-              }`}
+              className={`flex justify-between items-center pb-3 md:pb-4.5 mb-6 md:mb-7 border-b ${state.them === "dark"
+                ? " border-b-gray-700"
+                : " border-b-slate-400"
+                }`}
             >
-              <span className=" md:text-xl ">تیکت ها</span>
+              <span className=" md:text-xl ">{
+                state.lan === "fa"
+                  ? "تیکت‌ها"
+                  : state.lan === "en"
+                    ? "Tickets"
+                    : state.lan === "ku"
+                      ? "Tikêtan"
+                      : "Tickets"
+              }
+              </span>
             </div>
 
             <div>
@@ -91,11 +136,10 @@ export default function UserTiket({ MainUser }) {
                 <Link
                   key={ticket._id}
                   href={`/userdeatails/usertiket/${ticket._id}`}
-                  className={`flex items-center justify-between flex-wrap gap-y-3 p-3 ${
-                    state.them === "dark"
-                      ? "hover:bg-gray-700"
-                      : "hover:bg-slate-400"
-                  } rounded-xl transition-colors`}
+                  className={`flex items-center justify-between flex-wrap gap-y-3 p-3 ${state.them === "dark"
+                    ? "hover:bg-gray-700"
+                    : "hover:bg-slate-400"
+                    } rounded-xl transition-colors`}
                 >
                   <div className="flex items-center">
                     <span className="block  w-20 text-right ">
@@ -119,22 +163,29 @@ export default function UserTiket({ MainUser }) {
                         .slice(10)}
                     </span>
                     <span
-                      className={`text-xs py-1 px-1.5 text-yellow-400  ${
-                        state.them === "dark"
-                          ? "bg-yellow-400/10"
-                          : "bg-yellow-400/20"
-                      } rounded`}
+                      className={`text-xs py-1 px-1.5 text-yellow-400  ${state.them === "dark"
+                        ? "bg-yellow-400/10"
+                        : "bg-yellow-400/20"
+                        } rounded`}
                     >
                       {ticket.department}
                     </span>
                     <span
-                      className={`text-xs py-1 px-1.5 text-yellow-400  ${
-                        state.them === "dark"
-                          ? "bg-yellow-400/10"
-                          : "bg-yellow-400/20"
-                      } rounded`}
+                      className={`text-xs py-1 px-1.5 text-yellow-400  ${state.them === "dark"
+                        ? "bg-yellow-400/10"
+                        : "bg-yellow-400/20"
+                        } rounded`}
                     >
-                      منتظر پاسخ
+                      {
+                        state.lan === "fa"
+                          ? "منتظر پاسخ"
+                          : state.lan === "en"
+                            ? "Waiting for a response"
+                            : state.lan === "ku"
+                              ? "Li benda bersiva"
+                              : "Warten auf Antwort"
+                      }
+
                     </span>
                   </div>
                 </Link>
@@ -142,7 +193,16 @@ export default function UserTiket({ MainUser }) {
             </div>
           </div>
         ) : (
-          <Notfound title="تیکتی برای نمایش وجود ندارد" />
+          <Notfound title={
+            state.lan === "fa"
+              ? "تیکتی برای نمایش وجود ندارد"
+              : state.lan === "en"
+                ? "No tickets available for display"
+                : state.lan === "ku"
+                  ? "Tikêt ji bo nîşandan tuneye"
+                  : "Keine Tickets zur Anzeige vorhanden"
+          }
+          />
         )}
       </section>
     </div>

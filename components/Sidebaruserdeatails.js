@@ -16,11 +16,9 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
 
   return (
     <aside
-      className={`${
-        showsidebar ? "active_Sidebar  " : "NONactive_Sidebar "
-      } fixed top-0 bottom-0 -right-64  ${
-        state.them === "dark" ? "text-white bg-dark" : "text-black bg-white"
-      } bg-gray-700 md:bg-slate-700/0   z-30 lg:static flex flex-col w-64 lg:w-56 lg:mt-10 px-7 py-5 lg:px-0 lg:py-0 shrink-0 lg:min-h-[calc(100vh-68px)] transition-all lg:transition-none`}
+      className={`${showsidebar ? "active_Sidebar  " : "NONactive_Sidebar "
+        } fixed top-0 bottom-0 -right-64  ${state.them === "dark" ? "text-white bg-dark" : "text-black bg-white"
+        } bg-gray-700 md:bg-slate-700/0   z-30 lg:static flex flex-col w-64 lg:w-56 lg:mt-10 px-7 py-5 lg:px-0 lg:py-0 shrink-0 lg:min-h-[calc(100vh-68px)] transition-all lg:transition-none`}
     >
       <div className="flex items-center justify-between pb-5 mb-7 border-b md:border-none border-b-slate">
         <Link href="/" className="flex items-center gap-x-1.5 md:gap-x-2.5">
@@ -33,11 +31,10 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
           />
         </Link>
         <div
-          className={` ${
-            state.them === "dark"
+          className={` ${state.them === "dark"
               ? "bg-[#ffffff0D] text-white"
               : "bg_white_100 text-gray-700"
-          } flex items-center md:hidden  p-4 rounded-full  justify-center`}
+            } flex items-center md:hidden  p-4 rounded-full  justify-center`}
         >
           <IoMdClose
             onClick={() => setshowsidebar(false)}
@@ -48,45 +45,77 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
       <div className="space-y-4 ">
         <Link
           href="/userdeatails"
-          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
-            rout.route === "/userdeatails" && "bg-green-500"
-          } `}
+          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${rout.route === "/userdeatails" && "bg-green-500"
+            } `}
         >
           <AiOutlineHome className=" w-6 h-6 " />
-          پیشخوان{" "}
+          {
+            state.lan === "fa"
+              ? "پیشخوان"
+              : state.lan === "en"
+                ? "Dashboard"
+                : state.lan === "ku"
+                  ? "Pêşxan"
+                  : "Dashboard"
+          }
+          {" "}
         </Link>
         <Link
           href="/userdeatails/mycourse"
-          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
-            rout.route === "/userdeatails/mycourse" && "bg-green-500"
-          } `}
+          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${rout.route === "/userdeatails/mycourse" && "bg-green-500"
+            } `}
         >
           <IoFolderOpenOutline className=" w-6 h-6 " />
-          دوره های من{" "}
+          {
+            state.lan === "fa"
+              ? "دوره‌های من"
+              : state.lan === "en"
+                ? "My Courses"
+                : state.lan === "ku"
+                  ? "Dersên min"
+                  : "Meine Kurse"
+          }
+          {" "}
         </Link>
         <Link
           href="/userdeatails/usertiket"
-          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
-            rout.route === "/userdeatails/usertiket"
+          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${rout.route === "/userdeatails/usertiket"
               ? "bg-green-500"
               : rout.route === "/userdeatails/usertiket/[id]"
-              ? "bg-green-500"
-              : rout.route === "/userdeatails/usertiket/newticket"
-              ? "bg-green-500"
-              : ""
-          } `}
+                ? "bg-green-500"
+                : rout.route === "/userdeatails/usertiket/newticket"
+                  ? "bg-green-500"
+                  : ""
+            } `}
         >
           <HiOutlineChatBubbleLeftRight className=" w-6 h-6 " />
-          تیکت ها{" "}
+          {
+            state.lan === "fa"
+              ? "تیکت‌ها"
+              : state.lan === "en"
+                ? "Tickets"
+                : state.lan === "ku"
+                  ? "Tikêtan"
+                  : "Tickets"
+          }
+          {" "}
         </Link>
         <Link
           href="/userdeatails/accontdeatails"
-          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${
-            rout.route === "/userdeatails/accontdeatails" && "bg-green-500"
-          } `}
+          className={`flex items-center gap-x-2.5 h-10 px-3 rounded-lg bg-primary ${rout.route === "/userdeatails/accontdeatails" && "bg-green-500"
+            } `}
         >
           <FaRegUser className=" w-6 h-6 " />
-          جزئیات حساب{" "}
+          {
+            state.lan === "fa"
+              ? "جزئیات حساب"
+              : state.lan === "en"
+                ? "Account Details"
+                : state.lan === "ku"
+                  ? "Detalên hesabê"
+                  : "Kontodetails"
+          }
+          {" "}
         </Link>
         <button
           onClick={() => {
@@ -98,7 +127,16 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
            "
         >
           <FaRightToBracket className=" w-6 h-6 " />
-          خروج{" "}
+          {
+            state.lan === "fa"
+              ? "خروج"
+              : state.lan === "en"
+                ? "Logout"
+                : state.lan === "ku"
+                  ? "Derketin"
+                  : "Abmelden"
+          }
+          {" "}
         </button>
       </div>
     </aside>

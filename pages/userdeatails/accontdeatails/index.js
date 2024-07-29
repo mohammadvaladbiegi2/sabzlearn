@@ -30,7 +30,15 @@ export default function AccontDeatails({ MainUser }) {
       !validatePhoneNumber(userinfo.phoneNumber) ||
       !validatusername(userinfo.username)
     ) {
-      toast.error("مقادیر را به درستی وارد کنید");
+      toast.error(state.lan === "fa"
+          ? "مقادیر را به درستی وارد کنید"
+          : state.lan === "en"
+          ? "Please enter the values correctly"
+          : state.lan === "ku"
+          ? "Ji kerema xwe nirxan rast binivîsin"
+          : "Bitte geben Sie die Werte korrekt ein"
+      
+      );
     } else {
       let res = await fetch(
         `http://localhost:3000/api/user/updateuserinfo/${MainUser._id}`,
@@ -43,12 +51,24 @@ export default function AccontDeatails({ MainUser }) {
         }
       );
       if (res.status === 201) {
-        toast.success("تغییرات با موفقیت اعمال شد");
+        toast.success( state.lan === "fa"
+          ? "تغییرات با موفقیت اعمال شد"
+          : state.lan === "en"
+          ? "Changes applied successfully"
+          : state.lan === "ku"
+          ? "Guhertin bi serkeftin hatin cihê kirin"
+          : "Änderungen erfolgreich angewendet");
         setTimeout(() => {
           location.reload();
         }, 2000);
       } else {
-        toast.info("خطا دوباره امتحان کنید");
+        toast.info(  state.lan === "fa"
+          ? "خطا دوباره امتحان کنید"
+          : state.lan === "en"
+          ? "Error, please try again"
+          : state.lan === "ku"
+          ? "Şewtiya, ji kerema xwe dubare bixwazin"
+          : "Fehler, bitte versuchen Sie es erneut");
       }
     }
   };
@@ -66,12 +86,33 @@ export default function AccontDeatails({ MainUser }) {
       }
     );
 
-    res.status === 422 && toast.error("رمز فعلی صحیح نیست");
+    res.status === 422 && toast.error(
+      state.lan === "fa"
+        ? "رمز فعلی صحیح نیست"
+        : state.lan === "en"
+        ? "Current password is incorrect"
+        : state.lan === "ku"
+        ? "Şîfreya heyî nehatiye rast kirin"
+        : "Aktuelles Passwort ist falsch"
+    
+    );
     if (res.status === 201) {
-      toast.success("رمز عبور با موفقیت تغییر کرد");
+      toast.success( state.lan === "fa"
+        ? "رمز عبور با موفقیت تغییر کرد"
+        : state.lan === "en"
+        ? "Password changed successfully"
+        : state.lan === "ku"
+        ? "Şîfre bi serkeftin hat guhertin"
+        : "Passwort wurde erfolgreich geändert");
       setPassword({ beforpassword: "", newpassword: "" });
     }
-    res.status === 417 && toast.info("رمز تغییر نکرد دوباره امتحان کنید");
+    res.status === 417 && toast.info(  state.lan === "fa"
+      ? "رمز تغییر نکرد دوباره امتحان کنید"
+      : state.lan === "en"
+      ? "Password not changed, please try again"
+      : state.lan === "ku"
+      ? "Şîfre nehat guhertin, ji kerema xwe dubare bixwazin"
+      : "Passwort wurde nicht geändert, bitte versuchen Sie es erneut");
   };
   return (
     <div
@@ -96,7 +137,15 @@ export default function AccontDeatails({ MainUser }) {
         />
         <div className="px-5 md:px-0">
           <h3 className="md:hidden   mb-7">
-            {MainUser.username} عزیز؛ خوش اومدی 🙌
+            {MainUser.username} {
+          state.lan === "fa"
+            ? "عزیز؛ خوش اومدی"
+            : state.lan === "en"
+              ? "Dear; Welcome"
+              : state.lan === "ku"
+                ? "Heval; Bi xêr hatî"
+                : "Liebe/r; Willkommen"
+        }🙌
           </h3>{" "}
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-10">
             <div
@@ -105,7 +154,16 @@ export default function AccontDeatails({ MainUser }) {
               } p-4 rounded-2xl`}
             >
               <div className="pb-3 m-3 border-b  border-b-slate-500">
-                <span className=" md:text-xl  ">جزییات حساب کاربری</span>
+                <span className=" md:text-xl  ">{
+  state.lan === "fa"
+    ? "جزئیات حساب کاربری"
+    : state.lan === "en"
+    ? "User Account Details"
+    : state.lan === "ku"
+    ? "Detalên hesabê bikarhêner"
+    : "Benutzerdetails"
+}
+</span>
               </div>
               <form onSubmit={updateuserinfo} className="p-3 pt-8">
                 <div className="relative mb-11">
@@ -124,7 +182,16 @@ export default function AccontDeatails({ MainUser }) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-6">
                   <div>
                     <label htmlFor="phone" className=" ">
-                      شماره موبایل
+                    {
+  state.lan === "fa"
+    ? "شماره موبایل"
+    : state.lan === "en"
+    ? "Mobile Number"
+    : state.lan === "ku"
+    ? "Hejmara mobîl"
+    : "Handynummer"
+}
+
                     </label>
                     <input
                       type="text"
@@ -143,8 +210,17 @@ export default function AccontDeatails({ MainUser }) {
                   </div>
 
                   <div>
-                    <label htmlFor="username" className=" ">
-                      نام کاربری
+                    <label htmlFor="username" >
+                    {
+  state.lan === "fa"
+    ? "نام کاربری"
+    : state.lan === "en"
+    ? "Username"
+    : state.lan === "ku"
+    ? "Navê bikarhêner"
+    : "Benutzername"
+}
+
                     </label>
                     <input
                       type="text"
@@ -167,7 +243,16 @@ export default function AccontDeatails({ MainUser }) {
                   type="submit"
                   className="button-lg text-center bg-green-500 mr-auto w-full md:w-auto mt-10"
                 >
-                  ثبت اطلاعات جدید
+                  {
+  state.lan === "fa"
+    ? "ثبت اطلاعات جدید"
+    : state.lan === "en"
+    ? "Save New Information"
+    : state.lan === "ku"
+    ? "Agahdariyên nû tomarkirin"
+    : "Neue Informationen speichern"
+}
+
                 </button>
               </form>
             </div>
@@ -177,7 +262,16 @@ export default function AccontDeatails({ MainUser }) {
               } p-4.5 rounded-2xl`}
             >
               <div className="pb-3 m-3 border-b border-b-slate-500">
-                <span className=" md:text-xl ">تغییر رمز عبور</span>
+                <span className=" md:text-xl ">{
+  state.lan === "fa"
+    ? "تغییر رمز عبور"
+    : state.lan === "en"
+    ? "Change Password"
+    : state.lan === "ku"
+    ? "Şîfre biguherîne"
+    : "Passwort ändern"
+}
+</span>
               </div>
               <form
                 onSubmit={changePassword}
@@ -187,14 +281,32 @@ export default function AccontDeatails({ MainUser }) {
                 <div className="space-y-5 md:space-y-6">
                   <div>
                     <label htmlFor="old_pass" className=" ">
-                      رمز عبور فعلی
+                    {
+  state.lan === "fa"
+    ? "رمز عبور فعلی"
+    : state.lan === "en"
+    ? "Current Password"
+    : state.lan === "ku"
+    ? "Şîfreya heyî"
+    : "Aktuelles Passwort"
+}
+
                     </label>
                     <input
                       type="password"
                       className={`mt-3 md:mt-4 w-full p-3 sm:p-5 mb-3  text-sm sm:text-base tracking-tight ${
                         state.them === "dark" ? "bg-gray-700" : "bg_white_100"
                       }  rounded-xl border border-transparent focus:border-slate placeholder:text-gray-500 transition-all`}
-                      placeholder="رمز فعلی را وارد کنید"
+                      placeholder={
+                        state.lan === "fa"
+                          ? "رمز فعلی را وارد کنید"
+                          : state.lan === "en"
+                          ? "Enter current password"
+                          : state.lan === "ku"
+                          ? "Şîfreya heyî binivîsin"
+                          : "Aktuelles Passwort eingeben"
+                      }
+                      
                       value={Password.beforpassword}
                       onChange={(e) =>
                         setPassword((prev) => {
@@ -205,14 +317,32 @@ export default function AccontDeatails({ MainUser }) {
                   </div>
                   <div>
                     <label htmlFor="new_pass" className=" ">
-                      رمز عبور جدید
+                    {
+  state.lan === "fa"
+    ? "رمز عبور جدید"
+    : state.lan === "en"
+    ? "New Password"
+    : state.lan === "ku"
+    ? "Şîfreya nû"
+    : "Neues Passwort"
+}
+
                     </label>
                     <input
                       type="password"
                       className={`mt-3 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${
                         state.them === "dark" ? "bg-gray-700" : "bg_white_100"
                       } rounded-xl border border-transparent focus:border-slate placeholder:text-gray-500 transition-all`}
-                      placeholder="رمز جدید را وارد کنید"
+                      placeholder={
+                        state.lan === "fa"
+                          ? "رمز جدید را وارد کنید"
+                          : state.lan === "en"
+                          ? "Enter new password"
+                          : state.lan === "ku"
+                          ? "Şîfreya nû binivîsin"
+                          : "Neues Passwort eingeben"
+                      }
+                      value={Password.newpassword}
                       onChange={(e) =>
                         setPassword((prev) => {
                           return { ...prev, newpassword: e.target.value };
@@ -225,7 +355,16 @@ export default function AccontDeatails({ MainUser }) {
                   type="submit"
                   className="button-lg bg-green-500 mr-auto text-center w-full md:w-auto mt-10"
                 >
-                  تغییر رمز
+                  {
+  state.lan === "fa"
+    ? "تغییر رمز"
+    : state.lan === "en"
+    ? "Change Password"
+    : state.lan === "ku"
+    ? "Şîfre biguherîne"
+    : "Passwort ändern"
+}
+
                 </button>
               </form>
             </div>

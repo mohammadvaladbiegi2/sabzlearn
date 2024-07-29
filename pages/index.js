@@ -47,9 +47,12 @@ export default function Home({ articlsData, courseData, islogin, username }) {
       <div
         className={`${
           state.them === "dark" ? "bg_black_100" : "bg_white_100"
-        } pb-8`}
+        } pb-8 `}
       >
         <Navbar islogin={islogin} username={username} />
+        <div className="max-w-[1400px] m-auto">
+
+       
         <header>
           <section className="flex flex-col-reverse xl:flex-row gap-8 xl:gap-0   justify-between items-center px-8 mt-7">
             <div
@@ -446,6 +449,7 @@ export default function Home({ articlsData, courseData, islogin, username }) {
               ))}
           </div>{" "}
         </section>
+        </div>
       </div>
       <Footer />
     </>

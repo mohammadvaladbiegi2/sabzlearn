@@ -36,34 +36,56 @@ export default function NewTickts({ MainUser }) {
         body: JSON.stringify(ticket),
       });
       if (res.status === 200) {
-        toast.success("تیکت ارسال شد");
+        toast.success(
+          state.lan === "fa"
+            ? "تیکت ارسال شد"
+            : state.lan === "en"
+              ? "Ticket has been sent"
+              : state.lan === "ku"
+                ? "Tikêt şandî ye"
+                : "Ticket wurde gesendet"
+
+        );
         setticket({ title: "", text: "", department: "" });
         setTimeout(() => {
           rout.push("/userdeatails/usertiket");
         }, 2000);
       } else {
-        toast.error("خطا در ارسال");
+        toast.error(
+          state.lan === "fa"
+            ? "خطا در ارسال"
+            : state.lan === "en"
+              ? "Error in sending"
+              : state.lan === "ku"
+                ? "Şewtiya di şandinê de"
+                : "Fehler beim Versenden"
+
+        );
       }
     } else {
-      toast.error("مقادیر صحیح وارد کنید");
+      toast.error(state.lan === "fa"
+        ? "مقادیر صحیح وارد کنید"
+        : state.lan === "en"
+          ? "Enter correct values"
+          : state.lan === "ku"
+            ? "Nirxên rast binivîsin"
+            : "Geben Sie die richtigen Werte ein");
     }
   };
   return (
     <div
-      className={`${
-        state.them === "dark" ? "bg_black_100" : "bg-white"
-      } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+      className={`${state.them === "dark" ? "bg_black_100" : "bg-white"
+        } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
     >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
         setshowsidebar={setshowsidebar}
       />
       <section
-        className={`${
-          state.them === "dark"
+        className={`${state.them === "dark"
             ? "bg-dark text-white"
             : "bg-gray-100 text-black"
-        } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+          } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
       >
         <HeaderAccontDetails
           username={MainUser.username}
@@ -71,47 +93,125 @@ export default function NewTickts({ MainUser }) {
         />
 
         <div
-          className={`${
-            state.them === "dark"
+          className={`${state.them === "dark"
               ? "bg_black_100 text-white"
               : "bg-white text-black"
-          } my-6  p-3.5 md:p-4.5 rounded-2xl`}
+            } my-6  p-3.5 md:p-4.5 rounded-2xl`}
         >
           <div className="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-700">
-            <span className=" md:text-xl ">ارسال تیکت</span>
+            <span className=" md:text-xl ">{
+              state.lan === "fa"
+                ? "ارسال تیکت"
+                : state.lan === "en"
+                  ? "Send Ticket"
+                  : state.lan === "ku"
+                    ? "Tikêt şandin"
+                    : "Ticket senden"
+            }
+            </span>
           </div>
           <form onSubmit={sendTicket}>
             <div>
-              <label htmlFor="department">دپارتمان</label>
+              <label htmlFor="department">{
+                state.lan === "fa"
+                  ? "دپارتمان"
+                  : state.lan === "en"
+                    ? "Department"
+                    : state.lan === "ku"
+                      ? "Beş"
+                      : "Abteilung"
+              }
+              </label>
               <select
-                className={`mt-3 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${
-                  state.them === "dark" ? "bg-gray-700" : "bg_white_100"
-                } rounded-xl   placeholder:text-gray-500 transition-all`}
+                className={`mt-3 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+                  } rounded-xl   placeholder:text-gray-500 transition-all`}
                 onChange={(e) =>
                   setticket((prev) => {
                     return { ...prev, department: e.target.value };
                   })
                 }
               >
-                <option value="">دپارتمان مورد نظر...</option>
-                <option value="مالی">مالی</option>
-                <option value="ارتباط با مدیریت">ارتباط با مدیریت</option>
-                <option value="پشتیبانی">پشتیبانی</option>
-                <option value="مشاوره">مشاوره</option>
+                <option value="">{
+                  state.lan === "fa"
+                    ? "دپارتمان مورد نظر"
+                    : state.lan === "en"
+                      ? "Desired Department"
+                      : state.lan === "ku"
+                        ? "Beşa ku hûn dixwazin"
+                        : "Gewünschte Abteilung"
+                }
+                </option>
+                <option value="مالی">{
+                  state.lan === "fa"
+                    ? "مالی"
+                    : state.lan === "en"
+                      ? "Finance"
+                      : state.lan === "ku"
+                        ? "Mali"
+                        : "Finanzen"
+                }
+                </option>
+                <option value="ارتباط با مدیریت">{
+                  state.lan === "fa"
+                    ? "ارتباط با مدیریت"
+                    : state.lan === "en"
+                      ? "Contact Management"
+                      : state.lan === "ku"
+                        ? "Têkiliyê bi rêveberiyê"
+                        : "Kontakt zur Verwaltung"
+                }
+                </option>
+                <option value="پشتیبانی">{
+                  state.lan === "fa"
+                    ? "پشتیبانی"
+                    : state.lan === "en"
+                      ? "Support"
+                      : state.lan === "ku"
+                        ? "Piştgiriya"
+                        : "Support"
+                }
+                </option>
+                <option value="مشاوره">{
+                  state.lan === "fa"
+                    ? "مشاوره"
+                    : state.lan === "en"
+                      ? "Consultation"
+                      : state.lan === "ku"
+                        ? "Şirove"
+                        : "Beratung"
+                }
+                </option>
               </select>
             </div>
             <div className="mt-6">
               <label htmlFor="title" className=" ">
-                موضوع تیکت
+                {
+                  state.lan === "fa"
+                    ? "موضوع تیکت"
+                    : state.lan === "en"
+                      ? "Ticket Subject"
+                      : state.lan === "ku"
+                        ? "Mijara tikêtê"
+                        : "Ticketthema"
+                }
+
               </label>
               <input
                 type="text"
-                className={`mt-3 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${
-                  state.them === "dark" ? "bg-gray-700" : "bg_white_100"
-                } rounded-xl border border-transparent focus:border-slate placeholder:text-gray-500 transition-all`}
+                className={`mt-3 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+                  } rounded-xl border border-transparent focus:border-slate placeholder:text-gray-500 transition-all`}
                 id="title"
                 name="title"
-                placeholder="موضوع تیکت خود را وارد کنید"
+                placeholder={
+                  state.lan === "fa"
+                    ? "موضوع تیکت خود را وارد کنید"
+                    : state.lan === "en"
+                      ? "Enter your ticket subject"
+                      : state.lan === "ku"
+                        ? "Mijara tikêtê xwe binivîsin"
+                        : "Geben Sie Ihr Ticketthema ein"
+                }
+
                 onChange={(e) =>
                   setticket((prev) => {
                     return { ...prev, title: e.target.value };
@@ -121,16 +221,33 @@ export default function NewTickts({ MainUser }) {
             </div>
             <div className="mt-6">
               <label htmlFor="text" className=" ">
-                متن تیکت
+                {
+                  state.lan === "fa"
+                    ? "متن تیکت"
+                    : state.lan === "en"
+                      ? "Ticket Text"
+                      : state.lan === "ku"
+                        ? "Nivîsarê tikêtê"
+                        : "Tickettext"
+                }
+
               </label>
               <textarea
                 rows="8"
-                className={`mt-3.5 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${
-                  state.them === "dark" ? "bg-gray-700" : "bg_white_100"
-                } rounded-xl border border-transparent focus:border-slateplaceholder:text-gray-500 transition-all`}
+                className={`mt-3.5 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+                  } rounded-xl border border-transparent focus:border-slateplaceholder:text-gray-500 transition-all`}
                 id="text"
                 name="text"
-                placeholder="متن تیکت خود را وارد کنید"
+                placeholder={
+                  state.lan === "fa"
+                    ? "متن تیکت خود را وارد کنید"
+                    : state.lan === "en"
+                      ? "Enter your ticket text"
+                      : state.lan === "ku"
+                        ? "Nivîsara tikêtê xwe binivîsin"
+                        : "Geben Sie den Text Ihres Tickets ein"
+                }
+
                 onChange={(e) =>
                   setticket((prev) => {
                     return { ...prev, text: e.target.value };
@@ -144,7 +261,16 @@ export default function NewTickts({ MainUser }) {
                   className="bg-green-500  py-3 px-4 hover:opacity-90 rounded-xl"
                   type="submit"
                 >
-                  ارسال
+                  {
+                    state.lan === "fa"
+                      ? "ارسال"
+                      : state.lan === "en"
+                        ? "Send"
+                        : state.lan === "ku"
+                          ? "Şandîn"
+                          : "Senden"
+                  }
+
                 </button>
               </div>
             </div>

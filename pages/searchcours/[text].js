@@ -64,8 +64,10 @@ export default function Searchcourse({ courses, Allcourse,islogin }) {
       <main
         className={`${
           state.them === "dark" ? "bg_black_100" : "bg_white_100"
-        } max-w-[1920px] mx-auto pb-8 overflow-x-hidden pt-8 sm:pt-10`}
+        }  pb-8 overflow-x-hidden pt-8 sm:pt-10`}
       >
+        <div className="max-w-[1500px] mx-auto">
+
         <div className="px-[10px] sm:px-[40px] md:px-[80px] lg:px-[100px]">
           <div className="flex flex-col sm:flex-row gap-y-2 items-center justify-between mb-8 lg:mb-15">
             <div className="flex gap-2.5 items-center">
@@ -585,6 +587,8 @@ export default function Searchcourse({ courses, Allcourse,islogin }) {
             </li>
           </ul>
         </div>
+        </div>
+
       </main>
       <Footer />
     </>
