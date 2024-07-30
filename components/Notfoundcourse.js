@@ -1,6 +1,10 @@
+import { useGlobalState } from "@/context/GlobalState";
 import React from "react";
 
 export default function Notfoundcourse() {
+
+  const { state } = useGlobalState();
+
   return (
     <div className="archive_empty flex items-center justify-center flex-col px-7 py-8 md:py-20 rounded-2xl border border-slate-500 border-dashed ">
       <svg
@@ -218,7 +222,16 @@ export default function Notfoundcourse() {
         </defs>
       </svg>
       <p className="text-lg md:text-xl text-center font-danaDemiBold text-slate-500 dark:text-white mt-8 md:mt-12">
-        متاسفانه دوره ای مطابق با جستجوی شما پیدا نشد ):
+        {
+          state.lan === "fa"
+            ? "متاسفانه دوره‌ای مطابق با جستجوی شما پیدا نشد ):"
+            : state.lan === "en"
+              ? "Unfortunately, no course matching your search was found ):"
+              : state.lan === "ku"
+                ? "Bêxêr, kursek li gorî lêgerîna te hatî dîtin nîne ):"
+                : "Leider wurde kein Kurs gefunden, der Ihrer Suche entspricht ):"
+        }
+
       </p>
     </div>
   );

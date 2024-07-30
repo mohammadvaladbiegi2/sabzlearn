@@ -140,6 +140,18 @@ console.log(islogin);
       }
     }
   };
+
+  const handleCopy = () => {
+    const text = "https://sabzlearn.ir/?p=4382";
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        toast.success("copied!")
+      })
+      .catch((err) => {
+        console.error('Failed to copy text: ', err);
+      });
+  };
+
   return (
     <>
       <Navbar  islogin={islogin}/>
@@ -827,7 +839,7 @@ console.log(islogin);
                     <div className="flex gap-x-4 justify-end mt-5 sm:mt-6">
                       <button
                         onClick={() => setcommentText("")}
-                        className="flex-grow sm:grow-0 sm:w-36 text-green-500 border-solid border-2 border-emerald-500 hover:bg-green-500 hover: transition p-4 rounded-full"
+                        className="flex-grow sm:grow-0 sm:w-36 text-green-500 border-solid border-2 border-emerald-500 hover:bg-green-500 hover:text-white transition p-4 rounded-full"
                       >
                         {
   state.lan === "fa"
@@ -1042,7 +1054,7 @@ console.log(islogin);
 }
 </span>
                 <div className="flex items-center justify-between gap-x-3 p-4 mt-5 bg-sky-500/10 text-sky-500 border border-dashed border-sky-500 rounded-lg">
-                  <button >
+                  <button onClick={handleCopy}>
                     <HiClipboardDocumentCheck className="w-8 h-8" />
                   </button>
                   <span className=" text-lg w-64 text-ltr text-left truncate">
