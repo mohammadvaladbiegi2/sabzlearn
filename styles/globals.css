@@ -309,3 +309,32 @@ body {
 }
 
 
+@media (min-width: 600px) {
+  .Toastify__toast-container {
+    width: 300px !important;
+    font-size: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .Toastify__toast-container {
+    width: 220px !important;
+    font-weight: 500;
+    font-size: small;
+  }
+}
+
+
+
+input[type="checkbox"]:checked ~ .topic__body {
+  max-height: 1000px;
+}
+
+.topic__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.9s ease-in;
+}
+
+.topic__body > div:last-child {
+  border-bottom: none !important;
+}

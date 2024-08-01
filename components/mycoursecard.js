@@ -29,8 +29,8 @@ export default function CourseCard({ progress = 0, image, title, courseid }) {
           />
         </Link>
       </div>
-      <div className="px-5 pb-3.5 pt-2.5 flex-grow ">
-        <h4 className=" h-12 line-clamp-2  mb-2.5">
+      <div className="px-5 pb-3 pt-2 flex-grow ">
+        <h4 className=" h-12 line-clamp-2  mb-2">
           <Link href={`/coursdetails/${courseid}`}>{state.lan === "fa" ? title.fa : state.lan === "en" ? title.en : state.lan === "ku" ? title.ku : title.ge}</Link>
         </h4>
         <div
@@ -38,7 +38,7 @@ export default function CourseCard({ progress = 0, image, title, courseid }) {
             state.them === "dark" ? "border-t-gray-700" : "border-t-slate-300"
           }`}
         >
-          <div className="flex items-center justify-between text-xs mb-1.5">
+          <div className="flex items-center justify-between text-xs mb-1">
             <span className="">میزان مشاهده</span>
             <span className="text-slate-500 dark:text-slate-400">
               {progress}%

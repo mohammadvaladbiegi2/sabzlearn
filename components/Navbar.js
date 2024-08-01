@@ -19,7 +19,6 @@ import { FaMoon } from "react-icons/fa";
 
 
 
-
 export default function navbar({  username,islogin }) {
   let route = useRouter();
   const [showsidebar, setshowsidebar] = useState(false);
@@ -424,7 +423,7 @@ export default function navbar({  username,islogin }) {
                     : "bg-white text-black"
                 } top-[14%] pt-4 z-10 transition-all show`}
               >
-                <div className="w-[278px]  border-0 p-5 pb-3.5 rounded-xl">
+                <div className="w-[278px]  border-0 p-5 pb-3 rounded-xl">
                   <div className="flex items-center border-b border-b-white/5 pb-5 mb-2">
                     <a href="#" className="shrink-0">
                       <Image
@@ -436,7 +435,7 @@ export default function navbar({  username,islogin }) {
                         height={50}
                       />
                     </a>
-                    <div className="mr-3.5 flex flex-col gap-y-3 overflow-hidden">
+                    <div className="mr-3 flex flex-col gap-y-3 overflow-hidden">
                       <span className=" inline-block truncate">{username}</span>
                       <span className="text-sm  text-green-500 inline-block">
                         {state.lan === "fa"
@@ -451,7 +450,7 @@ export default function navbar({  username,islogin }) {
                   </div>
                   <Link
                     href="/userdeatails"
-                    className="flex items-center justify-between px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                    className="flex items-center justify-between px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
                   >
                     <span className="flex items-center gap-x-2">
                       <AiOutlineHome className=" w-6 h-6 " />
@@ -460,7 +459,7 @@ export default function navbar({  username,islogin }) {
                   </Link>
                   <Link
                     href="/userdeatails/mycourse"
-                    className="flex items-center justify-between px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                    className="flex items-center justify-between px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
                   >
                     <span className="flex items-center gap-x-2">
                       <IoFolderOpenOutline className=" w-6 h-6 " />
@@ -475,7 +474,7 @@ export default function navbar({  username,islogin }) {
                   </Link>
                   <Link
                     href="/userdeatails/usertiket"
-                    className="flex items-center justify-between px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                    className="flex items-center justify-between px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
                   >
                     <span className="flex items-center gap-x-2">
                       <HiOutlineChatBubbleLeftRight className=" w-6 h-6 " />
@@ -484,7 +483,7 @@ export default function navbar({  username,islogin }) {
                   </Link>
                   <Link
                     href="/userdeatails/accontdeatails"
-                    className="flex items-center justify-between px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                    className="flex items-center justify-between px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
                   >
                     <span className="flex items-center gap-x-2">
                       <FaRegUser className=" w-6 h-6 " />
@@ -553,14 +552,14 @@ export default function navbar({  username,islogin }) {
                 state.them === "dark"
                   ? "  bg-dark text-white"
                   : "bg-white text-black"
-              }  w-[278px] border-0 p-5 pb-3.5 rounded-xl`}
+              }  w-[278px] border-0 p-5 pb-3 rounded-xl`}
             >
               <span
                 onClick={() => {
                   setshowboxlanguage(false);
                   dispatch({ type: "ku" });
                 }}
-                className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                className="flex items-center justify-between cursor-pointer px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
               >
                 <span className="flex items-center gap-x-2">kurdi</span>
                 <Image
@@ -576,7 +575,7 @@ export default function navbar({  username,islogin }) {
                   setshowboxlanguage(false);
                   dispatch({ type: "en" });
                 }}
-                className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                className="flex items-center justify-between cursor-pointer px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
               >
                 <span className="flex items-center gap-x-2">English </span>
                 <Image
@@ -593,7 +592,7 @@ export default function navbar({  username,islogin }) {
                   setshowboxlanguage(false);
                   dispatch({ type: "fa" });
                 }}
-                className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                className="flex items-center justify-between cursor-pointer px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
               >
                 <span className="flex items-center gap-x-2">فارسی </span>
                 <Image
@@ -609,7 +608,7 @@ export default function navbar({  username,islogin }) {
                   setshowboxlanguage(false);
                   dispatch({ type: "ge" });
                 }}
-                className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                className="flex items-center justify-between cursor-pointer px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
               >
                 <span className="flex items-center gap-x-2">Deutsch </span>
                 <Image
@@ -674,7 +673,7 @@ export default function navbar({  username,islogin }) {
                     : "bg-white text-black"
                 } top-[14%] pt-4 z-10 transition-all show`}
               >
-                <div className="w-[278px]  border-0 p-5 pb-3.5 rounded-xl">
+                <div className="w-[278px]  border-0 p-5 pb-3 rounded-xl">
                   <div className="flex items-center border-b border-b-white/5 pb-5 mb-2">
                     <a href="#" className="shrink-0">
                       <Image
@@ -686,7 +685,7 @@ export default function navbar({  username,islogin }) {
                         height={50}
                       />
                     </a>
-                    <div className="mr-3.5 flex flex-col gap-y-3 overflow-hidden">
+                    <div className="mr-3 flex flex-col gap-y-3 overflow-hidden">
                       <span className=" inline-block truncate">{username}</span>
                       <span className="text-sm  text-green-500 inline-block">
                         {state.lan === "fa"
@@ -701,7 +700,7 @@ export default function navbar({  username,islogin }) {
                   </div>
                   <Link
                     href="/userdeatails"
-                    className="flex items-center justify-between px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                    className="flex items-center justify-between px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
                   >
                     <span className="flex items-center gap-x-2">
                       <AiOutlineHome className=" w-6 h-6 " />
@@ -710,7 +709,7 @@ export default function navbar({  username,islogin }) {
                   </Link>
                   <Link
                     href="/userdeatails/mycourse"
-                    className="flex items-center justify-between px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                    className="flex items-center justify-between px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
                   >
                     <span className="flex items-center gap-x-2">
                       <IoFolderOpenOutline className=" w-6 h-6 " />
@@ -725,7 +724,7 @@ export default function navbar({  username,islogin }) {
                   </Link>
                   <Link
                     href="/userdeatails/usertiket"
-                    className="flex items-center justify-between px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                    className="flex items-center justify-between px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
                   >
                     <span className="flex items-center gap-x-2">
                       <HiOutlineChatBubbleLeftRight className=" w-6 h-6 " />
@@ -734,7 +733,7 @@ export default function navbar({  username,islogin }) {
                   </Link>
                   <Link
                     href="/userdeatails/accontdeatails"
-                    className="flex items-center justify-between px-2.5 h-12 rounded-lg  hover:bg-green-500 transition-colors"
+                    className="flex items-center justify-between px-2 h-12 rounded-lg  hover:bg-green-500 transition-colors"
                   >
                     <span className="flex items-center gap-x-2">
                       <FaRegUser className=" w-6 h-6 " />
@@ -800,14 +799,14 @@ export default function navbar({  username,islogin }) {
                 state.them === "dark"
                   ? " bg-dark text-white"
                   : "bg-white text-black"
-              } border-0 p-5 pb-3.5 rounded-xl`}
+              } border-0 p-5 pb-3 rounded-xl`}
             >
               <span
                 onClick={() => {
                   setshowboxlanguage(false);
                   dispatch({ type: "ku" });
                 }}
-                className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg hover:bg-green-500 transition-colors"
+                className="flex items-center justify-between cursor-pointer px-2 h-12 rounded-lg hover:bg-green-500 transition-colors"
               >
                 <span className="flex items-center gap-x-2">kurdi</span>
                 <Image
@@ -823,7 +822,7 @@ export default function navbar({  username,islogin }) {
                   setshowboxlanguage(false);
                   dispatch({ type: "en" });
                 }}
-                className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg hover:bg-green-500 transition-colors"
+                className="flex items-center justify-between cursor-pointer px-2 h-12 rounded-lg hover:bg-green-500 transition-colors"
               >
                 <span className="flex items-center gap-x-2">English </span>
                 <Image
@@ -840,7 +839,7 @@ export default function navbar({  username,islogin }) {
                   setshowboxlanguage(false);
                   dispatch({ type: "fa" });
                 }}
-                className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg hover:bg-green-500 transition-colors"
+                className="flex items-center justify-between cursor-pointer px-2 h-12 rounded-lg hover:bg-green-500 transition-colors"
               >
                 <span className="flex items-center gap-x-2">فارسی </span>
                 <Image
@@ -856,7 +855,7 @@ export default function navbar({  username,islogin }) {
                   setshowboxlanguage(false);
                   dispatch({ type: "ge" });
                 }}
-                className="flex items-center justify-between cursor-pointer px-2.5 h-12 rounded-lg hover:bg-green-500 transition-colors"
+                className="flex items-center justify-between cursor-pointer px-2 h-12 rounded-lg hover:bg-green-500 transition-colors"
               >
                 <span className="flex items-center gap-x-2">Deutsch </span>
                 <Image

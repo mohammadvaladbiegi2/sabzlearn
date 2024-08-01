@@ -6,7 +6,7 @@ export default function Notfound({ title }) {
 
   return (
     <div className={`${state.them === "dark" ? 'bg-dark' : 'bg-white'} rounded-2xl p-4.5 sm:p-5 mt-8`}>
-      <div className=" space-y-4.5 sm:space-y-5">
+      <div className=" space-y-4 sm:space-y-5">
         <div className={`flex flex-col items-center justify-center py-5 ${state.them === "dark" ? 'bg-dark' : 'bg-white'} rounded-xl`}>
           <svg
             width="112"

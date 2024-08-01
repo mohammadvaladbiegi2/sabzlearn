@@ -82,7 +82,16 @@ export default function ArticlsCard({
             href={`/articls/${_id}`}
             className="group-hover:text-green-500 flex items-center gap-1 text-lg    transition-colors"
           >
-            مطالعه مقاله
+            {
+  state.lan === "fa"
+    ? "مطالعه مقاله"
+    : state.lan === "en"
+    ? "Read Article"
+    : state.lan === "ku"
+    ? "Nivîsar bixwîne"
+    : "Artikel lesen"
+}
+
             <FaCircleArrowLeft className="h-5 w-5 mb-1 opacity-70 group-hover:text-green-500 transition-colors" />
           </Link>
         </div>

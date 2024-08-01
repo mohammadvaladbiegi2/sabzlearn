@@ -61,7 +61,7 @@ export default function Home({ articlsData, courseData, islogin, username }) {
               } flex-col xl:ms-[30px] gap-14`}
             >
               <div className="flex flex-col items-center xl:items-start">
-                <span className="  text-[35px] md:text-[50px]">
+                <span className="  text-[30px] md:text-[50px]">
                   {state.lan === "fa"
                     ? "آکادمی آموزش"
                     : state.lan === "en"
@@ -469,8 +469,8 @@ const verifyToken = (token) => {
 export async function getServerSideProps(context) {
   connectToDB();
 
-  let islogin = false;
   let username = "";
+  let islogin = false;
   const { token } = context.req.cookies;
   if (token) {
     islogin = true;

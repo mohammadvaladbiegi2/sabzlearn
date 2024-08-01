@@ -138,7 +138,7 @@ export default function Login() {
     >
       <div className="hidden lg:block absolute top-0 left-0 w-[300px] h-[300px] bg-sky-500 opacity-20 blur-[120px] rounded-full"></div>
       <section className="flex flex-col justify-center items-center h-[100vh]">
-        <Link href="/" className="flex items-center gap-x-3.5 mb-10">
+        <Link href="/" className="flex items-center gap-x-3 mb-10">
           <Image src="/image/logo.webp" width={110} height={50} alt="logo" />
           <Image
             src={`/image/${state.them === "dark"

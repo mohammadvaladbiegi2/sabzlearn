@@ -37,7 +37,7 @@ export default function HeaderAccontDetails({ setshowsidebar, username }) {
           className=" w-6 h-6 text-xl cursor-pointer hover:text-green-500 transition-all"
         />
       </div>
-      <div className="flex gap-x-3.5 md:gap-x-7">
+      <div className="flex gap-x-3 md:gap-x-7">
         <Link
           href="/userdeatails/usertiket"
           className={`${state.them === "dark"

@@ -24,7 +24,7 @@ export default function TitleCourseIntroduction({
         <h3
           className={`${
             state.them === "dark" ? "text-white" : "text-black"
-          } text-center md:text-start text-2xl sm:text-2.5xl   mb-5`}
+          } text-center md:text-start text-2xl sm:text-2xl   mb-5`}
         >
           <span
             className={`hidden sm:inline-block w-4 h-4 ${pointcolor}  rounded-sm me-4`}

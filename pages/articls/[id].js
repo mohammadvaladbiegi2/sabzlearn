@@ -12,38 +12,67 @@ import { FaChevronUp } from "react-icons/fa6";
 import { HiClipboardDocumentCheck } from "react-icons/hi2";
 import moment from "moment-jalaali";
 import Link from "next/link";
+import { useGlobalState } from "@/context/GlobalState";
+import { toast } from "react-toastify";
 
-export default function Articl({ Articl, AllArdicldata }) {
+
+export default function Articl({ Articl, AllArdicldata,islogin }) {
   const gregorianDate = moment(Articl.createdAt);
   const jalaliDate = gregorianDate.format("jYYYY/jMM/jDD HH:mm:ss");
+  const { state } = useGlobalState();
+
+
+  const handleCopy = () => {
+    const text = "https://sabzlearn.ir/?p=4382";
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        toast.success("copied!")
+      })
+      .catch((err) => {
+        console.error('Failed to copy text: ', err);
+      });
+  };
+
   return (
-    <>
-      <Navbar />
-      <main className="max-w-[1920px] mx-auto overflow-x-hidden mt-8 sm:mt-10">
+    <div className={`${state.them === 'dark' ? 'bg_black_100' : 'bg_white_100'}`}>
+      <Navbar islogin={islogin}/>
+      <main className="max-w-[1400px] mx-auto overflow-x-hidden mt-8 sm:mt-10">
         <div className="p-8">
-          <section className="grid grid-cols-1 lg:grid-cols-12 gap-x-7 gap-y-8 mt-8 md:mt-10 text-white">
+          <section className="grid grid-cols-1 lg:grid-cols-12 gap-x-7 gap-y-8 mt-8 md:mt-10 text-black">
             <div className="col-span-full lg:col-span-8 xl:col-span-9">
-              <div className="bg-dark rounded-2xl p-4 sm:p-5 ">
+              <div className={`${state.them === 'dark' ? 'bg-dark text-white' : 'bg-white text-black'} rounded-2xl p-4 sm:p-5 `}>
                 <div className="flex items-center gap-x-2 mb-5 sm:mb-6 pb-5 sm:pb-6 border-b border-b-white/10 relative">
-                  <span className="absolute -right-6 sm:-right-[26px] block w-1.5 h-[34px] md:h-9.5 bg-sky-500 rounded-r-sm"></span>
-                  <h1 className=" text-xl md:text-[1.625rem]/10 text-white">
-                    {Articl.title}
+                  <span className="absolute -right-6 sm:-right-[26px] block w-1 h-[34px] md:h-9 bg-sky-500 rounded-r-sm"></span>
+                  <h1 className=" text-xl md:text-[1.625rem]/10 ">
+                    {state.lan === "fa"
+            ? Articl.title.fa
+            : state.lan === "en"
+            ? Articl.title.en
+            : state.lan === "ku"
+            ? Articl.title.ku
+            : Articl.title.ge}
                   </h1>
                 </div>
                 <div className="grid sm:flex grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 mb-6 text-slate-500  text-sm sm:text-base">
-                  <div className="flex items-center gap-x-1.5">
+                  <div className="flex items-center gap-x-1">
                     <FaRegUser className="text-[20px]  mb-1 sm:size-5 text-white/70" />
 
-                    <span className="text-[20px]">{Articl.writer}</span>
+                    <span className="text-[20px]">
+
+                    {state.lan === "fa"
+                ? Articl.writer.fa
+                : Articl.writer.en
+               }
+                    </span>
                   </div>
-                  <div className="flex items-center gap-x-1.5">
+                  <div className="flex items-center gap-x-1">
                     <CiCalendar className="text-[20px] mb-1 sm:size-5 text-white/70" />
 
                     <span className="text-[20px]">
                       {jalaliDate.slice(0, 10)}
                     </span>
                   </div>
-                  <div className="flex items-center gap-x-1.5">
+                  <div className="flex items-center gap-x-1">
                     <IoEyeOutline className="text-[20px] mb-1 sm:size-5 text-white/70" />
 
                     <span className="text-[20px]">480</span>
@@ -54,13 +83,28 @@ export default function Articl({ Articl, AllArdicldata }) {
                   width={1000}
                   height={1000}
                   className="aspect-video w-full h-auto object-cover my-5 rounded-2xl"
-                  alt={Articl.title}
+                  alt={Articl.title.fa}
                 />
                 <div className="wp-content text-[1.1rem] mb-7 opacity-85  text-justify">
                   <h1 className="my-5">
-                    <strong>{Articl.title}</strong>
+                    <strong>   {state.lan === "fa"
+            ? Articl.title.fa
+            : state.lan === "en"
+            ? Articl.title.en
+            : state.lan === "ku"
+            ? Articl.title.ku
+            : Articl.title.ge}</strong>
                   </h1>
-                  <p className="my-4">{Articl.desc}</p>
+                  <p className="my-4">
+
+                  {state.lan === "fa"
+            ? Articl.desc.fa
+            : state.lan === "en"
+            ? Articl.desc.en
+            : state.lan === "ku"
+            ? Articl.desc.ku
+            : Articl.desc.ge}
+                  </p>
                   <p className="my-4">
                     این نوع محیط زمان اجرا از JavaScriptCore، موتوری که سافاری
                     را تأمین می‌کند، استفاده کرده که معمولاً سریع شروع می‌شود و
@@ -82,7 +126,7 @@ export default function Articl({ Articl, AllArdicldata }) {
                         decoding="async"
                         loading="lazy"
                         className="alignnone wp-image-3593 my-5 size-full"
-                        src="/image/js.webp"
+                        src="/image/api-1.webp"
                         alt="آموزش جاوا اسکریپت"
                         width="1920"
                         height="1080"
@@ -353,7 +397,7 @@ export default function Articl({ Articl, AllArdicldata }) {
                         decoding="async"
                         loading="lazy"
                         className="alignnone wp-image-3593 my-5 size-full"
-                        src="/image/js.webp"
+                        src="/image/api-1.webp"
                         alt="آموزش جاوا اسکریپت"
                         width="1920"
                         height="1080"
@@ -588,7 +632,7 @@ export default function Articl({ Articl, AllArdicldata }) {
                         decoding="async"
                         loading="lazy"
                         className="alignnone wp-image-3593 my-5 size-full"
-                        src="/image/js.webp"
+                        src="/image/api-1.webp"
                         alt="آموزش جاوا اسکریپت"
                         width="1920"
                         height="1080"
@@ -864,7 +908,7 @@ export default function Articl({ Articl, AllArdicldata }) {
                         decoding="async"
                         loading="lazy"
                         className="alignnone wp-image-3593 my-5 size-full"
-                        src="/image/js.webp"
+                        src="/image/api-1.webp"
                         alt="آموزش جاوا اسکریپت"
                         width="1920"
                         height="1080"
@@ -874,30 +918,45 @@ export default function Articl({ Articl, AllArdicldata }) {
                   </p>
                 </div>
               </div>
-              <div className="bg-dark rounded-2xl p-4 sm:p-5 mt-8">
+              <div className={`${state.them === 'dark' ? 'bg-dark text-white' : 'bg-white text-black'} rounded-2xl p-4 sm:p-5 mt-8`}>
                 <div className="flex items-center gap-x-3 mb-6 sm:mb-7 relative">
-                  <span className="absolute -right-6 sm:-right-[26px] block w-1.5 h-[34px] md:h-9.5 bg-amber-400 rounded-r-sm"></span>
-                  <HiOutlineBookOpen className="hidden md:inline-block text-[36px] text-amber-400  w-9.5 h-9.5" />
+                  <span className="absolute -right-6 sm:-right-[26px] block w-1 h-[34px] md:h-9 bg-amber-400 rounded-r-sm"></span>
+                  <HiOutlineBookOpen className="hidden md:inline-block text-[36px] text-amber-400  w-9 h-9" />
 
-                  <h3 className=" text-xl md:text-2xl">پیشنهاد مطالعه</h3>
+                  <h3 className=" text-xl md:text-2xl">{
+  state.lan === "fa"
+    ? "پیشنهاد مطالعه"
+    : state.lan === "en"
+    ? "Recommended Reading"
+    : state.lan === "ku"
+    ? "Xwendina pêşniyarî"
+    : "Empfohlene Lektüre"
+}
+</h3>
                 </div>
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
                   {AllArdicldata.map((articl) => (
                     <Link
                       href={`/articls/${articl._id}`}
                       key={articl._id}
-                      className="flex items-center gap-x-4 bg-dark-light p-3.5 rounded-xl"
+                      className={`flex items-center gap-x-4  ${state.them === 'dark' ? 'bg_black_100 ' : 'bg_white_100 '} p-3 rounded-xl`}
                     >
                       <Image
                         src={`/image/${articl.img}`}
                         className="h-20 rounded-lg my-5"
-                        alt={articl.title}
+                        alt={articl.title.fa}
                         height={150}
                         width={150}
                       />
                       <div>
                         <a href="#" className=" line-clamp-1">
-                          {articl.title}
+                          {state.lan === "fa"
+            ? articl.title.fa
+            : state.lan === "en"
+            ? articl.title.en
+            : state.lan === "ku"
+            ? articl.title.ku
+            : articl.title.ge}
                         </a>
                         <div className="flex items-center gap-x-1 mt-8 text-slate-500 ">
                           <CiCalendar className="size-5" />
@@ -912,21 +971,39 @@ export default function Articl({ Articl, AllArdicldata }) {
                   ))}
                 </div>
               </div>
-              <div className="bg-dark rounded-2xl p-4 sm:p-5 mt-8">
+              <div className={` ${state.them === 'dark' ? 'bg-dark text-white' : 'bg-white text-black'} rounded-2xl p-4 sm:p-5 mt-8`}>
                 <div className="flex items-center justify-between mb-6 sm:mb-7">
                   <div className="flex items-center gap-x-3 relative">
-                    <span className="absolute -right-6 sm:-right-[26px] block w-1.5 h-[34px] md:h-9.5 bg-red-500 rounded-r-sm "></span>
-                    <IoChatbubbles className="hidden md:inline-block text-3xl text-red-500 w-9.5 h-9.5" />
+                    <span className="absolute -right-6 sm:-right-[26px] block w-1 h-[34px] md:h-9 bg-red-500 rounded-r-sm "></span>
+                    <IoChatbubbles className="hidden md:inline-block text-3xl text-red-500 w-9 h-9" />
 
-                    <div className=" text-xl md:text-2xl">نظرات</div>
+                    <div className=" text-xl md:text-2xl">{
+  state.lan === "fa"
+    ? "نظرات"
+    : state.lan === "en"
+    ? "Comments"
+    : state.lan === "ku"
+    ? "Şirove"
+    : "Kommentare"
+}
+</div>
                   </div>
                   <button className="flex justify-center items-center hover:opacity-90   button-lg bg-green-500 ">
-                    ایجاد نظر جدید
+                  {
+  state.lan === "fa"
+    ? "ایجاد نظر جدید"
+    : state.lan === "en"
+    ? "Create New Comment"
+    : state.lan === "ku"
+    ? "Şîroveya nû biafirîne"
+    : "Neuen Kommentar erstellen"
+}
+
                   </button>
                 </div>
 
-                <div className=" space-y-4.5 sm:space-y-5">
-                  <div className="flex flex-col items-center justify-center py-5 bg-dark rounded-xl">
+                <div className=" space-y-4 sm:space-y-5">
+                  <div className="flex flex-col items-center justify-center py-5  rounded-xl">
                     <svg
                       width="112"
                       height="100"
@@ -935,7 +1012,7 @@ export default function Articl({ Articl, AllArdicldata }) {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M56.4667 95.4394C81.4064 95.4394 101.624 75.168 101.624 50.1619C101.624 25.1557 81.4064 4.88428 56.4667 4.88428C31.527 4.88428 11.3093 25.1557 11.3093 50.1619C11.3093 75.168 31.527 95.4394 56.4667 95.4394Z"
+                        d="M56.4667 95.4394C81.4064 95.4394 101.624 75.168 101.624 50.1619C101.624 25.1557 81.4064 4.88428 56.4667 4.88428C31.527 4.88428 11.3093 25.1557 11.3093 50.1619C11.3093 75.168 3127 95.4394 56.4667 95.4394Z"
                         fill="#EAEEF9"
                       ></path>
                       <g filter="url(#filter0_d_2116_10189)">
@@ -1152,7 +1229,16 @@ export default function Articl({ Articl, AllArdicldata }) {
                       </defs>
                     </svg>
                     <p className=" text-center text-slate-500 mt-3">
-                      نظری برای این مقاله ثبت نشده است
+                    {
+  state.lan === "fa"
+    ? "نظری برای این مقاله ثبت نشده است"
+    : state.lan === "en"
+    ? "No comments have been posted for this article"
+    : state.lan === "ku"
+    ? "Bo vê nivîsarê şîrove tuneye"
+    : "Für diesen Artikel wurden keine Kommentare hinterlassen"
+}
+
                     </p>
                   </div>
                 </div>
@@ -1160,13 +1246,22 @@ export default function Articl({ Articl, AllArdicldata }) {
             </div>
             <aside className="col-span-full lg:col-span-4 xl:col-span-3 space-y-8">
               <div
-                className="bg-dark rounded-xl p-5 overflow-hidden"
+                className={`${state.them === 'dark' ? 'bg-dark text-white' : 'bg-white text-black'} rounded-xl p-5 overflow-hidden`}
                 id="shortlink-collapse"
               >
                 <div className="flex items-center justify-between mb-5 pb-5 border-b border-b-white/10">
                   <div className="flex items-center gap-x-2 ">
                     <CiShare2 className="w-7 h-7" />
-                    اشتراک گذاری مطلب
+                    {
+  state.lan === "fa"
+    ? "اشتراک گذاری مطلب"
+    : state.lan === "en"
+    ? "Share Content"
+    : state.lan === "ku"
+    ? "Naverokê parêkê"
+    : "Inhalt teilen"
+}
+
                   </div>
                   <button
                     type="button"
@@ -1177,7 +1272,7 @@ export default function Articl({ Articl, AllArdicldata }) {
                   </button>
                 </div>
                 <div className="flex items-center justify-between gap-x-3 p-4 mt-4.5 bg-sky-500/10 text-sky-500 border border-dashed border-sky-500 rounded-lg">
-                  <button>
+                  <button onClick={handleCopy}> 
                     <HiClipboardDocumentCheck className="w-8 h-8" />
                   </button>
                   <span
@@ -1193,28 +1288,25 @@ export default function Articl({ Articl, AllArdicldata }) {
         </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 
-export async function getStaticPaths() {
-  let res = await fetch("http://localhost:3000/api/articl/");
-  let data = await res.json();
-  const paths = data.map((articl) => ({
-    params: { id: String(articl._id) },
-  }));
-  return {
-    paths,
-    fallback: true
-  };
-}
 
-export async function getStaticProps(contex) {
+export async function getServerSideProps(contex) {
+  let islogin = false;
+
+  const { token } = contex.req.cookies;
+  if (token) {
+    islogin = true;
+  }
+
+  
   let res = await fetch(`http://localhost:3000/api/articl/${contex.params.id}`);
   let Articl = await res.json();
   let resAllArticl = await fetch("http://localhost:3000/api/articl/");
   let AllArdicldata = await resAllArticl.json();
   return {
-    props: { Articl, AllArdicldata },
+    props: { Articl, AllArdicldata ,islogin},
   };
 }

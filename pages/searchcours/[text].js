@@ -47,11 +47,11 @@ export default function Searchcourse({ courses, Allcourse,islogin }) {
     e.preventDefault();
     let search = Allcourse.filter(
       (course) =>
-        course.title.fa.includes(searchtext.toLowerCase()) ||
-        course.title.en.includes(searchtext.toLowerCase()) ||
-        course.title.ku.includes(searchtext.toLowerCase()) ||
-        course.title.ge.includes(searchtext.toLowerCase()) ||
-        course.category.includes(searchtext.toLowerCase())
+        course.title.en.includes(searchtext) ||
+        course.title.fa.includes(searchtext) ||
+        course.title.ku.includes(searchtext) ||
+        course.title.ge.includes(searchtext) ||
+        course.category.includes(searchtext)
     );
     setcourse([...search]);
   };

@@ -37,7 +37,7 @@ export default function CourseCard({
         </Link>
       </div>
       <div className="p-3">
-        <div className="flex-grow px-4.5 pt-4 pb-3">
+        <div className="flex-grow px-4 pt-4 pb-3">
           <h3 className="line-clamp-1 mb-3">
             {state.lan === "fa"
               ? title?.fa
@@ -58,9 +58,9 @@ export default function CourseCard({
               : desc?.ge}
           </p>
         </div>
-        <div className="px-4.5 pb-3">
+        <div className="px-4 pb-3">
           <div
-            className={`flex justify-between items-center gap-2.5  text-sm pb-3 border-b ${
+            className={`flex justify-between items-center gap-2  text-sm pb-3 border-b ${
               state.them === "dark" ? "border-b-white/10" : "border-b-black/10"
             }`}
           >

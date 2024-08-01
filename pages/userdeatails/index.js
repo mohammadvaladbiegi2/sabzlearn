@@ -314,9 +314,9 @@ export default function UserDeatailsPage({ MainUser }) {
             </div>
             <div
               className={`${state.them === "dark" ? "bg-gray-700" : "bg-white"
-                } p-3.5 md:p-4.5 rounded-2xl mt-7`}
+                } p-3.5 md:p-4 rounded-2xl mt-7`}
             >
-              <div className="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-700">
+              <div className="flex justify-between items-center pb-3 md:pb-4 mb-6 md:mb-7 border-b border-b-gray-700">
                 <span className=" md:text-xl ">{
                   state.lan === "fa"
                     ? "پرسش‌های اخیر تستی"
@@ -329,7 +329,7 @@ export default function UserDeatailsPage({ MainUser }) {
                 </span>
               </div>
               <div>
-                <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
+                <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:opacity-70 rounded-xl transition-colors">
                   <a href="#" className=" w-full sm:max-w-sm sm:truncate">
                     آموزش Next.js بصورت پروژه محور - آشنایی با متد Populate
                   </a>
@@ -348,7 +348,7 @@ export default function UserDeatailsPage({ MainUser }) {
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
+                <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:opacity-70 rounded-xl transition-colors">
                   <a href="#" className=" w-full sm:max-w-sm sm:truncate">
                     آموزش Next.js بصورت پروژه محور - پیاده سازی SSR در Dynamic
                     Routes
@@ -369,7 +369,7 @@ export default function UserDeatailsPage({ MainUser }) {
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
+                <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:opacity-70 rounded-xl transition-colors">
                   <a href="#" className=" w-full sm:max-w-sm sm:truncate">
                     آموزش Next.js بصورت پروژه محور - مفهوم Pre-rendering و انواع
                     آن
@@ -389,7 +389,7 @@ export default function UserDeatailsPage({ MainUser }) {
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:bg-gray-700 rounded-xl transition-colors">
+                <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:hover:opacity-70 rounded-xl transition-colors">
                   <a href="#" className=" w-full sm:max-w-sm sm:truncate">
                     آموزش Next.js بصورت پروژه محور - معرفی فصل و پروژه
                   </a>

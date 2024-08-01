@@ -40,7 +40,7 @@ export default function DetailsCours({ course, user, Isbuycourse, islogin }) {
   const [isloading, setisloading] = useState(false);
   const [isbuycourse, setisbuycourse] = useState(Isbuycourse);
   const { state } = useGlobalState();
-console.log(islogin);
+  console.log(islogin);
   /// Add Course To user Panel
   const addCourseToPanel = async ([courseid, title, image, user]) => {
 
@@ -154,16 +154,16 @@ console.log(islogin);
 
   return (
     <>
-      <Navbar  islogin={islogin}/>
+      <Navbar islogin={islogin} />
       <main
         className={`${state.them === "dark" ? "bg_black_100 text-white" : "bg_white_100"
           } max-w-[1920px]  overflow-x-hidden pb-8`}
       >
         <div className="px-6 md:px-14 mx-auto max-w-[1400px]">
-          <section className="p-3 grid grid-cols-1 lg:grid-cols-2 gap-y-4.5 gap-x-6 sm:gap-x-7 lg:items-center xl:items-stretch mt-8 sm:mt-10 rounded-2xl p-4.5 lg:p-0 bg-dark lg:!bg-transparent  ">
+          <section className={`p-3 grid grid-cols-1 lg:grid-cols-2 gap-y-4 gap-x-6 sm:gap-x-7 lg:items-center xl:items-stretch mt-8 sm:mt-10 rounded-2xl  lg:p-0 ${state.them === 'dark' ? 'bg-dark ' : 'bg-white'} lg:!bg-transparent  `}>
             <div className="flex flex-col justify-between order-2 lg:order-1">
               <div id="up">
-                <h1 className=" my-4  text-[1.375rem]/8 sm:text-[1.625rem]/10 mb-4.5">
+                <h1 className=" my-4  text-[1.375rem]/8 sm:text-[1.625rem]/10 mb-4">
                   {state.lan === "fa"
                     ? course.MainCourse?.title.fa
                     : state.lan === "en"
@@ -246,7 +246,7 @@ console.log(islogin);
                             ? "Kursê bi panelê zêde bike"
                             : "Kurs zum Panel hinzufügen"}
                     </a>
-                    <div className="flex items-end gap-x-2.5">
+                    <div className="flex items-end gap-x-2">
                       <span className=" text-2xl">
                         {state.lan === "fa"
                           ? `${course.MainCourse?.price.toLocaleString(
@@ -292,7 +292,7 @@ console.log(islogin);
                   >
                     ثبت نام در دوره
                   </a>
-                  <div className="flex items-end gap-x-2.5">
+                  <div className="flex items-end gap-x-2">
                     <span className="/70 text-xl line-through">
                       150,000{" "}
                     </span>
@@ -323,7 +323,7 @@ console.log(islogin);
           <section className="grid grid-cols-12 gap-6 sm:gap-7 mt-7 lg:mt-20">
             <div className="col-span-12 lg:col-span-8">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-                <div className={`flex flex-col md:flex-row text-center md:text-right items-center justify-center sm:justify-start gap-x-3 gap-y-2.5 ${state.them === 'dark' ? 'bg-dark' : 'bg-white'} pt-4 pb-3.5 sm:py-7 md:pr-3 rounded-xl`}>
+                <div className={`flex flex-col md:flex-row text-center md:text-right items-center justify-center sm:justify-start gap-x-3 gap-y-2 ${state.them === 'dark' ? 'bg-dark' : 'bg-white'} pt-4 pb-3 sm:py-7 md:pr-3 rounded-xl`}>
                   <HiOutlineInformationCircle className="w-10 sm:w-11 h-10 sm:h-11 text-green-500" />
 
                   <div className="space-y-0.5  sm:space-y-1">
@@ -342,7 +342,7 @@ console.log(islogin);
                     </span>
                   </div>
                 </div>
-                <div className={`flex flex-col md:flex-row text-center md:text-right items-center justify-center sm:justify-start gap-x-3 gap-y-2.5 ${state.them === 'dark' ? 'bg-dark' : 'bg-white'} pt-4 pb-3.5 sm:py-7 md:pr-3 rounded-xl`}>
+                <div className={`flex flex-col md:flex-row text-center md:text-right items-center justify-center sm:justify-start gap-x-3 gap-y-2 ${state.them === 'dark' ? 'bg-dark' : 'bg-white'} pt-4 pb-3 sm:py-7 md:pr-3 rounded-xl`}>
                   <FaRegClock className="w-10 sm:w-11 h-10 sm:h-11 text-green-500" />
 
                   <div className="space-y-0.5  sm:space-y-1">
@@ -372,7 +372,7 @@ console.log(islogin);
                     </span>
                   </div>
                 </div>
-                <div className={`flex flex-col md:flex-row text-center md:text-right items-center justify-center sm:justify-start gap-x-3 gap-y-2.5 ${state.them === 'dark' ? 'bg-dark' : 'bg-white'} pt-4 pb-3.5 sm:py-7 md:pr-3 rounded-xl`}>
+                <div className={`flex flex-col md:flex-row text-center md:text-right items-center justify-center sm:justify-start gap-x-3 gap-y-2 ${state.them === 'dark' ? 'bg-dark' : 'bg-white'} pt-4 pb-3 sm:py-7 md:pr-3 rounded-xl`}>
                   <HiOutlineCalendarDays className="w-10 sm:w-11 h-10 sm:h-11 text-green-500" />
 
                   <div className="space-y-0.5  sm:space-y-1">
@@ -396,7 +396,7 @@ console.log(islogin);
                     </span>
                   </div>
                 </div>
-                <div className={`flex flex-col md:flex-row text-center md:text-right items-center justify-center sm:justify-start gap-x-3 gap-y-2.5 ${state.them === 'dark' ? 'bg-dark' : 'bg-white'} pt-4 pb-3.5 sm:py-7 md:pr-3 rounded-xl`}>
+                <div className={`flex flex-col md:flex-row text-center md:text-right items-center justify-center sm:justify-start gap-x-3 gap-y-2.5 ${state.them === 'dark' ? 'bg-dark' : 'bg-white'} pt-4 pb-3 sm:py-7 md:pr-3 rounded-xl`}>
                   <LuUsers className="w-10 sm:w-11 h-10 sm:h-11 text-green-500" />
 
                   <div className="space-y-0.5  sm:space-y-1">
@@ -531,111 +531,111 @@ console.log(islogin);
                       }
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "به طور کلی توی این دوره، موارد زیر پوشش داده میشن:"
-    : state.lan === "en"
-    ? "In this course, the following topics are covered:"
-    : state.lan === "ku"
-    ? "Di vê kursê de, mijarên jêrîn têne li benda xwendinê:"
-    : "In diesem Kurs werden folgende Themen behandelt:"
-}
+                      {
+                        state.lan === "fa"
+                          ? "به طور کلی توی این دوره، موارد زیر پوشش داده میشن:"
+                          : state.lan === "en"
+                            ? "In this course, the following topics are covered:"
+                            : state.lan === "ku"
+                              ? "Di vê kursê de, mijarên jêrîn têne li benda xwendinê:"
+                              : "In diesem Kurs werden folgende Themen behandelt:"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "مفهوم و اهمیت API"
-    : state.lan === "en"
-    ? "Concept and Importance of API"
-    : state.lan === "ku"
-    ? "Têgihiştin û girîngiya API'yan"
-    : "Konzept und Bedeutung von APIs"
-}
+                      {
+                        state.lan === "fa"
+                          ? "مفهوم و اهمیت API"
+                          : state.lan === "en"
+                            ? "Concept and Importance of API"
+                            : state.lan === "ku"
+                              ? "Têgihiştin û girîngiya API'yan"
+                              : "Konzept und Bedeutung von APIs"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "نوع‌های مختلف API از جمله RESTful، GraphQL، SOAP و RPC"
-    : state.lan === "en"
-    ? "Different types of APIs including RESTful, GraphQL, SOAP, and RPC"
-    : state.lan === "ku"
-    ? "Cûda-tîpa API'yan wek RESTful, GraphQL, SOAP û RPC"
-    : "Verschiedene API-Typen wie RESTful, GraphQL, SOAP und RPC"
-}
+                      {
+                        state.lan === "fa"
+                          ? "نوع‌های مختلف API از جمله RESTful، GraphQL، SOAP و RPC"
+                          : state.lan === "en"
+                            ? "Different types of APIs including RESTful, GraphQL, SOAP, and RPC"
+                            : state.lan === "ku"
+                              ? "Cûda-tîpa API'yan wek RESTful, GraphQL, SOAP û RPC"
+                              : "Verschiedene API-Typen wie RESTful, GraphQL, SOAP und RPC"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "استفاده از API در توسعه نرم‌افزار و توسعه وب"
-    : state.lan === "en"
-    ? "Using APIs in Software Development and Web Development"
-    : state.lan === "ku"
-    ? "Bikaranîna API'yan di pêşkeftina nermalî û web de"
-    : "Nutzung von APIs in der Software- und Webentwicklung"
-}
+                      {
+                        state.lan === "fa"
+                          ? "استفاده از API در توسعه نرم‌افزار و توسعه وب"
+                          : state.lan === "en"
+                            ? "Using APIs in Software Development and Web Development"
+                            : state.lan === "ku"
+                              ? "Bikaranîna API'yan di pêşkeftina nermalî û web de"
+                              : "Nutzung von APIs in der Software- und Webentwicklung"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "مزایا و معایب استفاده از API"
-    : state.lan === "en"
-    ? "Advantages and Disadvantages of Using APIs"
-    : state.lan === "ku"
-    ? "Fayda û kêmîyên bikaranîna API'yan"
-    : "Vorteile und Nachteile der Nutzung von APIs"
-}
+                      {
+                        state.lan === "fa"
+                          ? "مزایا و معایب استفاده از API"
+                          : state.lan === "en"
+                            ? "Advantages and Disadvantages of Using APIs"
+                            : state.lan === "ku"
+                              ? "Fayda û kêmîyên bikaranîna API'yan"
+                              : "Vorteile und Nachteile der Nutzung von APIs"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "مفاهیم اساسی مانند Endpoint، Request، Response، Authentication، و Rate Limiting"
-    : state.lan === "en"
-    ? "Basic concepts such as Endpoint, Request, Response, Authentication, and Rate Limiting"
-    : state.lan === "ku"
-    ? "Têgihiştina bingehîn wek Endpoint, Request, Response, Authentication û Rate Limiting"
-    : "Grundlegende Konzepte wie Endpoint, Request, Response, Authentication und Rate Limiting"
-}
+                      {
+                        state.lan === "fa"
+                          ? "مفاهیم اساسی مانند Endpoint، Request، Response، Authentication، و Rate Limiting"
+                          : state.lan === "en"
+                            ? "Basic concepts such as Endpoint, Request, Response, Authentication, and Rate Limiting"
+                            : state.lan === "ku"
+                              ? "Têgihiştina bingehîn wek Endpoint, Request, Response, Authentication û Rate Limiting"
+                              : "Grundlegende Konzepte wie Endpoint, Request, Response, Authentication und Rate Limiting"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "روش‌های آزمون و تست API"
-    : state.lan === "en"
-    ? "Methods for Testing and Evaluating APIs"
-    : state.lan === "ku"
-    ? "Rêbazên testkirin û evalûasyona API'yan"
-    : "Methoden zum Testen und Bewerten von APIs"
-}
+                      {
+                        state.lan === "fa"
+                          ? "روش‌های آزمون و تست API"
+                          : state.lan === "en"
+                            ? "Methods for Testing and Evaluating APIs"
+                            : state.lan === "ku"
+                              ? "Rêbazên testkirin û evalûasyona API'yan"
+                              : "Methoden zum Testen und Bewerten von APIs"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "مباحث پیشرفته مانند Caching، Versioning، Pagination، و Rate Limiting"
-    : state.lan === "en"
-    ? "Advanced topics such as Caching, Versioning, Pagination, and Rate Limiting"
-    : state.lan === "ku"
-    ? "Mijarên pêşkeftî wek Caching, Versioning, Pagination û Rate Limiting"
-    : "Fortgeschrittene Themen wie Caching, Versionierung, Pagination und Rate Limiting"
-}
+                      {
+                        state.lan === "fa"
+                          ? "مباحث پیشرفته مانند Caching، Versioning، Pagination، و Rate Limiting"
+                          : state.lan === "en"
+                            ? "Advanced topics such as Caching, Versioning, Pagination, and Rate Limiting"
+                            : state.lan === "ku"
+                              ? "Mijarên pêşkeftî wek Caching, Versioning, Pagination û Rate Limiting"
+                              : "Fortgeschrittene Themen wie Caching, Versionierung, Pagination und Rate Limiting"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
-                    {
-  state.lan === "fa"
-    ? "روش‌های مستندسازی و مستندنویسی API"
-    : state.lan === "en"
-    ? "Methods for Documenting and Writing API Documentation"
-    : state.lan === "ku"
-    ? "Rêbazên belgekirin û nivîsandinê ya API'yan"
-    : "Methoden zur Dokumentation und Erstellung von API-Dokumentationen"
-}
+                      {
+                        state.lan === "fa"
+                          ? "روش‌های مستندسازی و مستندنویسی API"
+                          : state.lan === "en"
+                            ? "Methods for Documenting and Writing API Documentation"
+                            : state.lan === "ku"
+                              ? "Rêbazên belgekirin û nivîsandinê ya API'yan"
+                              : "Methoden zur Dokumentation und Erstellung von API-Dokumentationen"
+                      }
 
                     </p>
                     <p className="p-2 leading-7" dir="rtl">
@@ -687,66 +687,50 @@ console.log(islogin);
                   <RiGraduationCapFill className="hidden md:inline-block text-sky-500 text-3xl" />
 
                   <div className=" text-xl md:text-2xl">{
-  state.lan === "fa"
-    ? "سرفصل‌ها"
-    : state.lan === "en"
-    ? "Headings"
-    : state.lan === "ku"
-    ? "Sernivîs"
-    : "Kapitelüberschriften"
-}
-</div>
+                    state.lan === "fa"
+                      ? "سرفصل‌ها"
+                      : state.lan === "en"
+                        ? "Headings"
+                        : state.lan === "ku"
+                          ? "Sernivîs"
+                          : "Kapitelüberschriften"
+                  }
+                  </div>
                 </div>
                 <div className="space-y-4 md:space-y-5">
                   {course.Sections?.map((season) => (
-                    <div className={`topic  flex flex-col justify-center  ${state.them === "dark" ? "bg_black_100" : "bg_white_100"}`}>
-                      <div className="topic__head ">
-                        <span className="text-lg inline-block  lg:line-clamp-3 transition-colors">
+                    <div key={season?._id} className={`topic flex flex-col justify-center ${state.them === "dark" ? "bg_black_100" : "bg_white_100"}`}>
+                      <input type="checkbox" id={`toggle-${season?._id}`} className="hidden" />
+                      <label htmlFor={`toggle-${season?._id}`} className="topic__head cursor-pointer p-4 flex justify-between items-center">
+                        <span className="text-lg inline-block lg:line-clamp-3 transition-colors">
                           {season?.title}
                         </span>
-                        <div className="flex items-center gap-x-2.5 shrink-0">
-                          <div className="mt-1 hidden lg:flex items-center gap-x-1.5 text-sm  transition-colors">
-                            <span>{season.sections.length} {
-  state.lan === "fa"
-    ? "جلسه"
-    : state.lan === "en"
-    ? "Session"
-    : state.lan === "ku"
-    ? "Civîn"
-    : "Sitzung"
-}
-</span>
+                        <div className="flex items-center gap-x-2.5">
+                          <div className="hidden lg:flex items-center gap-x-1 text-sm transition-colors">
+                            <span>
+                              {season.sections.length} {state.lan === "fa" ? "جلسه" : state.lan === "en" ? "Session" : state.lan === "ku" ? "Civîn" : "Sitzung"}
+                            </span>
                           </div>
-                          <FaChevronDown className="w-5 h-5  transition-all " />
+                          <FaChevronDown className="w-5 h-5 transition-all transform" />
                         </div>
-                      </div>
-                      <div className="topic__body  px-3 ">
+                      </label>
+                      <div className="topic__body max-h-0 overflow-hidden  transition-all px-3">
                         {season.sections.map((section, index) => (
-                          <div className=" flex items-start justify-between gap-x-5 gap-y-3 flex-wrap lg:flex-nowrap px-4 py-5 group cursor-pointer border_b_s my-5">
-                            {" "}
-                            <div className="flex  items-start flex-grow gap-x-2.5 md:gap-x-3.5 ">
-                              <div className="transition-colors w-8 h-6 md:h-7 text-sm  flex items-center justify-center bg-white/10 group-hover:bg-green-500 group-hover: rounded">
-                                {index + 1}{" "}
+                          <div key={index} className="flex items-start justify-between gap-x-5 gap-y-3 flex-wrap lg:flex-nowrap px-4 py-5 group cursor-pointer border-b border-white/10 my-5">
+                            <div className="flex items-start flex-grow gap-x-2 md:gap-x-3">
+                              <div className="transition-colors w-8 h-6 md:h-7 text-sm flex items-center justify-center bg-white/10 group-hover:bg-green-500 group-hover:rounded">
+                                {index + 1}
                               </div>
-                              <Link
-                                href={
-                                  isbuycourse
-                                    ? `/coursdetails/lesson/${section?._id}`
-                                    : "#up"
-                                }
-                                className="mt-1 inline-block lg:max-w-3/4 text-sm md:text-base transition-colors group-hover:text-green-500 "
-                              >
+                              <Link href={isbuycourse ? `/coursdetails/lesson/${section?._id}` : "#up"} className="mt-1 inline-block lg:max-w-3/4 text-sm md:text-base transition-colors group-hover:text-green-500">
                                 {section?.title}
                               </Link>
                             </div>
                             <div className="flex items-center gap-x-1.5 mr-auto group-hover:text-green-500 transition-colors">
-                              <span className="text-sm md:text-base mt-1">
-                                {section?.time}{" "}
-                              </span>
+                              <span className="text-sm md:text-base mt-1">{section?.time}</span>
                               {isbuycourse ? (
-                                <LuPlayCircle className="/70 text-2xl transition-colors group-hover:text-green-500" />
+                                <LuPlayCircle className="text-2xl transition-colors group-hover:text-green-500" />
                               ) : (
-                                <FaLock className="/70 text-2xl transition-colors group-hover:text-green-500" />
+                                <FaLock className="text-2xl transition-colors group-hover:text-green-500" />
                               )}
                             </div>
                           </div>
@@ -762,39 +746,39 @@ console.log(islogin);
               >
                 <div className="flex items-center justify-between mb-6 sm:mb-7">
                   <div className="flex items-center gap-x-3 relative">
-                    <span className="absolute -right-6 sm:-right-[26px] block w-1.5 h-[34px] md:h-9.5 bg-red-500 rounded-r-sm "></span>
+                    <span className="absolute -right-6 sm:-right-[26px] block w-1 h-[34px] md:h-9 bg-red-500 rounded-r-sm "></span>
                     <IoChatbubbles className="hidden md:inline-block text-red-500 text-4xl" />
 
                     <div className=" text-xl md:text-2xl  mt-1">
-                    {
-  state.lan === "fa"
-    ? "نظرات"
-    : state.lan === "en"
-    ? "Comments"
-    : state.lan === "ku"
-    ? "Şîroveyên"
-    : "Kommentare"
-}
+                      {
+                        state.lan === "fa"
+                          ? "نظرات"
+                          : state.lan === "en"
+                            ? "Comments"
+                            : state.lan === "ku"
+                              ? "Şîroveyên"
+                              : "Kommentare"
+                      }
 
                     </div>
                   </div>
                   <button className="p-3 flex items-center gap-x-2  bg-green-500  rounded-full">
-                  {
-  state.lan === "fa"
-    ? "ایجاد نظر جدید"
-    : state.lan === "en"
-    ? "Create New Comment"
-    : state.lan === "ku"
-    ? "Şîroveyek nû afirandin"
-    : "Neuen Kommentar erstellen"
-}
+                    {
+                      state.lan === "fa"
+                        ? "ایجاد نظر جدید"
+                        : state.lan === "en"
+                          ? "Create New Comment"
+                          : state.lan === "ku"
+                            ? "Şîroveyek nû afirandin"
+                            : "Neuen Kommentar erstellen"
+                    }
 
                     <BsChatSquareText className="w-5 h-5" />
                   </button>
                 </div>
                 <div>
-                  <div className="flex gap-x-3.5 mb-4.5 sm:mb-5">
-                    <div className="flex-center p-1.5 border border-dark rounded-full">
+                  <div className="flex gap-x-3 mb-4 sm:mb-5">
+                    <div className="flex-center p-1 border border-dark rounded-full">
                       <div className={`flex items-center justify-center w-11 sm:w-12 h-11 sm:h-12  ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'} rounded-full`}>
                         <FaRegUser className="w-5 sm:w-6 h-5 sm:h-6 text-slate-500" />
                       </div>
@@ -805,33 +789,33 @@ console.log(islogin);
                       ) : (
                         ""
                       )}
-                      <span className="/70 text-sm opacity-70">
-                      {
-  state.lan === "fa"
-    ? "ثبت نظر جدید"
-    : state.lan === "en"
-    ? "Submit New Comment"
-    : state.lan === "ku"
-    ? "Şîroveyek nû qeyd bikin"
-    : "Neuen Kommentar einreichen"
-}
+                      <span className=" text-sm opacity-70">
+                        {
+                          state.lan === "fa"
+                            ? "ثبت نظر جدید"
+                            : state.lan === "en"
+                              ? "Submit New Comment"
+                              : state.lan === "ku"
+                                ? "Şîroveyek nû qeyd bikin"
+                                : "Neuen Kommentar einreichen"
+                        }
 
                       </span>
                     </div>
                   </div>
 
                   <textarea
-                    className={`w-full h-[150px] p-3 mt-5 block p-4.5 md:p-4 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'}  placeholder:text-slate-500/70  text-sm rounded-xl`}
+                    className={`w-full h-[150px]  mt-5 block p-4 md:p-4 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'}  placeholder:text-slate-500/70  text-sm rounded-xl`}
                     placeholder={
                       state.lan === "fa"
                         ? "نظر خود را بنویسید ..."
                         : state.lan === "en"
-                        ? "Write your comment..."
-                        : state.lan === "ku"
-                        ? "Şîroveya xwe binivîse..."
-                        : "Schreiben Sie Ihren Kommentar..."
+                          ? "Write your comment..."
+                          : state.lan === "ku"
+                            ? "Şîroveya xwe binivîse..."
+                            : "Schreiben Sie Ihren Kommentar..."
                     }
-                    
+
                     value={commentText}
                     onChange={(e) => setcommentText(e.target.value)}
                   ></textarea>
@@ -842,14 +826,14 @@ console.log(islogin);
                         className="flex-grow sm:grow-0 sm:w-36 text-green-500 border-solid border-2 border-emerald-500 hover:bg-green-500 hover:text-white transition p-4 rounded-full"
                       >
                         {
-  state.lan === "fa"
-    ? "لغو"
-    : state.lan === "en"
-    ? "Cancel"
-    : state.lan === "ku"
-    ? "Bersivîn"
-    : "Abbrechen"
-}
+                          state.lan === "fa"
+                            ? "لغو"
+                            : state.lan === "en"
+                              ? "Cancel"
+                              : state.lan === "ku"
+                                ? "Bersivîn"
+                                : "Abbrechen"
+                        }
 
                       </button>
                       <button
@@ -860,14 +844,14 @@ console.log(islogin);
                         disabled={isloading}
                       >
                         {
-  state.lan === "fa"
-    ? "ارسال"
-    : state.lan === "en"
-    ? "Send"
-    : state.lan === "ku"
-    ? "Şandîn"
-    : "Senden"
-}
+                          state.lan === "fa"
+                            ? "ارسال"
+                            : state.lan === "en"
+                              ? "Send"
+                              : state.lan === "ku"
+                                ? "Şandîn"
+                                : "Senden"
+                        }
 
                       </button>
                     </div>
@@ -880,26 +864,26 @@ console.log(islogin);
                         {" "}
                         <FaRegUser className="   text-[23px] mt-1" />
                         {
-  state.lan === "fa"
-    ? "ورود"
-    : state.lan === "en"
-    ? "Login"
-    : state.lan === "ku"
-    ? "Têketin"
-    : "Anmelden"
-}
+                          state.lan === "fa"
+                            ? "ورود"
+                            : state.lan === "en"
+                              ? "Login"
+                              : state.lan === "ku"
+                                ? "Têketin"
+                                : "Anmelden"
+                        }
 
                       </button>
                     </Link>
                   )}
                 </div>
                 {/*comments  */}
-                <div className=" space-y-4.5 mt-10 sm:space-y-5">
+                <div className=" space-y-4 mt-10 sm:space-y-5">
                   {Comments.length ? (
                     Comments.map((comment) => (
                       <div className={`p-4.5 md:p-5 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'} p-3 my-4 rounded-xl`}>
                         <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
-                          <div className="flex items-center gap-x-3.5">
+                          <div className="flex items-center gap-x-3">
                             <div className="hidden border-amber-400 sm:flex-center w-15 h-15 border rounded-full relative">
                               <div className="absolute -top-0.5 -right-0.5 flex-center w-5 h-5 bg-amber-400 rounded-full">
                                 <HiMiniAcademicCap className=" text-2xl" />
@@ -912,14 +896,14 @@ console.log(islogin);
                                 </span>
                                 <strong className="/70">
                                   | {
-  state.lan === "fa"
-    ? "دانشجو"
-    : state.lan === "en"
-    ? "Student"
-    : state.lan === "ku"
-    ? "Xwendekar"
-    : "Student"
-}
+                                    state.lan === "fa"
+                                      ? "دانشجو"
+                                      : state.lan === "en"
+                                        ? "Student"
+                                        : state.lan === "ku"
+                                          ? "Xwendekar"
+                                          : "Student"
+                                  }
 
                                 </strong>
                               </div>
@@ -944,12 +928,12 @@ console.log(islogin);
                       state.lan === "fa"
                         ? "کامنتی برای این دوره ثبت نشده"
                         : state.lan === "en"
-                        ? "No comments have been submitted for this course"
-                        : state.lan === "ku"
-                        ? "Ji bo vê kursê tu şîrove nekirî ye"
-                        : "Es wurden keine Kommentare für diesen Kurs eingereicht"
+                          ? "No comments have been submitted for this course"
+                          : state.lan === "ku"
+                            ? "Ji bo vê kursê tu şîrove nekirî ye"
+                            : "Es wurden keine Kommentare für diesen Kurs eingereicht"
                     }
-                     />
+                    />
                   )}
                 </div>
               </div>
@@ -957,7 +941,7 @@ console.log(islogin);
             <aside className="col-span-12 lg:col-span-4 space-y-8">
               <div className={`${state.them === 'dark' ? 'bg-dark' : 'bg-white'}  rounded-2xl p-4 sm:p-5 `}>
                 <div className="flex gap-x-4">
-                  <div className={`flex flex-col sm:flex-row items-center text-center md:text-right gap-y-1 gap-x-3 flex-grow pt-3.5 pb-3 sm:px-3.5 sm:py-5 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'} rounded-xl`}>
+                  <div className={`flex flex-col sm:flex-row items-center text-center md:text-right gap-y-1 gap-x-3 flex-grow pt-3.5 pb-3 sm:px-3 sm:py-5 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'} rounded-xl`}>
                     <FaUsers className="w-10 h-10 md:w-11 md:h-11 text-green-500" />
 
                     <div className="">
@@ -965,18 +949,18 @@ console.log(islogin);
                         {course.MainCourse?.student}
                       </span>
                       <span className="block text-sm opacity-70">{
-  state.lan === "fa"
-    ? "دانشجو"
-    : state.lan === "en"
-    ? "Student"
-    : state.lan === "ku"
-    ? "Xwendekar"
-    : "Student"
-}
-</span>
+                        state.lan === "fa"
+                          ? "دانشجو"
+                          : state.lan === "en"
+                            ? "Student"
+                            : state.lan === "ku"
+                              ? "Xwendekar"
+                              : "Student"
+                      }
+                      </span>
                     </div>
                   </div>
-                  <div className={`flex flex-col sm:flex-row items-center text-center md:text-right gap-y-1 gap-x-3 flex-grow pt-3.5 pb-3 sm:px-3.5 sm:py-5 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'} rounded-xl`}>
+                  <div className={`flex flex-col sm:flex-row items-center text-center md:text-right gap-y-1 gap-x-3 flex-grow pt-3.5 pb-3 sm:px-3 sm:py-5 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'} rounded-xl`}>
                     <FaStar className="w-10 h-10 md:w-11 md:h-11 text-amber-500" />
 
                     <div className="">
@@ -984,30 +968,30 @@ console.log(islogin);
                         5.0
                       </span>
                       <span className="block text-sm opacity-70">{
-  state.lan === "fa"
-    ? "رضایت"
-    : state.lan === "en"
-    ? "Satisfaction"
-    : state.lan === "ku"
-    ? "Rêza"
-    : "Zufriedenheit"
-}
-</span>
+                        state.lan === "fa"
+                          ? "رضایت"
+                          : state.lan === "en"
+                            ? "Satisfaction"
+                            : state.lan === "ku"
+                              ? "Rêza"
+                              : "Zufriedenheit"
+                      }
+                      </span>
                     </div>
                   </div>
                 </div>
-                <div className="mt-3.5 sm:mt-5">
+                <div className="mt-3 sm:mt-5">
                   <div className=" flex items-center justify-between  text-sm sm:text-base mb-3">
                     <span>{
-  state.lan === "fa"
-    ? "درصد تکمیل دوره"
-    : state.lan === "en"
-    ? "Course Completion Percentage"
-    : state.lan === "ku"
-    ? "Hejmara temamkirina kursê"
-    : "Kursabschlussprozentsatz"
-}
-</span>
+                      state.lan === "fa"
+                        ? "درصد تکمیل دوره"
+                        : state.lan === "en"
+                          ? "Course Completion Percentage"
+                          : state.lan === "ku"
+                            ? "Hejmara temamkirina kursê"
+                            : "Kursabschlussprozentsatz"
+                    }
+                    </span>
                     <span>100%</span>
                   </div>
                   <div className="rounded-full w-full h-3 bg-green-500"></div>
@@ -1031,28 +1015,28 @@ console.log(islogin);
                     ? course.MainCourse?.teacher.fa
                     : course.MainCourse?.teacher.en}{" "}
                   | {
-  state.lan === "fa"
-    ? "مدرس دوره"
-    : state.lan === "en"
-    ? "Course Instructor"
-    : state.lan === "ku"
-    ? "Rêberê kursê"
-    : "Kursleiter"
-}
+                    state.lan === "fa"
+                      ? "مدرس دوره"
+                      : state.lan === "en"
+                        ? "Course Instructor"
+                        : state.lan === "ku"
+                          ? "Rêberê kursê"
+                          : "Kursleiter"
+                  }
 
                 </span>
               </div>
               <div className={`hidden lg:block ${state.them === "dark" ? "bg-dark" : 'bg-white'} rounded-2xl p-5 text-center`}>
                 <span className=" text-lg">{
-  state.lan === "fa"
-    ? "لینک کوتاه آموزش"
-    : state.lan === "en"
-    ? "Short Training Link"
-    : state.lan === "ku"
-    ? "Girêdana kûtkirinê"
-    : "Kurzer Schulungslink"
-}
-</span>
+                  state.lan === "fa"
+                    ? "لینک کوتاه آموزش"
+                    : state.lan === "en"
+                      ? "Short Training Link"
+                      : state.lan === "ku"
+                        ? "Girêdana kûtkirinê"
+                        : "Kurzer Schulungslink"
+                }
+                </span>
                 <div className="flex items-center justify-between gap-x-3 p-4 mt-5 bg-sky-500/10 text-sky-500 border border-dashed border-sky-500 rounded-lg">
                   <button onClick={handleCopy}>
                     <HiClipboardDocumentCheck className="w-8 h-8" />
@@ -1095,7 +1079,7 @@ export async function getServerSideProps(contex) {
 
   const tokenPayload = verifyToken(token); // verify and find payload
   if (tokenPayload) {
-  
+
     let MainUser = await User.findOne(
       { phoneNumber: tokenPayload.phoneNumber },
       "-__v -password"
