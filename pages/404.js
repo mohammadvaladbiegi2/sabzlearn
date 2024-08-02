@@ -1,9 +1,14 @@
+import { useGlobalState } from "@/context/GlobalState";
 import Link from "next/link";
 import React from "react";
 
 export default function NotFound() {
+
+  const { state } = useGlobalState()
+
   return (
-    <main className="flex-center flex-col relative px-4 py-6 min-h-screen text-center">
+    <main className={`${state.them === "dark" ? "bg-dark" : "bg-white"
+      } flex-center flex-col relative px-4 py-6 min-h-screen text-center`}>
       <svg
         className="max-w-[696px] m-auto"
         viewBox="0 0 696 449"
