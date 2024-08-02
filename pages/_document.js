@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head >
         <title>Sabzlearn</title>
-        {/* <link type='icon' src="/logo.webp"/> */}
+       
       </Head>
       <body>
         <Main />
