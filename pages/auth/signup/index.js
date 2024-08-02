@@ -166,7 +166,7 @@ export default function Signup() {
           </>
 
           <form onSubmit={form.handleSubmit}>
-            <div className="flex flex-col items-center pt-4">
+            <div className="flex flex-col items-center py-4">
               <div
                 className={`flex items-center ${
                   state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
@@ -228,7 +228,7 @@ export default function Signup() {
                 </span>
               )}
             </div>
-            <div className="flex flex-col items-center pb-4">
+            <div className="flex flex-col items-center py-4">
               <div
                 className={`flex items-center  ${
                   state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
