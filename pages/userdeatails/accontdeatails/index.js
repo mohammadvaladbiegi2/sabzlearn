@@ -41,7 +41,7 @@ export default function AccontDeatails({ MainUser }) {
       );
     } else {
       let res = await fetch(
-        `http://localhost:3000/api/user/updateuserinfo/${MainUser._id}`,
+        `https://sabzlearn-kappa.vercel.app/api/user/updateuserinfo/${MainUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -76,7 +76,7 @@ export default function AccontDeatails({ MainUser }) {
   const changePassword = async (e) => {
     e.preventDefault();
     let res = await fetch(
-      `http://localhost:3000/api/user/changepassword/${MainUser._id}`,
+      `https://sabzlearn-kappa.vercel.app/api/user/changepassword/${MainUser._id}`,
       {
         method: "PUT",
         headers: {

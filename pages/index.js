@@ -491,9 +491,9 @@ export async function getServerSideProps(context) {
     username = await MainUser.username;
   }
 
-  let articlsres = await fetch("http://localhost:3000/api/articl");
+  let articlsres = await fetch("https://sabzlearn-kappa.vercel.app/api/articl");
   let articlsData = await articlsres.json();
-  let couresres = await fetch("http://localhost:3000/api/course");
+  let couresres = await fetch("https://sabzlearn-kappa.vercel.app/api/course");
   let courseData = await couresres.json();
 
   return {

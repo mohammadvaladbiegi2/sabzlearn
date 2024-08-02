@@ -25,7 +25,7 @@ export default function Signup() {
       phoneNumber: "",
     },
     onSubmit: (values) => {
-      fetch("http://localhost:3000/api/auth/signup", {
+      fetch("https://sabzlearn-kappa.vercel.app/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

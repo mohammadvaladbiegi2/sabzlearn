@@ -602,10 +602,10 @@ export async function getServerSideProps(contex) {
     islogin = true;
   }
   let res = await fetch(
-    `http://localhost:3000/api/course/search/${contex.query.text}`
+    `https://sabzlearn-kappa.vercel.app/api/course/search/${contex.query.text}`
   );
   let data = await res.json();
-  let resAllcourse = await fetch(`http://localhost:3000/api/course`);
+  let resAllcourse = await fetch(`https://sabzlearn-kappa.vercel.app/api/course`);
   let dataAllcourse = await resAllcourse.json();
   let Allcourse = JSON.parse(JSON.stringify(dataAllcourse));
   let courses = JSON.parse(JSON.stringify(data));
