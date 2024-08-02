@@ -400,11 +400,11 @@ export async function getServerSideProps(contex) {
     };
   }
   let { id } = contex.query;
-  let res = await fetch(`http://localhost:3000/api/section/${id}`);
+  let res = await fetch(`https://sabzlearn-psi.vercel.app/api/section/${id}`);
   let data = await res.json();
   let sectionData = JSON.parse(JSON.stringify(data));
   let getseason = await fetch(
-    `http://localhost:3000/api/season/${data.season}`
+    `https://sabzlearn-psi.vercel.app/api/season/${data.season}`
   );
   let seasondata = await getseason.json();
   let season = JSON.parse(JSON.stringify(seasondata));
