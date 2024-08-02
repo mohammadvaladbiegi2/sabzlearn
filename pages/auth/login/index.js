@@ -81,7 +81,7 @@ export default function Login() {
                   : "Gesendeter Code"
             }
            : ${codegenerator}`, {
-            autoClose: 10000,
+            autoClose: 6000,
           });
           setsendcode(true);
           setCode(codegenerator)

@@ -9,6 +9,7 @@ export default function SignOutapi(req, res) {
       "Set-Cookie",
       serialize("token", "", {
         path: "/",
+        domain: 'sabzlearn-psi.vercel.app',
         maxAge: 0,
       })
     )

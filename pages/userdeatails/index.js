@@ -25,7 +25,7 @@ export default function UserDeatailsPage({ MainUser }) {
   return (
     <div
       className={`${state.them === "dark" ? "bg_black_100" : "bg-white"
-        } flex gap-x-10 2xl:gap-x-14 px-4 my-4 md:my-0 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+        } flex gap-x-10 2xl:gap-x-14 px-4 py-4 md:my-0 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
     >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
