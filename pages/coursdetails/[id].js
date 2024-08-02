@@ -49,7 +49,7 @@ export default function DetailsCours({ course, user, Isbuycourse, islogin }) {
       courseid,
       user,
     };
-    let res = await fetch("https://sabzlearn-psi.vercel.app/api/user/addcoursepanel", {
+    let res = await fetch("http://localhost:3000/api/user/addcoursepanel", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,7 +100,7 @@ export default function DetailsCours({ course, user, Isbuycourse, islogin }) {
         questioner,
         course,
       };
-      let res = await fetch("https://sabzlearn-psi.vercel.app/api/comment", {
+      let res = await fetch("http://localhost:3000/api/comment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -115,7 +115,7 @@ export default function DetailsCours({ course, user, Isbuycourse, islogin }) {
             : state.lan === "ku"
               ? "Şîroveyê bi serkeftin hat zêdekirin"
               : "Kommentar wurde erfolgreich hinzugefügt");
-        fetch(`https://sabzlearn-psi.vercel.app/api/course/${id}`).then(res => res.json()).then(data => {
+        fetch(`http://localhost:3000/api/course/${id}`).then(res => res.json()).then(data => {
           setComments([...data.MainCourse.comments])
           setisloading(false)
           setcommentText("")
@@ -1072,7 +1072,7 @@ export async function getServerSideProps(contex) {
   if (token) {
     islogin = true;
   }
-  let res = await fetch(`https://sabzlearn-psi.vercel.app/api/course/${contex.query.id}`);
+  let res = await fetch(`http://localhost:3000/api/course/${contex.query.id}`);
   let course = await res.json();
 
   const tokenPayload = verifyToken(token); // verify and find payload
