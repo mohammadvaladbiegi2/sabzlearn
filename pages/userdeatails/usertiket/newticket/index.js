@@ -28,7 +28,7 @@ export default function NewTickts({ MainUser }) {
       ticket.title.length > 4 ||
       ticket.text.length > 4
     ) {
-      let res = await fetch("https://sabzlearn-kappa.vercel.app/api/user/newticket", {
+      let res = await fetch("https://sabzlearn-psi.vercel.app/api/user/newticket", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

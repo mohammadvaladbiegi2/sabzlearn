@@ -119,7 +119,7 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
         </Link>
         <button
           onClick={() => {
-            fetch("https://sabzlearn-kappa.vercel.app/api/auth/signout").then((res) => {
+            fetch("https://sabzlearn-psi.vercel.app/api/auth/signout").then((res) => {
               res.status === 200 && rout.push("/");
             });
           }}
