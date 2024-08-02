@@ -40,7 +40,6 @@ export default function DetailsCours({ course, user, Isbuycourse, islogin }) {
   const [isloading, setisloading] = useState(false);
   const [isbuycourse, setisbuycourse] = useState(Isbuycourse);
   const { state } = useGlobalState();
-  console.log(islogin);
   /// Add Course To user Panel
   const addCourseToPanel = async ([courseid, title, image, user]) => {
 
@@ -57,7 +56,6 @@ export default function DetailsCours({ course, user, Isbuycourse, islogin }) {
       },
       body: JSON.stringify(course),
     });
-    console.log(res);
     if (res.status === 200) {
       toast.success(
         state.lan === "fa"
@@ -881,7 +879,7 @@ export default function DetailsCours({ course, user, Isbuycourse, islogin }) {
                 <div className=" space-y-4 mt-10 sm:space-y-5">
                   {Comments.length ? (
                     Comments.map((comment) => (
-                      <div className={`p-4.5 md:p-5 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'} p-3 my-4 rounded-xl`}>
+                      <div key={comment._id} className={`p-4.5 md:p-5 ${state.them === 'dark' ? 'bg-dark-light' : 'bg_white_100'} p-3 my-4 rounded-xl`}>
                         <div className="flex items-center justify-between pb-4 mb-4 border-b border-white/10">
                           <div className="flex items-center gap-x-3">
                             <div className="hidden border-amber-400 sm:flex-center w-15 h-15 border rounded-full relative">

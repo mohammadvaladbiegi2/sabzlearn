@@ -16,7 +16,7 @@ import { useGlobalState } from "@/context/GlobalState";
 import { toast } from "react-toastify";
 
 
-export default function Articl({ Articl, AllArdicldata,islogin }) {
+export default function Articl({ Articl, AllArdicldata, islogin }) {
   const gregorianDate = moment(Articl.createdAt);
   const jalaliDate = gregorianDate.format("jYYYY/jMM/jDD HH:mm:ss");
   const { state } = useGlobalState();
@@ -35,7 +35,7 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
 
   return (
     <div className={`${state.them === 'dark' ? 'bg_black_100' : 'bg_white_100'}`}>
-      <Navbar islogin={islogin}/>
+      <Navbar islogin={islogin} />
       <main className="max-w-[1400px] mx-auto overflow-x-hidden mt-8 sm:mt-10">
         <div className="p-8">
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-x-7 gap-y-8 mt-8 md:mt-10 text-black">
@@ -45,12 +45,12 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                   <span className="absolute -right-6 sm:-right-[26px] block w-1 h-[34px] md:h-9 bg-sky-500 rounded-r-sm"></span>
                   <h1 className=" text-xl md:text-[1.625rem]/10 ">
                     {state.lan === "fa"
-            ? Articl.title.fa
-            : state.lan === "en"
-            ? Articl.title.en
-            : state.lan === "ku"
-            ? Articl.title.ku
-            : Articl.title.ge}
+                      ? Articl.title.fa
+                      : state.lan === "en"
+                        ? Articl.title.en
+                        : state.lan === "ku"
+                          ? Articl.title.ku
+                          : Articl.title.ge}
                   </h1>
                 </div>
                 <div className="grid sm:flex grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-3 mb-6 text-slate-500  text-sm sm:text-base">
@@ -59,10 +59,10 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
 
                     <span className="text-[20px]">
 
-                    {state.lan === "fa"
-                ? Articl.writer.fa
-                : Articl.writer.en
-               }
+                      {state.lan === "fa"
+                        ? Articl.writer.fa
+                        : Articl.writer.en
+                      }
                     </span>
                   </div>
                   <div className="flex items-center gap-x-1">
@@ -88,22 +88,22 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                 <div className="wp-content text-[1.1rem] mb-7 opacity-85  text-justify">
                   <h1 className="my-5">
                     <strong>   {state.lan === "fa"
-            ? Articl.title.fa
-            : state.lan === "en"
-            ? Articl.title.en
-            : state.lan === "ku"
-            ? Articl.title.ku
-            : Articl.title.ge}</strong>
+                      ? Articl.title.fa
+                      : state.lan === "en"
+                        ? Articl.title.en
+                        : state.lan === "ku"
+                          ? Articl.title.ku
+                          : Articl.title.ge}</strong>
                   </h1>
                   <p className="my-4">
 
-                  {state.lan === "fa"
-            ? Articl.desc.fa
-            : state.lan === "en"
-            ? Articl.desc.en
-            : state.lan === "ku"
-            ? Articl.desc.ku
-            : Articl.desc.ge}
+                    {state.lan === "fa"
+                      ? Articl.desc.fa
+                      : state.lan === "en"
+                        ? Articl.desc.en
+                        : state.lan === "ku"
+                          ? Articl.desc.ku
+                          : Articl.desc.ge}
                   </p>
                   <p className="my-4">
                     این نوع محیط زمان اجرا از JavaScriptCore، موتوری که سافاری
@@ -924,15 +924,15 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                   <HiOutlineBookOpen className="hidden md:inline-block text-[36px] text-amber-400  w-9 h-9" />
 
                   <h3 className=" text-xl md:text-2xl">{
-  state.lan === "fa"
-    ? "پیشنهاد مطالعه"
-    : state.lan === "en"
-    ? "Recommended Reading"
-    : state.lan === "ku"
-    ? "Xwendina pêşniyarî"
-    : "Empfohlene Lektüre"
-}
-</h3>
+                    state.lan === "fa"
+                      ? "پیشنهاد مطالعه"
+                      : state.lan === "en"
+                        ? "Recommended Reading"
+                        : state.lan === "ku"
+                          ? "Xwendina pêşniyarî"
+                          : "Empfohlene Lektüre"
+                  }
+                  </h3>
                 </div>
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
                   {AllArdicldata.map((articl) => (
@@ -951,12 +951,12 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                       <div>
                         <a href="#" className=" line-clamp-1">
                           {state.lan === "fa"
-            ? articl.title.fa
-            : state.lan === "en"
-            ? articl.title.en
-            : state.lan === "ku"
-            ? articl.title.ku
-            : articl.title.ge}
+                            ? articl.title.fa
+                            : state.lan === "en"
+                              ? articl.title.en
+                              : state.lan === "ku"
+                                ? articl.title.ku
+                                : articl.title.ge}
                         </a>
                         <div className="flex items-center gap-x-1 mt-8 text-slate-500 ">
                           <CiCalendar className="size-5" />
@@ -978,26 +978,26 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                     <IoChatbubbles className="hidden md:inline-block text-3xl text-red-500 w-9 h-9" />
 
                     <div className=" text-xl md:text-2xl">{
-  state.lan === "fa"
-    ? "نظرات"
-    : state.lan === "en"
-    ? "Comments"
-    : state.lan === "ku"
-    ? "Şirove"
-    : "Kommentare"
-}
-</div>
+                      state.lan === "fa"
+                        ? "نظرات"
+                        : state.lan === "en"
+                          ? "Comments"
+                          : state.lan === "ku"
+                            ? "Şirove"
+                            : "Kommentare"
+                    }
+                    </div>
                   </div>
                   <button className="flex justify-center items-center hover:opacity-90   button-lg bg-green-500 ">
-                  {
-  state.lan === "fa"
-    ? "ایجاد نظر جدید"
-    : state.lan === "en"
-    ? "Create New Comment"
-    : state.lan === "ku"
-    ? "Şîroveya nû biafirîne"
-    : "Neuen Kommentar erstellen"
-}
+                    {
+                      state.lan === "fa"
+                        ? "ایجاد نظر جدید"
+                        : state.lan === "en"
+                          ? "Create New Comment"
+                          : state.lan === "ku"
+                            ? "Şîroveya nû biafirîne"
+                            : "Neuen Kommentar erstellen"
+                    }
 
                   </button>
                 </div>
@@ -1125,7 +1125,7 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                           color-interpolation-filters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           ></feFlood>
                           <feColorMatrix
@@ -1162,7 +1162,7 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                           color-interpolation-filters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           ></feFlood>
                           <feColorMatrix
@@ -1199,7 +1199,7 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                           color-interpolation-filters="sRGB"
                         >
                           <feFlood
-                            flood-opacity="0"
+                            floodOpacity="0"
                             result="BackgroundImageFix"
                           ></feFlood>
                           <feColorMatrix
@@ -1229,15 +1229,15 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                       </defs>
                     </svg>
                     <p className=" text-center text-slate-500 mt-3">
-                    {
-  state.lan === "fa"
-    ? "نظری برای این مقاله ثبت نشده است"
-    : state.lan === "en"
-    ? "No comments have been posted for this article"
-    : state.lan === "ku"
-    ? "Bo vê nivîsarê şîrove tuneye"
-    : "Für diesen Artikel wurden keine Kommentare hinterlassen"
-}
+                      {
+                        state.lan === "fa"
+                          ? "نظری برای این مقاله ثبت نشده است"
+                          : state.lan === "en"
+                            ? "No comments have been posted for this article"
+                            : state.lan === "ku"
+                              ? "Bo vê nivîsarê şîrove tuneye"
+                              : "Für diesen Artikel wurden keine Kommentare hinterlassen"
+                      }
 
                     </p>
                   </div>
@@ -1253,14 +1253,14 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                   <div className="flex items-center gap-x-2 ">
                     <CiShare2 className="w-7 h-7" />
                     {
-  state.lan === "fa"
-    ? "اشتراک گذاری مطلب"
-    : state.lan === "en"
-    ? "Share Content"
-    : state.lan === "ku"
-    ? "Naverokê parêkê"
-    : "Inhalt teilen"
-}
+                      state.lan === "fa"
+                        ? "اشتراک گذاری مطلب"
+                        : state.lan === "en"
+                          ? "Share Content"
+                          : state.lan === "ku"
+                            ? "Naverokê parêkê"
+                            : "Inhalt teilen"
+                    }
 
                   </div>
                   <button
@@ -1272,7 +1272,7 @@ export default function Articl({ Articl, AllArdicldata,islogin }) {
                   </button>
                 </div>
                 <div className="flex items-center justify-between gap-x-3 p-4 mt-4.5 bg-sky-500/10 text-sky-500 border border-dashed border-sky-500 rounded-lg">
-                  <button onClick={handleCopy}> 
+                  <button onClick={handleCopy}>
                     <HiClipboardDocumentCheck className="w-8 h-8" />
                   </button>
                   <span
@@ -1301,12 +1301,12 @@ export async function getServerSideProps(contex) {
     islogin = true;
   }
 
-  
+
   let res = await fetch(`http://localhost:3000/api/articl/${contex.params.id}`);
   let Articl = await res.json();
   let resAllArticl = await fetch("http://localhost:3000/api/articl/");
   let AllArdicldata = await resAllArticl.json();
   return {
-    props: { Articl, AllArdicldata ,islogin},
+    props: { Articl, AllArdicldata, islogin },
   };
 }

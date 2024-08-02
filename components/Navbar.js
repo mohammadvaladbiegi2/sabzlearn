@@ -19,7 +19,7 @@ import { FaMoon } from "react-icons/fa";
 
 
 
-export default function navbar({  username,islogin }) {
+export default function navbar({ username,islogin }) {
   let route = useRouter();
   const [showsidebar, setshowsidebar] = useState(false);
   const [searchtext, setSearchtext] = useState("");
@@ -357,7 +357,7 @@ export default function navbar({  username,islogin }) {
           >
             <input
               type="text"
-              className="input_navBar text-slate-300   "
+              className="input_navBar text-slate-300  w-[185px] "
               placeholder={
                 state.lan === "fa"
                   ? "چی مخوای یادبگیری؟"
@@ -503,14 +503,16 @@ export default function navbar({  username,islogin }) {
             <Link href="/auth/login">
               <button className="text-white font-bold flex items-center justify-center py-3 px-5 gap-2 rounded-full bg_button_navbar hover:opacity-90 cursor-pointer">
                 {" "}
-                <FaRegUser className="text-white   text-[23px] mt-1" />
-                {state.lan === "fa"
+                <FaRegUser className="text-white   text-[23px]" />
+              <span className="mt-1">
+              {state.lan === "fa"
                   ? " ورود | عضویت"
                   : state.lan === "en"
                   ? "Login | Sign Up"
                   : state.lan === "ku"
                   ? "Têkeve | ji bo qeydkirinê"
                   : "Anmelden | Registrieren"}
+              </span>
               </button>
             </Link>
           )}
@@ -876,7 +878,6 @@ export default function navbar({  username,islogin }) {
 }
 
 export async function getServerSideProps(context) {
-  console.log();
   let islogin = true;
   const { token } = context.req.cookies;
 

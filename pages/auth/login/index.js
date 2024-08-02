@@ -19,6 +19,7 @@ export default function Login() {
 
 
 
+
   let rout = useRouter();
   const form = useFormik({
     initialValues: {
@@ -80,9 +81,10 @@ export default function Login() {
                   : "Gesendeter Code"
             }
            : ${codegenerator}`, {
-            autoClose: 20000,
+            autoClose: 10000,
           });
           setsendcode(true);
+          setCode(codegenerator)
         }
       });
     },
@@ -132,6 +134,9 @@ export default function Login() {
       );
     }
   };
+
+ 
+
   return (
     <div
       className={`${state.them === "dark" ? "bg_black_100" : "bg_white_100"}`}
@@ -222,14 +227,14 @@ export default function Login() {
           )}
           {!sendcode ? (
             <form onSubmit={form.handleSubmit}>
-              <div className="my-3">
+              <div className=" flex flex-col items-center">
                 <div
                   className={`flex items-center ${state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
                     }  p-4 rounded-xl w-[290px] my-6 justify-center`}
                 >
                   <input
                     type="password"
-                    className="input_navBar   w-[240px]"
+                    className="input_navBar selection:bg-current  w-[240px]"
                     placeholder={
                       state.lan === "fa"
                         ? "رمز عبور"
@@ -247,7 +252,7 @@ export default function Login() {
                   <IoLockClosedOutline className=" opacity-70  w-4 h-4 " />
                 </div>
               </div>
-              <div className="my-3">
+              <div className="mb-5 flex flex-col items-center">
                 <div
                   className={`flex items-center ${state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
                     }   p-4 rounded-xl w-[290px]  justify-center`}
@@ -272,14 +277,13 @@ export default function Login() {
                   <FiPhone className=" opacity-70  w-4 h-4 " />
                 </div>
                 {form.errors.phoneNumber && form.touched.phoneNumber && (
-                  <span className="text-rose-500 text-sm block mt-3">
+                  <span className="text-rose-500 text-sm block text-center mt-3">
                     {form.errors.phoneNumber}{" "}
                   </span>
                 )}
               </div>
               <button
-                type="submit
-            "
+                type="submit"
                 className="bg-green-500  rounded-full px-32  py-4"
               >
                 {

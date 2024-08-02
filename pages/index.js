@@ -469,7 +469,7 @@ const verifyToken = (token) => {
 export async function getServerSideProps(context) {
   connectToDB();
 
-  let username = "";
+  let username = "user";
   let islogin = false;
   const { token } = context.req.cookies;
   if (token) {

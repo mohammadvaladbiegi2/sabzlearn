@@ -25,7 +25,7 @@ export default function CourseCard({
         <Link
           className="block w-full h-full"
           href={`/coursdetails/${_id}`}
-          title="بهینه نویسی کد ها در پایتون"
+          title={title?.en}
         >
           <Image
             className="block w-full h-full object-cover rounded-2xl"

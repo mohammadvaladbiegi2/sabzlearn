@@ -268,8 +268,8 @@ export default function UserDeatailsPage({ MainUser }) {
               </div>
               <div>
                 {MainUser?.tickets.length ? (
-                  [...MainUser.tickets].slice(0, 4).reverse().map((ticket) => (
-                    <div className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:opacity-60 rounded-xl transition-colors">
+                  [...MainUser.tickets].slice(0, 4).reverse().map((ticket,index) => (
+                    <div key={index} className="flex items-center justify-between flex-wrap gap-y-3 p-3 hover:opacity-60 rounded-xl transition-colors">
                       <Link
                         href={`/userdeatails/usertiket/${ticket._id}`}
                         className=" w-full sm:max-w-sm sm:truncate"

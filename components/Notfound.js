@@ -129,7 +129,7 @@ export default function Notfound({ title }) {
                 color-interpolation-filters="sRGB"
               >
                 <feFlood
-                  flood-opacity="0"
+                  floodOpacity="0"
                   result="BackgroundImageFix"
                 ></feFlood>
                 <feColorMatrix
@@ -166,7 +166,7 @@ export default function Notfound({ title }) {
                 color-interpolation-filters="sRGB"
               >
                 <feFlood
-                  flood-opacity="0"
+                  floodOpacity="0"
                   result="BackgroundImageFix"
                 ></feFlood>
                 <feColorMatrix
@@ -203,7 +203,7 @@ export default function Notfound({ title }) {
                 color-interpolation-filters="sRGB"
               >
                 <feFlood
-                  flood-opacity="0"
+                  floodOpacity="0"
                   result="BackgroundImageFix"
                 ></feFlood>
                 <feColorMatrix

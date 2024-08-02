@@ -166,7 +166,7 @@ export default function Signup() {
           </>
 
           <form onSubmit={form.handleSubmit}>
-            <div className="my-3">
+            <div className="flex flex-col items-center pt-4">
               <div
                 className={`flex items-center ${
                   state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
@@ -192,16 +192,16 @@ export default function Signup() {
                 <FaRegUser className=" opacity-70  w-4 h-4 " />
               </div>
               {form.errors.username && form.touched.username && (
-                <span className="text-rose-500 text-sm block mt-3">
+                <span className="text-rose-500 text-sm block my-3 text-center">
                   {form.errors.username}{" "}
                 </span>
               )}
             </div>
-            <div className="my-3">
+            <div className="flex flex-col items-center">
               <div
                 className={`flex items-center  ${
                   state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
-                } p-4 rounded-xl w-[290px] my-6 justify-center`}
+                } p-4 rounded-xl w-[290px]  justify-center`}
               >
                 <input
                   type="text"
@@ -223,12 +223,12 @@ export default function Signup() {
                 <IoLockClosedOutline className=" opacity-70  w-4 h-4 " />
               </div>
               {form.errors.password && form.touched.password && (
-                <span className="text-rose-500 text-sm block mt-3">
+                <span className="text-rose-500 text-sm block my-3 text-center">
                   {form.errors.password}{" "}
                 </span>
               )}
             </div>
-            <div className="my-3">
+            <div className="flex flex-col items-center pb-4">
               <div
                 className={`flex items-center  ${
                   state.them === "dark" ? "bg-[#ffffff0D]" : "bg_white_100"
@@ -254,7 +254,7 @@ export default function Signup() {
                 <FiPhone className=" opacity-70  w-4 h-4 " />
               </div>
               {form.errors.phoneNumber && form.touched.phoneNumber && (
-                <span className="text-rose-500 text-sm block mt-3">
+                <span className="text-rose-500 text-sm block my-3 text-center">
                   {form.errors.phoneNumber}{" "}
                 </span>
               )}

@@ -338,3 +338,12 @@ input[type="checkbox"]:checked ~ .topic__body {
 .topic__body > div:last-child {
   border-bottom: none !important;
 }
+
+input:-webkit-autofill, 
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset;
+  -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
+}
+

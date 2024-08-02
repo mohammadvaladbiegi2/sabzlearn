@@ -303,7 +303,7 @@ export default function Lessondetails({ sectionData, season, islogin }) {
                       </div>
                       <div className="chapter__lessons chapter__lessons__active">
                         {season.sections.map((section) => (
-                          <div className="lesson  lesson--watching">
+                          <div key={season?._id} className="lesson  lesson--watching">
                             <Link
                               href={`/coursdetails/lesson/${section?._id}`}
                               className="block line-clamp-2"
