@@ -25,7 +25,7 @@ export default function Signup() {
       phoneNumber: "",
     },
     onSubmit: (values) => {
-      fetch("https://sabzlearn-psi.vercel.app/api/auth/signup", {
+      fetch("https://sabzlearn-fde16fa99-mohammads-projects-2b3603e3.vercel.app/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

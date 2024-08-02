@@ -1302,9 +1302,9 @@ export async function getServerSideProps(contex) {
   }
 
 
-  let res = await fetch(`https://sabzlearn-psi.vercel.app/api/articl/${contex.params.id}`);
+  let res = await fetch(`https://sabzlearn-fde16fa99-mohammads-projects-2b3603e3.vercel.app/api/articl/${contex.params.id}`);
   let Articl = await res.json();
-  let resAllArticl = await fetch("https://sabzlearn-psi.vercel.app/api/articl/");
+  let resAllArticl = await fetch("https://sabzlearn-fde16fa99-mohammads-projects-2b3603e3.vercel.app/api/articl/");
   let AllArdicldata = await resAllArticl.json();
   return {
     props: { Articl, AllArdicldata, islogin },

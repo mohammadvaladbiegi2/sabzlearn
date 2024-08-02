@@ -119,7 +119,7 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
         </Link>
         <button
           onClick={() => {
-            // fetch("https://sabzlearn-psi.vercel.app/api/auth/signout").then((res) => {
+            // fetch("https://sabzlearn-fde16fa99-mohammads-projects-2b3603e3.vercel.app/api/auth/signout").then((res) => {
             //   res.status === 200 && rout.push("/");
             // });
             document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`
