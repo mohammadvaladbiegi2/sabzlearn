@@ -119,9 +119,11 @@ export default function Sidebaruserdeatails({ showsidebar, setshowsidebar }) {
         </Link>
         <button
           onClick={() => {
-            fetch("https://sabzlearn-psi.vercel.app/api/auth/signout").then((res) => {
-              res.status === 200 && rout.push("/");
-            });
+            // fetch("https://sabzlearn-psi.vercel.app/api/auth/signout").then((res) => {
+            //   res.status === 200 && rout.push("/");
+            // });
+            document.cookie = `token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT`
+            rout.push("/");
           }}
           className="flex items-center gap-x-2 h-10 px-3 rounded-lg bg-primary 
            "
