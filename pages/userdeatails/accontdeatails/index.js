@@ -41,7 +41,7 @@ export default function AccontDeatails({ MainUser }) {
       );
     } else {
       let res = await fetch(
-        `https://sabzlearn-fde16fa99-mohammads-projects-2b3603e3.vercel.app/api/user/updateuserinfo/${MainUser._id}`,
+        `https://sabzlearn-psi.vercel.app/api/user/updateuserinfo/${MainUser._id}`,
         {
           method: "PUT",
           headers: {
@@ -76,7 +76,7 @@ export default function AccontDeatails({ MainUser }) {
   const changePassword = async (e) => {
     e.preventDefault();
     let res = await fetch(
-      `https://sabzlearn-fde16fa99-mohammads-projects-2b3603e3.vercel.app/api/user/changepassword/${MainUser._id}`,
+      `https://sabzlearn-psi.vercel.app/api/user/changepassword/${MainUser._id}`,
       {
         method: "PUT",
         headers: {

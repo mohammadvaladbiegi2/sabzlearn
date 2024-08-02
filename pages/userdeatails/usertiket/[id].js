@@ -118,7 +118,7 @@ export async function getServerSideProps(context) {
 
   let MainUser = JSON.parse(JSON.stringify(FindUser));
   let res = await fetch(
-    `https://sabzlearn-fde16fa99-mohammads-projects-2b3603e3.vercel.app/api/user/newticket/${context.query.id}`
+    `https://sabzlearn-psi.vercel.app/api/user/newticket/${context.query.id}`
   );
   let data = await res.json();
   let ticket = JSON.parse(JSON.stringify(data));
