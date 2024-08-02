@@ -6,13 +6,7 @@ import { serialize } from "cookie";
 import { sign } from "jsonwebtoken";
 export default async function Signinapi(req, res) {
 
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-
-  if (req.method === "OPTIONS") {
-    res.status(200).end();
-    return;
-  }
+  
 
   if (req.method !== "POST") {
     return res.status(404).json("Bad Method || Use POST method");

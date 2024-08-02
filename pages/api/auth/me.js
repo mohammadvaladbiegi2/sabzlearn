@@ -31,13 +31,7 @@ export default async function GetMeapi(req, res) {
       return res.status(401).json("Firs Loggin");
     }
 
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
-  
-    if (req.method === "OPTIONS") {
-      res.status(200).end();
-      return;
-    }
+
     let FindUser = await User.findOne(
       { phoneNumber: tokenPayload.phoneNumber },
       "-createdAt -password -updatedAt -__v"
