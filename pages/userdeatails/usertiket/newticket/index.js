@@ -85,7 +85,7 @@ export default function NewTickts({ MainUser }) {
         className={`${state.them === "dark"
             ? "bg-dark text-white"
             : "bg-gray-100 text-black"
-          } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+          } px-5 rounded-2xl w-full max-w-[1432px] mx-3 my-4 lg:my-0  md:p-10 lg:rounded-4xl`}
       >
         <HeaderAccontDetails
           username={MainUser.username}
@@ -234,7 +234,7 @@ export default function NewTickts({ MainUser }) {
               </label>
               <textarea
                 rows="8"
-                className={`mt-3.5 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${state.them === "dark" ? "bg-gray-700" : "bg_white_100"
+                className={`mt-3 md:mt-4 w-full p-3 sm:p-5  text-sm sm:text-base tracking-tight  ${state.them === "dark" ? "bg-gray-700" : "bg_white_100"
                   } rounded-xl border border-transparent focus:border-slateplaceholder:text-gray-500 transition-all`}
                 id="text"
                 name="text"

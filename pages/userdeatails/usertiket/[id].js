@@ -24,7 +24,7 @@ export default function Mainticket({ MainUser, ticket }) {
         className={`${state.them === "dark"
             ? "bg-dark text-white"
             : "bg-gray-100 text-black"
-          } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+          } px-5 rounded-2xl w-full max-w-[1400px] mx-3 my-8 lg:my-0 py-4 lg:py-0  md:p-10 lg:rounded-4xl`}
       >
         <HeaderAccontDetails
           username={MainUser?.username}
@@ -37,7 +37,7 @@ export default function Mainticket({ MainUser, ticket }) {
               : "bg-white text-black"
             } my-6  p-3 md:p-4 rounded-2xl`}
         >
-          <div className="flex justify-between items-center pb-3.5 md:pb-4.5 mb-6 md:mb-7 border-b border-b-gray-700">
+          <div className="flex justify-between items-center pb-3 md:pb-4 mb-6 md:mb-7 border-b border-b-gray-700">
             <span className=" md:text-xl ">{ticket?.title}</span>
           </div>
           <div className="space-y-4">

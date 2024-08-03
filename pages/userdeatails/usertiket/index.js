@@ -31,7 +31,7 @@ export default function UserTiket({ MainUser }) {
         className={`${state.them === "dark"
           ? "bg-dark text-white"
           : "bg-gray-100 text-black"
-          } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  p-10 lg:rounded-4xl`}
+          } px-5 rounded-2xl w-full max-w-[1432px] mx-3 py-4 my-4 lg:my-0 p-10 lg:rounded-4xl`}
       >
         <HeaderAccontDetails
           username={MainUser?.username}

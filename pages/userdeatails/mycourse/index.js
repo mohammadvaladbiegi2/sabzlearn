@@ -20,7 +20,7 @@ export default function Mycourse({ MainUser }) {
     <div
       className={`${
         state.them === "dark" ? "bg_black_100" : "bg-white"
-      } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 lg:py-7 `}
+      } flex gap-x-10 2xl:gap-x-14 px-4 lg:px-8 xl:px-14 2xl:px-25 py-7 `}
     >
       <Sidebaruserdeatails
         showsidebar={showsidebar}
@@ -31,7 +31,7 @@ export default function Mycourse({ MainUser }) {
           state.them === "dark"
             ? "bg-dark text-white"
             : "bg-gray-100 text-black"
-        } px-5 rounded-2xl w-full max-w-[1432px] mx-auto md:p-10 lg:rounded-4xl`}
+        } px-5 rounded-2xl w-full max-w-[1432px] mx-3 py-4  md:p-10 lg:rounded-4xl`}
       >
         <HeaderAccontDetails
           username={MainUser?.username}

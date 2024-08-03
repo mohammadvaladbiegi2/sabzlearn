@@ -35,7 +35,7 @@ export default function UserDeatailsPage({ MainUser }) {
         className={`${state.them === "dark"
           ? "bg-dark text-white"
           : "bg-gray-100 text-black"
-          } px-5 rounded-2xl w-full max-w-[1432px] mx-auto  md:p-10 lg:rounded-4xl`}
+          } px-5 rounded-2xl w-full max-w-[1432px] mx-3 py-4  md:p-10 lg:rounded-4xl`}
       >
         <HeaderAccontDetails
           username={MainUser.username}
